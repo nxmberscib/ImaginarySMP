@@ -1,0 +1,96 @@
+{
+    "format_version": "1.17.20",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "cib:crystalline_cloud",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "is_experimental": false,
+            "runtime_identifier": "minecraft:snowball",
+            "properties": {
+                "cib:crystalline_cloud_iteration": {
+                    "type": "int",
+                    "range": [0, 15],
+                    "default": 0
+                }
+            }
+        },
+        "component_groups": {
+            "cib:despawn": {
+                "minecraft:instant_despawn": {}
+            }
+        },
+        "components": {
+            "minecraft:timer": {
+                "looping": true,
+                "time": [1, 1],
+                "time_down_event": {
+                    "event": "cib:crystalline_cloud_loop"
+                }
+            },
+            "minecraft:collision_box": {
+                "width": 0.5,
+                "height": 0.5
+            },
+            "minecraft:physics": {
+                "has_gravity": false
+            },
+            "minecraft:environment_sensor": {
+                "triggers": {
+                    "filters": {
+                        "test": "is_underwater",
+                        "subject": "self",
+                        "operator": "==",
+                        "value": true
+                    },
+                    "event": "abyssal:water_tag"
+                }
+            }
+        },
+        "events": {
+            //   "abyssal:water_tag": {
+            //     "run_command": {
+            //       "command": "tag @s add inwater"
+            //     }
+            //   },
+            "cib:despawn": {
+                "add": {
+                    "component_groups": ["cib:despawn"]
+                }
+            },
+            "cib:crystalline_cloud_loop": {
+                "sequence": [
+                    {
+                        "filters": {
+                            "test": "int_property",
+                            "domain": "cib:crystalline_cloud_iteration",
+                            "operator": "<",
+                            "value": 15
+                        },
+                        "queue_command": {
+                            "command": [
+                                "damage @e[dx=3,dy=1,dz=3,x=~-1,y=~-1,z=~-1,type=player] 3 entity_attack entity @e[c=1,type=cib:crystalline_skeleton]",
+                                "effect @e[dx=3,dy=1,dz=3,x=~-1,y=~-1,z=~-1,type=player] darkness 1 1 true",
+                                "particle cib:crystalline_cloud ~ ~ ~"
+                            ]
+                        },
+                        "set_property": {
+                            "cib:crystalline_cloud_iteration": "q.property('cib:crystalline_cloud_iteration') + 1"
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "int_property",
+                            "domain": "cib:crystalline_cloud_iteration",
+                            "operator": ">=",
+                            "value": 15
+                        },
+                        "add": {
+                            "component_groups": ["cib:despawn"]
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

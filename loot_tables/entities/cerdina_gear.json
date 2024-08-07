@@ -1,0 +1,20 @@
+
+{
+	"pools": [
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "item",
+					"name": "ha:sword_of_the_imagination",
+					"functions": [
+						{
+							"function": "enchant_random_gear",
+							"chance": 0.25
+						}
+					]
+				}
+			]
+		}
+	]
+}

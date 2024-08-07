@@ -1,0 +1,36 @@
+
+{
+	"format_version": "1.20.10",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "ha:chocomilk"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"pattern": [
+			" C ",
+			"CBC",
+			"  "
+		],
+		"key": {
+			"C": {
+				"item": "minecraft:cocoa_beans"
+			},
+			"B": {
+				"item": "minecraft:bucket"
+			}
+		},
+		"unlock": [
+			{
+				"item": "minecraft:cocoa_beans"
+			},
+			{
+				"item": "minecraft:bucket"
+			}
+		],
+		"result": {
+			"item": "ha:chocomilk"
+		}
+	}
+}

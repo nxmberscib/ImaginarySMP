@@ -1,0 +1,851 @@
+
+// ! A nadie le importa
+{
+	"format_version": "1.18.20",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "minecraft:player",
+			"is_spawnable": false,
+			"is_summonable": false,
+			"is_experimental": false,
+			"animations": {
+				"setup": "controller.animation.1st_spawn"
+			},
+			"scripts": {
+				"animate": [
+					"setup"
+				]
+			}
+		},
+		"component_groups": {
+			"ha:max_health": {
+				"minecraft:health": {
+					"max": 28
+				}
+			},
+			"ha:block_health": {
+				"minecraft:health": {
+					"max": 10
+				}
+			},
+			"ha:tirao": {
+				"minecraft:is_tamed": {}
+			},
+			"ha:in_jump": {
+				"minecraft:variant": {
+					"value": 1
+				}
+			},
+			"ha:no_jump": {
+				"minecraft:variant": {
+					"value": 0
+				}
+			},
+			"ha:easter&totem": {
+				"minecraft:health": {
+					"max": 32
+				}
+			},
+			"ha:totem&diamond": {
+				"minecraft:health": {
+					"max": 28
+				}
+			},
+			"ha:totem": {
+				"minecraft:health": {
+					"max": 24
+				}
+			},
+			"ha:easter": {
+				"minecraft:health": {
+					"max": 28
+				}
+			},
+			"ha:diamond": {
+				"minecraft:health": {
+					"max": 24
+				}
+			},
+			"ha:normal": {
+				"minecraft:health": {
+					"max": 20
+				}
+			},
+			"minecraft:add_bad_omen": {
+				"minecraft:spell_effects": {
+					"add_effects": [
+						{
+							"effect": "bad_omen",
+							"duration": 6000,
+							"visible": false,
+							"display_on_screen_animation": true
+						}
+					]
+				},
+				"minecraft:timer": {
+					"time": [
+						0,
+						0
+					],
+					"looping": false,
+					"time_down_event": {
+						"event": "minecraft:clear_add_bad_omen",
+						"target": "self"
+					}
+				}
+			},
+			"minecraft:clear_bad_omen_spell_effect": {
+				"minecraft:spell_effects": {}
+			},
+			"minecraft:raid_trigger": {
+				"minecraft:raid_trigger": {
+					"triggered_event": {
+						"event": "minecraft:remove_raid_trigger",
+						"target": "self"
+					}
+				},
+				"minecraft:spell_effects": {
+					"remove_effects": "bad_omen"
+				}
+			}
+		},
+		"components": {
+			"minecraft:on_death": {
+				"event": "ha:death_system",
+				"target": "self"
+			},
+			"minecraft:experience_reward": {
+				"on_death": "Math.Min(query.player_level * 7, 100)"
+			},
+			"minecraft:type_family": {
+				"family": [
+					"player"
+				]
+			},
+			"minecraft:is_hidden_when_invisible": {},
+			"minecraft:loot": {
+				"table": "loot_tables/empty.json"
+			},
+			"minecraft:collision_box": {
+				"width": 0.6,
+				"height": 1.8
+			},
+			"minecraft:can_climb": {},
+			"minecraft:movement": {
+				"value": 0.1
+			},
+			"minecraft:hurt_on_condition": {
+				"damage_conditions": [
+					{
+						"filters": {
+							"test": "in_lava",
+							"subject": "self",
+							"operator": "==",
+							"value": true
+						},
+						"cause": "lava",
+						"damage_per_tick": 4
+					}
+				]
+			},
+			"minecraft:attack": {
+				"damage": 1
+			},
+			"minecraft:exhaustion_values": {
+				"heal": 6,
+				"jump": 0.05,
+				"sprint_jump": 0.2,
+				"mine": 0.005,
+				"attack": 0.1,
+				"damage": 0.1,
+				"walk": 0,
+				"sprint": 0.1,
+				"swim": 0.01
+			},
+			"minecraft:player.saturation": {
+				"value": 5,
+				"max": 20
+			},
+			"minecraft:player.exhaustion": {
+				"value": 0,
+				"max": 20
+			},
+			"minecraft:player.level": {
+				"value": 0,
+				"max": 24791
+			},
+			"minecraft:player.experience": {
+				"value": 0,
+				"max": 1
+			},
+			"minecraft:breathable": {
+				"total_supply": 15,
+				"suffocate_time": -1,
+				"inhale_time": 3.75,
+				"generates_bubbles": false
+			},
+			"minecraft:nameable": {
+				"always_show": true,
+				"allow_name_tag_renaming": false
+			},
+			"minecraft:physics": {
+				"push_towards_closest_space": true
+			},
+			"minecraft:pushable": {
+				"is_pushable": false,
+				"is_pushable_by_piston": true
+			},
+			"minecraft:insomnia": {
+				"days_until_insomnia": 3
+			},
+			"minecraft:rideable": {
+				"seat_count": 2,
+				"family_types": [
+					"parrot_tame",
+					"turtle",
+					"stickyspider"
+				],
+				"pull_in_entities": true,
+				"seats": [
+					{
+						"position": [
+							0.4,
+							-0.2,
+							-0.1
+						],
+						"min_rider_count": 0,
+						"max_rider_count": 0,
+						"lock_rider_rotation": 0
+					},
+					{
+						"position": [
+							-0.4,
+							-0.2,
+							-0.1
+						],
+						"min_rider_count": 1,
+						"max_rider_count": 2,
+						"lock_rider_rotation": 0
+					}
+				]
+			},
+			"minecraft:conditional_bandwidth_optimization": {},
+			"minecraft:block_climber": {},
+			"minecraft:damage_sensor": {
+				"triggers": [
+					{
+						"on_damage": {
+							"filters": {
+								"test": "is_family",
+								"subject": "other",
+								"value": "cat"
+							}
+						},
+						"cause": "entity_explosion",
+						"deals_damage": false
+					},
+					{
+						"on_damage": {
+							"filters": {
+								"test": "is_family",
+								"subject": "other",
+								"value": "cat"
+							}
+						},
+						"deals_damage": false,
+						"cause": "block_explosion"
+					},
+					{
+						"on_damage": {
+							"filters": {
+								"test": "is_family",
+								"subject": "other",
+								"value": "supreme_allay"
+							}
+						},
+						"cause": "entity_attack",
+						"deals_damage": false
+					},
+					{
+						"on_damage": {
+							"filters": {
+								"test": "is_family",
+								"subject": "other",
+								"value": "supreme_allay"
+							}
+						},
+						"deals_damage": false,
+						"cause": "block_explosion"
+					},
+					{
+						"on_damage": {
+							"filters": {
+								"test": "is_family",
+								"subject": "other",
+								"value": "supreme_allay"
+							}
+						},
+						"deals_damage": false,
+						"cause": "entity_explosion"
+					},
+					{
+						"on_damage": {
+							"filters": {
+								"test": "is_family",
+								"subject": "other",
+								"value": "ghast"
+							},
+							"event": "ha:ghast_damage",
+							"target": "self"
+						}
+					},
+					{
+						"on_damage": {
+							"filters": {
+								"test": "is_family",
+								"subject": "other",
+								"value": "maple_creeper"
+							},
+							"event": "ha:creeper_damage",
+							"target": "self"
+						}
+					},
+					{
+						"on_damage": {
+							"filters": {
+								"test": "is_family",
+								"subject": "other",
+								"value": "wither"
+							}
+						},
+						"damage_modifier": 2
+					},
+					{
+						"on_damage": {
+							"filters": {
+								"test": "is_family",
+								"subject": "other",
+								"value": "zombiehorse"
+							}
+						},
+						"deals_damage": false
+					}
+				]
+			},
+			"minecraft:environment_sensor": {
+				"triggers": [
+					{
+						"filters": {
+							"all_of": [
+								{
+									"test": "has_mob_effect",
+									"subject": "self",
+									"value": "bad_omen"
+								},
+								{
+									"test": "is_in_village",
+									"subject": "self",
+									"value": true
+								}
+							]
+						},
+						"event": "minecraft:trigger_raid"
+					},
+					{
+						"filters": {
+							"any_of": [
+								{
+									"test": "has_equipment",
+									"domain": "head",
+									"value": "minecraft:diamond_helmet",
+									"operator": "!="
+								},
+								{
+									"test": "has_equipment",
+									"domain": "torso",
+									"value": "minecraft:diamond_chestplate",
+									"operator": "!="
+								},
+								{
+									"test": "has_equipment",
+									"domain": "leg",
+									"value": "minecraft:diamond_leggings",
+									"operator": "!="
+								},
+								{
+									"test": "has_equipment",
+									"domain": "feet",
+									"value": "minecraft:diamond_boots",
+									"operator": "!="
+								}
+							]
+						},
+						"event": "ha:normal_health",
+						"target": "self"
+					},
+					{
+						"filters": {
+							"all_of": [
+								{
+									"test": "has_equipment",
+									"domain": "head",
+									"value": "minecraft:diamond_helmet"
+								},
+								{
+									"test": "has_equipment",
+									"domain": "torso",
+									"value": "minecraft:diamond_chestplate"
+								},
+								{
+									"test": "has_equipment",
+									"domain": "leg",
+									"value": "minecraft:diamond_leggings"
+								},
+								{
+									"test": "has_equipment",
+									"domain": "feet",
+									"value": "minecraft:diamond_boots"
+								}
+							]
+						},
+						"event": "ha:diamond_health",
+						"target": "self"
+					},
+					{
+						"filters": {
+							"any_of": [
+								{
+									"test": "has_equipment",
+									"domain": "head",
+									"value": "ha:easter_helmet"
+								},
+								{
+									"test": "has_equipment",
+									"domain": "head",
+									"value": "ha:horse_helmet"
+								},
+								{
+									"test": "has_equipment",
+									"domain": "head",
+									"value": "ha:chicken_helmet"
+								}
+							]
+						},
+						"event": "ha:easter_health",
+						"target": "self"
+					},
+					{
+						"filters": {
+							"all_of": [
+								{
+									"test": "has_tag",
+									"value": "inJump"
+								},
+								{
+									"test": "is_variant",
+									"operator": "!=",
+									"value": 1
+								}
+							]
+						},
+						"event": "ha:activate_jump"
+					},
+					{
+						"filters": {
+							"all_of": [
+								{
+									"test": "has_tag",
+									"operator": "!=",
+									"value": "inJump"
+								},
+								{
+									"test": "is_variant",
+									"value": 1
+								}
+							]
+						},
+						"event": "ha:remove_jump"
+					},
+					{
+						"filters": {
+							"all_of": [
+								{
+									"test": "has_tag",
+									"value": "isMove"
+								},
+								{
+									"test": "is_moving",
+									"value": true
+								}
+							]
+						},
+						"event": "ha:steal_cosa",
+						"target": "self"
+					}
+				]
+			}
+		},
+		"events": {
+			"ha:set_max_hearts": {
+				"remove": {
+					"component_groups": [
+						"ha:normal",
+						"ha:diamond",
+						"ha:totem",
+						"ha:totem&diamond",
+						"ha:block_health",
+						"ha:easter",
+						"ha:easter&totem"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"ha:max_health"
+					]
+				}
+			},
+			"ha:remove_hearts": {
+				"remove": {
+					"component_groups": [
+						"ha:normal",
+						"ha:diamond",
+						"ha:totem",
+						"ha:totem&diamond",
+						"ha:max_health",
+						"ha:easter",
+						"ha:easter&totem"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"ha:block_health"
+					]
+				}
+			},
+			"ha:creeper_damage": {
+				"queue_command": {
+					"command": [
+						"scriptevent ha:damage_creeper"
+					]
+				}
+			},
+			"ha:ghast_damage": {
+				"queue_command": {
+					"command": [
+						"scriptevent ha:damage_ghast"
+					]
+				}
+			},
+			"ha:steal_cosa": {
+				"queue_command": {
+					"command": [
+						"function unnecessary_mechanics/jajajaja"
+					]
+				}
+			},
+			"ha:activate_jump": {
+				"remove": {
+					"component_groups": [
+						"ha:no_jump"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"ha:in_jump"
+					]
+				}
+			},
+			"ha:remove_jump": {
+				"remove": {
+					"component_groups": [
+						"ha:in_jump"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"ha:no_jump"
+					]
+				}
+			},
+			"ha:tirar": {
+				"add": {
+					"component_groups": [
+						"ha:tirao"
+					]
+				}
+			},
+			"ha:remove_tirar": {
+				"remove": {
+					"component_groups": [
+						"ha:tirao"
+					]
+				}
+			},
+			"ha:easter_health": {
+				"sequence": [
+					{
+						"filters": {
+							"all_of": [
+								{
+									"test": "has_tag",
+									"operator": "!=",
+									"value": "potionBad2"
+								},
+								{
+									"test": "has_tag",
+									"operator": "!=",
+									"value": "potionBad4"
+								}
+							]
+						},
+						"sequence": [
+							{
+								"filters": {
+									"test": "has_equipment",
+									"subject": "self",
+									"value": "minecraft:totem",
+									"domain": "hand"
+								},
+								"queue_command": {
+									"command": [
+										"execute as @s[hasitem={item=ha:easter_helmet,location=slot.armor.head}] at @s run effect @s jump_boost 5 0 true",
+										"execute as @s[hasitem={item=ha:horse_helmet,location=slot.armor.head}] at @s run effect @s strength 5 0 true",
+										"execute as @s[hasitem={item=ha:chicken_helmet,location=slot.armor.head}] at @s run effect @s speed 5 2 true"
+									]
+								},
+								"remove": {
+									"component_groups": [
+										"ha:normal",
+										"ha:totem",
+										"ha:diamond",
+										"ha:block_health",
+										"ha:max_health",
+										"ha:easter"
+									]
+								},
+								"add": {
+									"component_groups": [
+										"ha:easter&totem"
+									]
+								}
+							},
+							{
+								"filters": {
+									"test": "has_equipment",
+									"subject": "self",
+									"operator": "!=",
+									"value": "minecraft:totem",
+									"domain": "hand"
+								},
+								"queue_command": {
+									"command": [
+										"execute as @s[hasitem={item=ha:easter_helmet,location=slot.armor.head}] at @s run effect @s jump_boost 5 0 true",
+										"execute as @s[hasitem={item=ha:horse_helmet,location=slot.armor.head}] at @s run effect @s strength 5 0 true",
+										"execute as @s[hasitem={item=ha:chicken_helmet,location=slot.armor.head}] at @s run effect @s speed 5 1 true"
+									]
+								},
+								"remove": {
+									"component_groups": [
+										"ha:normal",
+										"ha:totem",
+										"ha:totem&diamond",
+										"ha:block_health",
+										"ha:max_health",
+										"ha:easter&totem"
+									]
+								},
+								"add": {
+									"component_groups": [
+										"ha:easter"
+									]
+								}
+							}
+						]
+					}
+				]
+			},
+			"ha:diamond_health": {
+				"sequence": [
+					{
+						"filters": {
+							"all_of": [
+								{
+									"test": "has_tag",
+									"operator": "!=",
+									"value": "potionBad2"
+								},
+								{
+									"test": "has_tag",
+									"operator": "!=",
+									"value": "potionBad4"
+								}
+							]
+						},
+						"sequence": [
+							{
+								"filters": {
+									"test": "has_equipment",
+									"subject": "self",
+									"value": "minecraft:totem",
+									"domain": "hand"
+								},
+								"remove": {
+									"component_groups": [
+										"ha:normal",
+										"ha:totem",
+										"ha:diamond",
+										"ha:block_health",
+										"ha:max_health",
+										"ha:easter",
+										"ha:easter&totem"
+									]
+								},
+								"add": {
+									"component_groups": [
+										"ha:totem&diamond"
+									]
+								}
+							},
+							{
+								"filters": {
+									"test": "has_equipment",
+									"subject": "self",
+									"operator": "!=",
+									"value": "minecraft:totem",
+									"domain": "hand"
+								},
+								"remove": {
+									"component_groups": [
+										"ha:normal",
+										"ha:totem",
+										"ha:totem&diamond",
+										"ha:block_health",
+										"ha:max_health",
+										"ha:easter",
+										"ha:easter&totem"
+									]
+								},
+								"add": {
+									"component_groups": [
+										"ha:diamond"
+									]
+								}
+							}
+						]
+					}
+				]
+			},
+			"ha:normal_health": {
+				"sequence": [
+					{
+						"filters": {
+							"all_of": [
+								{
+									"test": "has_tag",
+									"operator": "!=",
+									"value": "potionBad2"
+								},
+								{
+									"test": "has_tag",
+									"operator": "!=",
+									"value": "potionBad4"
+								}
+							]
+						},
+						"sequence": [
+							{
+								"filters": {
+									"test": "has_equipment",
+									"subject": "self",
+									"value": "minecraft:totem",
+									"domain": "hand"
+								},
+								"remove": {
+									"component_groups": [
+										"ha:normal",
+										"ha:diamond",
+										"ha:totem&diamond",
+										"ha:block_health",
+										"ha:max_health",
+										"ha:easter",
+										"ha:easter&totem"
+									]
+								},
+								"add": {
+									"component_groups": [
+										"ha:totem"
+									]
+								}
+							},
+							{
+								"filters": {
+									"test": "has_equipment",
+									"subject": "self",
+									"operator": "!=",
+									"value": "minecraft:totem",
+									"domain": "hand"
+								},
+								"remove": {
+									"component_groups": [
+										"ha:diamond",
+										"ha:totem",
+										"ha:totem&diamond",
+										"ha:block_health",
+										"ha:max_health",
+										"ha:easter",
+										"ha:easter&totem"
+									]
+								},
+								"add": {
+									"component_groups": [
+										"ha:normal"
+									]
+								}
+							}
+						]
+					}
+				]
+			},
+			"ha:death_system": {
+				"queue_command": {
+					"command": [
+						"execute as @s[tag=!muerto] at @s run function system/death_message"
+					]
+				}
+			},
+			"minecraft:gain_bad_omen": {
+				"add": {
+					"component_groups": [
+						"minecraft:add_bad_omen"
+					]
+				}
+			},
+			"minecraft:clear_add_bad_omen": {
+				"remove": {
+					"component_groups": [
+						"minecraft:add_bad_omen"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"minecraft:clear_bad_omen_spell_effect"
+					]
+				}
+			},
+			"minecraft:trigger_raid": {
+				"add": {
+					"component_groups": [
+						"minecraft:raid_trigger"
+					]
+				}
+			},
+			"minecraft:remove_raid_trigger": {
+				"remove": {
+					"component_groups": [
+						"minecraft:raid_trigger"
+					]
+				}
+			}
+		}
+	}
+}

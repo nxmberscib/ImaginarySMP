@@ -1,0 +1,18 @@
+
+{
+	"format_version": "1.10.0",
+	"animations": {
+		"animation.spawn_fire": {
+			"animation_length": 3.1,
+			"loop": false,
+			"timeline": {
+				"2.1": [
+					"/scriptevent ha:spawn_fires"
+				],
+				"3.0": [
+					"@s ha:despawn"
+				]
+			}
+		}
+	}
+}

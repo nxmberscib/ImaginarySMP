@@ -1,0 +1,36 @@
+
+{
+	"format_version": "1.20.10",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "minecraft:totem_of_undying"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"pattern": [
+			"EXE",
+			"GGG",
+			"XGX"
+		],
+		"key": {
+			"E": {
+				"item": "minecraft:emerald_block"
+			},
+			"G": {
+				"item": "minecraft:gold_block"
+			}
+		},
+		"unlock": [
+			{
+				"item": "minecraft:emerald_block"
+			},
+			{
+				"item": "minecraft:gold_block"
+			}
+		],
+		"result": {
+			"item": "minecraft:totem_of_undying"
+		}
+	}
+}

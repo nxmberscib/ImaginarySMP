@@ -1,0 +1,28 @@
+
+{
+	"format_version": "1.13.0",
+	"minecraft:ore_feature": {
+		"description": {
+			"identifier": "ha:raw_emerald_feature"
+		},
+		"count": 9,
+		"replace_rules": [
+			{
+				"places_block": "ha:raw_emerald_block",
+				"may_replace": [
+					{
+						"name": "minecraft:stone"
+					}
+				]
+			},
+			{
+				"places_block": "ha:raw_emerald_block",
+				"may_replace": [
+					{
+						"name": "minecraft:deepslate"
+					}
+				]
+			}
+		]
+	}
+}

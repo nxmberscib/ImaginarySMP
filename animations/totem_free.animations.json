@@ -1,0 +1,55 @@
+
+{
+	"format_version": "1.10.0",
+	"animations": {
+		"animation.totem_free.timer": {
+			"animation_length": 12.3,
+			"loop": false,
+			"timeline": {
+				"0.0": [
+					"/execute as @a at @s run scoreboard players set @s totalJumps 11",
+					"/execute as @a at @s run function system/totem_cosa"
+				],
+				"1.0": [
+					"/execute as @a at @s run function system/totem_cosa"
+				],
+				"2.0": [
+					"/execute as @a at @s run function system/totem_cosa"
+				],
+				"3.0": [
+					"/execute as @a at @s run function system/totem_cosa"
+				],
+				"4.0": [
+					"/execute as @a at @s run function system/totem_cosa"
+				],
+				"5.0": [
+					"/execute as @a at @s run function system/totem_cosa"
+				],
+				"6.0": [
+					"/execute as @a at @s run function system/totem_cosa"
+				],
+				"7.0": [
+					"/execute as @a at @s run function system/totem_cosa"
+				],
+				"8.0": [
+					"/execute as @a at @s run function system/totem_cosa"
+				],
+				"9.0": [
+					"/execute as @a at @s run function system/totem_cosa"
+				],
+				"10.0": [
+					"/execute as @a at @s run function system/totem_cosa"
+				],
+				"11.0": [
+					"/execute as @a at @s run function system/totem_cosa"
+				],
+				"12.0": [
+					"/execute as @a at @s run function system/totem_cosa_ending"
+				],
+				"12.1": [
+					"@s ha:despawn"
+				]
+			}
+		}
+	}
+}
