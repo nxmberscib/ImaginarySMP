@@ -1,0 +1,25 @@
+
+{
+	"ha:fake_soul": {
+		"sound" : "soul_sand",
+		"textures" : "soul_sand"
+	},
+	"ha:raw_diamond_block": {
+		"isotropic" : false,
+		"sound" : "stone",
+		"textures" : "raw_diamond_block"
+	},
+	"ha:raw_emerald_block": {
+		"isotropic" : false,
+		"sound" : "stone",
+		"textures" : "raw_emerald_block"
+	},
+	"ha:fake_iron_block": {
+		"sound" : "metal",
+		"textures" : "iron_block"
+	},
+	"ha:fake_coal_block": {
+		"sound" : "stone",
+		"textures" : "coal_block"
+	}
+}

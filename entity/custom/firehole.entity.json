@@ -1,0 +1,24 @@
+
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "ha:really",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/firehole"
+			},
+			"geometry": {
+				"default": "geometry.firehole"
+			},
+			"scripts": {
+				"scale": "15.0"
+			},
+			"render_controllers": [
+				"controller.render.default"
+			]
+		}
+	}
+}

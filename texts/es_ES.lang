@@ -2,5 +2,241 @@
 ## Created or Edited by: HaJuegosCat!y DiFox!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz
 
 ## Manifest Text
-pack.name=§e[BP] [DIA 4] §u§lIMAGINARY ADD-ON§r§7 | §sDe ZimbawePlus§r§7 | §gv0.0.1
-pack.description=Comportamientos requeridos para el add-on. Creado en la version de MC 1.20.80/1.
+pack.name=§e[RP] §u§lIMAGINARY ADD-ON§r§7 | §sDe ZimbawePlus§r
+pack.description=Texturas necesarias para el add-on.
+
+## UI texts
+disconnect.kicked=§d§lNo es lo que aparenta, deja de jugar con las estrellas...
+disconnect.kicked.reason=§d§lNo es lo que aparenta, deja de jugar con las estrellas...
+disconnect.removed=§d§lNo es lo que aparenta, deja de jugar con las estrellas...
+disconnect.removed.reason=§d§lNo es lo que aparenta, deja de jugar con las estrellas...
+
+ui.subtitle_death=§s%1 ha muerto
+ui.unnecesaary_title1=Solo imagina un nuevo mundo esperándote al otro lado de la muerte...
+ui.unnecesaary_title2=¿No es fabuloso?
+ui.unnecesaary_title3=Solo mírate, perdiste...
+ui.unnecesaary_title4=Lo siento... LO SIENTO.
+ui.unnecesaary_title5=No importa, el artefacto arreglará todo... ¡De una vez por todas!
+ui.unnecesaary_title6=¡Y no estarás ahí para detenernos!
+ui.unnecesaary_title7=Nos veremos muy pronto...
+ui.unnecesaary_title8=Yo juego con tu imaginación, Y ESO NUNCA CAMBIARÁ.
+
+ui.intro_text1=¿CÓMO ES POSIBLE?
+ui.intro_text2=¡Deberías ser el último!
+ui.intro_text3=La paz es un ERROR TOTAL.
+ui.intro_text4=El Artefacto puede arreglar esto...
+ui.intro_text5=El poder no puede morir... La imaginación, el pasado y el final, comienzan a salir de su zona de confort.
+ui.intro_text6=Girará en torno a tu mente.
+ui.intro_text7=ME RECORDARÁS Y YO A TI. ESTO NO HA ACABADO.
+
+ui.cosa_text1=§c¡NO TE MUEVAS!
+ui.cosa_text2=§cTe has movido, te han robado algo...
+
+action.hint.exit.ha:water_entity=§r
+action.hint.exit.ha:water_entity_two=§r
+
+ui.title_welcome=§b¡Bienvenido!§r §cDe: ZimbaweVIP
+ui.revive_welcome=§a%1§e ha revivido
+
+score.name.lives=§2Vivos§r:
+score.name.death=§nMuertos§r: 
+
+
+## Chat texts
+chat.used_staff=%1 ha usado el §eBaston de la Union.
+chat.death_message1=§p%1 ha entrado en las enredaderas de la imaginación. §cNadie está a salvo...
+chat.death_message2=§gPero su historia no termina aquí... Su legado perdura en los confines de nuestra imaginación, donde sus aventuras se entrelazan eternamente con las estrellas.
+chat.death_message3=§dEl Nexo se manifiesta...
+chat.ban_off=§7El sistema de baneo fue apagado. Para encenderlo, vuelve a poner el function, el siguiente jugador en entrar, si esta muerto, sera revivido automaticamente.
+chat.ban_on=§7El sistema de baneo fue encendido. Para apagarlo, vuelve a poner el function.
+chat.revive=§uEntre las cenizas de la derrota, un nuevo amanecer se alza en la imaginación, donde el arte es el arma más poderosa para desafiar a la muerte y renacer con renovada determinación. Está de vuelta %1.
+chat.coords=§7%1 ha muerto en %2 en la dimension del %3%4§7.
+chat.go_nether=§c§l%1 ahora esta en el Nether.
+chat.bye_nether=§c§l%1 salio del Nether.
+chat.unnecessaryfuckingmechanicssofuckedup=§7¡Estas en el suelo y no puedes moverte por %1 segundo(s)!
+chat.unnecessaryfuckingmechanicssofuckedup_remove=§eVolviste a la normalidad.
+chat.jumonow=§e§lSegundos restantes para matar a Walter: %1
+chat.stupid=§7No lo mataste a tiempo, ya no dropeara nada.
+chat.used_totem=§7%1 ha usado un Totem.
+chat.used_totem_limited=§6%1 ha gastado %2/15 Totems.
+chat.cooldown_amulet=§7>> Aun no puedes usar esto
+chat.one_totem=%1 acaba de obtener el logro §a[Post mortem]§r
+chat.moveYet=§eYa te puedes mover.
+chat.cramp=§4¡Te dio un calambre!
+chat.nodrink=§7No puedes tener mas de 1 maldicion.
+
+
+## Achievement Texts
+achievement.new_player=%1 ha conseguido el logro §d[Al viaje Astral]
+
+
+## Entities
+entity.ha:camera_skeleton.name=Esqueleto Camara
+entity.ha:ender_axolotl.name=Ender Ajolote
+entity.ha:walter_npc.name=Walter Blanco
+entity.ha:desert_skeleton.name=Esqueleto del Desierto
+entity.ha:christmas_skeleton.name=Esqueleto Navideño
+entity.ha:imagination_blaze.name=Blaze de la Imaginacion
+entity.ha:magic_piglin.name=Piglin Magico
+entity.ha:blood_slime.name=Slime de Sangre
+entity.ha:furnace_golem.name=Golem Horno
+entity.ha:crowbar.name=Palanca
+entity.ha:radioactive_rabbit.name=Conejo Radioactivo
+entity.ha:twofaced_genius.name=Genio de Dos Caras
+entity.ha:galactic_piglin.name=Piglin Galactico
+entity.ha:cerdina.name=Cerdina
+entity.ha:skeleton_defender.name=Esqueleto Defensor
+entity.ha:plasma_fox.name=Zorro de Plasma
+entity.ha:mechanical_ghast.name=Ghast Mecanico
+entity.ha:sonic_vindicator.name=Vindicador de Cristal
+
+
+## Items Names
+item.ha:adrenaline_potion=Poción de Adrenalina
+item.ha:adrenaline_potion.name=Poción de Adrenalina
+
+item.ha:union_staff=§eBaston de la Union§r
+item.ha:union_staff.name=§eBaston de la Union§r
+
+item.ha:loving_teddybear=§cPeluche Amoroso§r
+item.ha:loving_teddybear.name=§cPeluche Amoroso§r
+
+item.ha:soul_ring=§uAnillo del Alma§r
+item.ha:soul_ring.name=§uAnillo del Alma§r
+
+item.ha:lucky_star=§uLibro Angelical§r
+item.ha:lucky_star.name=§uLibro Angelical§r
+
+item.ha:marble_apple=§sManzana de Mármol§r
+item.ha:marble_apple.name=§sManzana de Mármol§r
+
+item.ha:caramel_apple=§bCorazón Nexonico§r
+item.ha:caramel_apple.name=§bCorazón Nexonico§r
+
+item.ha:limb_amulet_one=Amuleto del limbo
+item.ha:limb_amulet_one.name=Amuleto del limbo
+item.ha:limb_amulet_two=Amuleto del limbo Cargado
+item.ha:limb_amulet_two.name=Amuleto del limbo Cargado
+
+item.ha:chocomilk=§nLeche con Chocolate§r
+item.ha:chocomilk.name=§nLeche con Chocolate§r
+
+item.ha:healing_center=§cCentro de Sanación§r
+item.ha:healing_center.name=§cCentro de Sanación§r
+
+item.ha:spawn_egg_fairy=Generador de Hada
+item.ha:spawn_egg_fairy.name=Generador de Hada
+
+item.ha:ravager_amulet=Amuleto de Ravager
+item.ha:ravager_amulet.name=Amuleto de Ravager
+
+item.ha:magic_bundle=Bundle Magico Encantado
+item.ha:magic_bundle.name=Bundle Magico Encantado
+
+item.ha:apple_pie=Tarta de Manzana
+item.ha:apple_pie.name=Tarta de Manzana
+
+item.ha:toy_cannon=§eCañón de Juguete§r
+item.ha:toy_cannon.name=§eCañor de Juguete§r
+
+item.ha:barrier_fake=Barrera
+item.ha:barrier_fake.name=Barrera
+
+item.ha:crowbar=Palanca
+item.ha:crowbar.name=Palanca
+
+item.ha:eclipse_wand=Vara de Eclipsum
+item.ha:eclipse_wand.name=Vara de Eclipsum
+
+item.ha:imagination_apple=Manzana de la Imaginacion
+item.ha:imagination_apple.name=Manzana de la Imaginacion
+
+item.ha:iron_carrot=Zanahoria de Hierro
+item.ha:iron_carrot.name=Zanahoria de Hierro
+
+item.ha:explosive_cat=Gato Explosivo
+item.ha:explosive_cat.name=Gato Explosivo
+
+item.ha:morado_fermented_eye=§5Ojo Fermentado Morado§r
+item.ha:azul_fermented_eye=§3Ojo Fermentado Azul§r
+item.ha:amarillo_fermented_eye=§eOjo Fermentado Azul Amarillo§r
+item.ha:naranja_fermented_eye=§pOjo Fermentado Naranja§r
+item.ha:verde_fermented_eye=§aOjo Fermentado Verde§r
+item.ha:morado_fermented_eye.name=§5Ojo Fermentado Morado§r
+item.ha:azul_fermented_eye.name=§3Ojo Fermentado Azul§r
+item.ha:amarillo_fermented_eye.name=§eOjo Fermentado Azul Amarillo§r
+item.ha:naranja_fermented_eye.name=§pOjo Fermentado Naranja§r
+item.ha:verde_fermented_eye.name=§aOjo Fermentado Verde§r
+
+item.ha:bad_potion_one=Pocion Maligna
+item.ha:bad_potion_two=Pocion Maligna
+item.ha:bad_potion_three=Pocion Maligna
+item.ha:bad_potion_four=Pocion Maligna
+item.ha:bad_potion_five=Pocion Maligna
+item.ha:bad_potion_one.name=Pocion Maligna
+item.ha:bad_potion_two.name=Pocion Maligna
+item.ha:bad_potion_three.name=Pocion Maligna
+item.ha:bad_potion_four.name=Pocion Maligna
+item.ha:bad_potion_five.name=Pocion Maligna
+
+item.ha:sword_of_the_imagination=Espada de la Imaginacion
+item.ha:sword_of_the_imagination.name=Espada de la Imaginacion
+
+
+## Armor Items
+item.ha:regeneration_helmet=§cCasco de Regeneración§r
+item.ha:regeneration_helmet.name=§cCasco de Regeneración§r
+
+item.ha:easter_helmet=Casco de Pascua
+item.ha:easter_helmet.name=Casco de Pascua
+
+item.ha:chicken_helmet=Casco de Pollo
+item.ha:chicken_helmet.name=Casco de Pollo
+
+item.ha:horse_helmet=Casco de Oso
+item.ha:horse_helmet.name=Casco de Oso
+
+
+## Spawn Eggs
+item.spawn_egg.entity.ha:camera_skeleton.name=Generador de Esqueleto Camara
+item.spawn_egg.entity.ha:ender_axolotl.name=Generador de Ender Ajolote
+item.spawn_egg.entity.ha:desert_skeleton.name=Generador de Esqueleto del Desierto
+item.spawn_egg.entity.ha:christmas_skeleton.name=Generador de Esqueleto Navideño
+item.spawn_egg.entity.ha:imagination_blaze.name=Generador de Blaze de la Imaginacion
+item.spawn_egg.entity.ha:magic_piglin.name=Generador de Piglin Magico
+item.spawn_egg.entity.ha:blood_slime.name=Generador de Slime de Sangre
+item.spawn_egg.entity.ha:furnace_golem.name=Generador de Golem Horno
+item.spawn_egg.entity.ha:twofaced_genius.name=Generador de Genio de Dos Caras
+item.spawn_egg.entity.ha:galactic_piglin.name=Generador de Piglin Galactico
+item.spawn_egg.entity.ha:cerdina.name=Generador de Cerdina
+item.spawn_egg.entity.ha:skeleton_defender.name=Generador de Esqueleto Defensor
+item.spawn_egg.entity.ha:plasma_fox.name=Generador de Zorro de Plasma
+item.spawn_egg.entity.ha:mechanical_ghast.name=Generador de Ghast Mecanico
+item.spawn_egg.entity.ha:sonic_vindicator.name=Generador de Vindicador de Cristal
+
+## Blocks name
+tile.ha:fake_soul.name=Arena de Almas movediza
+tile.ha:raw_diamond_block.name=§bBloque de Diamante Crudo§r
+tile.ha:raw_emerald_block.name=Bloque de Esmeralda Crudo
+tile.ha:fake_iron_block.name=Bloque de Hierro Falso
+
+
+## Chat ranks
+chat.ranks=<%1 %2> %3
+chat_rank.default=§d§l[SOÑADOR]§r
+chat_rank.owner=§c§l[OWNER]§r
+chat_rank.admin=§e§l[ADMIN]§r
+chat_rank.vip=§a§l[VIP]§r
+
+entity.cib:entity.crystalline_skeleton.name=§6Crystalline Skeleton
+entity.cib:honey_slime.name=§eHoney Slime
+entity.cib:marine_slime.name=§bMarine Slime
+entity.cib:interstelar_slime.name=§5Interstellar Slime
+
+item.spawn_egg.entity.cib:crystalline_skeleton.name=Generador de Esqueleto Cristalino
+item.spawn_egg.entity.cib:honey_slime.name=Generador de Slime de Miel
+item.spawn_egg.entity.cib:marine_slime.name=Generador de Slime Marino
+item.spawn_egg.entity.cib:interstellar_slime.name=Generador de Slime Interestelar
+item.spawn_egg.entity.cib:entity.preassure_assasin.name=Gnerador de Asesino de Presion
+
+item.cib:aureum_fulminator.name=§6Fulminador Aureo
