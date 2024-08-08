@@ -220,9 +220,11 @@ declare module "@minecraft/server" {
 }
 
 class EntityResurrectEventSignal {
-    constructor() {
+    static initialize() {
         //@ts-ignore
-        WorldBeforeEvents.prototype.entityResurrect = this;
+        const t = new this();
+        WorldBeforeEvents.prototype.entityResurrect = t;
+        world.beforeEvents.entityResurrect = t;
     }
     subscribe(callback: (event: EntityResurrectEvent) => void) {
         callback["id"] = Date.now().toString(16);

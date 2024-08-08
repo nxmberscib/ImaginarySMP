@@ -3,9 +3,13 @@ import ImaginaryEntities from "./entity/ImaginaryEntities";
 import BanManager from "./manager/BanManager";
 import { GameRules, world } from "@minecraft/server";
 import ImaginaryCommands from "./command/ImaginaryCommands";
+import { EntityResurrectEvent, EntityResurrectEventSignal } from "teseract/api/event/EntityResurrectEvent";
+import ChipoteChillon from "./item/ChipoteChillon";
+import MuteManager from "./manager/MuteManager";
 
 export default class Imaginary {
     static #instance: Imaginary;
+    #muteManager: MuteManager;
     public static getInstance() {
         return this.#instance;
     }
@@ -13,6 +17,8 @@ export default class Imaginary {
     #slotManager: SlotManager;
 
     public onInitialized() {
+        EntityResurrectEventSignal.initialize();
+        new ChipoteChillon();
         Imaginary.#instance = this;
         // import "./block/Block"
         // import './item/Item'
@@ -34,6 +40,13 @@ export default class Imaginary {
         this.#banManager = new BanManager();
         this.#banManager.setupBanSystem();
         this.#banManager.startBanProtocol();
+
+        /**
+         * @remarks
+         * Initializes the mute manager.
+         */
+        this.#muteManager = new MuteManager()
+        this.#muteManager.startMuteProtocol();
 
         /**
          * @remarks
@@ -62,6 +75,9 @@ export default class Imaginary {
     }
     public getBanManager() {
         return this.#banManager;
+    }
+    public getMuteManager() {
+        return this.#muteManager;
     }
 
     public getSlotManager() {

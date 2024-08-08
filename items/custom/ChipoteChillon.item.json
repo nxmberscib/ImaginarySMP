@@ -14,7 +14,11 @@
 				"texture": "chipote_chillon"
 			},
 			"minecraft:damage": 10,
-			"minecraft:can_destroy_in_creative": false
+			"minecraft:can_destroy_in_creative": false,
+			"minecraft:cooldown": {
+				"category": "chipote",
+				"duration": 8
+			}
 		}
 	}
 }
