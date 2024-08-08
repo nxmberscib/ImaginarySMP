@@ -14,7 +14,7 @@ export default class UnmuteCommand {
     @Default
     mute(player: Player, target: Player) {
         const remainingMute = target.getDynamicProperty(
-            "ultimate:muted",
+            "imaginary:muted",
         ) as number;
 
         if (remainingMute <= 0 && remainingMute != -1) {
@@ -22,14 +22,14 @@ export default class UnmuteCommand {
         return;
         }
         
-        const staff = target.getDynamicProperty("ultimate:muted_by");
-        const reason = target.getDynamicProperty("ultimate:muted_reason");
+        const staff = target.getDynamicProperty("imaginary:muted_by");
+        const reason = target.getDynamicProperty("imaginary:muted_reason");
         
         target.sendMessage(
             `\n§l§c¡YA NO ESTÁS SILENCIADO!§r\n\n§7> §cSancionado Por: §7${staff}\n§7> §cRazón: §7${reason}\n\n§o§cAsegurate de cumplir los lineamientos del servidor para evitar ser sancionado nuevamente.\n\n`,
         );
 
         player.sendMessage(`§7${target.name} ha sido desilenciado.`);
-        player.setDynamicProperty("ultimate:muted", 0);
+        player.setDynamicProperty("imaginary:muted", 0);
     }
 }

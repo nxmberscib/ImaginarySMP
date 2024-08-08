@@ -27,9 +27,9 @@ export default class BanManager {
         );
     }
 
-    public isBanProtocolEnabled() {
-        const on = world.getDynamicProperty(this.BAN_OBJECTIVE_ID);
-        return on === undefined ? false : on;
+    public isBanProtocolEnabled(): boolean {
+        const on = world.getDynamicProperty(this.BAN_PROTOCOL_ID) as boolean;
+        return on;
     }
 
     /**
@@ -42,7 +42,7 @@ export default class BanManager {
 
     public setupBanSystem() {
         const objective = world.scoreboard.getObjective(this.BAN_OBJECTIVE_ID);
-
+        world.setDynamicProperty(this.BAN_PROTOCOL_ID, true);
         if (!objective) {
             this.BAN_OBJECTIVE = world.scoreboard.addObjective(
                 this.BAN_OBJECTIVE_ID,
@@ -88,15 +88,31 @@ export default class BanManager {
     }
 
     public startBanProtocol() {
-        world.afterEvents.playerSpawn.subscribe((arg) => {
-            const { player } = arg;
+        try {
+            world.afterEvents.playerSpawn.subscribe((arg) => {
+                const { player } = arg;
+                console.warn(
+                    this.BAN_OBJECTIVE.hasParticipant(
+                        this.formatBanName(player),
+                    ),
+                    this.isBanned(player),
+                    this.isBanProtocolEnabled(),
+                );
+                if (
+                    !this.BAN_OBJECTIVE.hasParticipant(
+                        this.formatBanName(player),
+                    ) ||
+                    !this.isBanned(player) ||
+                    !this.isBanProtocolEnabled()
+                ) {
+                    return;
+                }
 
-            if (!this.isBanned(player) || !this.isBanProtocolEnabled()) {
-                return;
-            }
-
-            player.removeTag("inCinematic");
-            player.runCommand(`kick "${player.name}"`);
-        });
+                player.removeTag("inCinematic");
+                player.runCommand(`kick "${player.name}"`);
+            });
+        } catch (error) {
+            console.warn(error, error.stack);
+        }
     }
 }

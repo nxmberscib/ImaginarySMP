@@ -2,6 +2,7 @@ import SlotManager from "./manager/SlotManager";
 import ImaginaryEntities from "./entity/Entity";
 import BanManager from "./manager/BanManager";
 import { GameRules, world } from "@minecraft/server";
+import ImaginaryCommands from "./command/ImaginaryCommands";
 
 export default class Imaginary {
     static #instance: Imaginary;
@@ -16,6 +17,8 @@ export default class Imaginary {
         // import "./block/Block"
         // import './item/Item'
 
+        ImaginaryCommands.registerCommands();
+
         this.initializeGamerules();
 
         /**
@@ -29,6 +32,7 @@ export default class Imaginary {
          * Initializes the ban manager.
          */
         this.#banManager = new BanManager();
+        this.#banManager.setupBanSystem();
         this.#banManager.startBanProtocol();
 
         /**

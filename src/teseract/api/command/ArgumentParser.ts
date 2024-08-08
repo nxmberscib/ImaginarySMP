@@ -7,7 +7,8 @@ export default function ArgumentParser(arg: string, type: any) {
         return undefined;
     }
     if (type === Player) {
-        const player = world.getPlayers({name:arg.replace("@", "")})[0];
+        const player = world.getPlayers({name:arg.replace("@", "").replace(/\"+/g, '')})[0];
+        console.warn(player)
         if (!player) {
             throw {
                 translate: "commands.generic.noTargetMatch",
