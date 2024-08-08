@@ -2,7 +2,7 @@ import { EntityDamageCause, Player, world } from "@minecraft/server";
 import Imaginary from "nxmbers/src/Imaginary";
 import { EntityResurrectEvent } from "teseract/api/event/EntityResurrectEvent";
 
-export default class ResurrectListener {
+export default class ResurrectionListener {
     public constructor() {
         world.beforeEvents.entityResurrect.subscribe(
             this.onResurrection.bind(this),

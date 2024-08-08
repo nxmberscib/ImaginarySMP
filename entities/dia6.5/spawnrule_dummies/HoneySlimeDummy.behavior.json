@@ -4,7 +4,7 @@
         "description": {
             "identifier": "cib:honey_slime_dummy",
             "is_experimental": false,
-            "is_spawnable": true,
+            "is_spawnable": false,
             "is_summonable": true,
             "spawn_category": "misc"
         },

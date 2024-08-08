@@ -1,5 +1,5 @@
 import SlotManager from "./manager/SlotManager";
-import ImaginaryEntities from "./entity/Entity";
+import ImaginaryEntities from "./entity/ImaginaryEntities";
 import BanManager from "./manager/BanManager";
 import { GameRules, world } from "@minecraft/server";
 import ImaginaryCommands from "./command/ImaginaryCommands";

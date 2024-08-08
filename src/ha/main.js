@@ -52,34 +52,35 @@ let over = mc.world.getDimension("minecraft:overworld");
 // 	} catch { };
 // });
 
-mc.world.afterEvents.itemUse.subscribe(async (itemUsed) => {
-	try {
-		/**
-		 * @warning esta mamada qué
-		 */
-		const player = itemUsed.source;
-		const item = itemUsed.itemStack;
-		if (item.typeId == 'minecraft:totem_of_undying' || item.typeId == 'minecraft:shield') {
-			const armorSlots = player.getComponent("minecraft:equippable");
-			let itemOffHand = armorSlots.getEquipment("Offhand");
-			let itemMainHand = armorSlots.getEquipment("Mainhand");
-			const air = new mc.ItemStack("minecraft:air");
-			if (itemOffHand) {
-				if (itemOffHand.typeId == 'ha:barrier_fake') return;
+/**
+ * @deprecated In favour of new fast totem system
+ * @warning esa mamada qué
+ */
+// mc.world.afterEvents.itemUse.subscribe(async (itemUsed) => {
+// 	try {
+// 		const player = itemUsed.source;
+// 		const item = itemUsed.itemStack;
+// 		if (item.typeId == 'minecraft:totem_of_undying' || item.typeId == 'minecraft:shield') {
+// 			const armorSlots = player.getComponent("minecraft:equippable");
+// 			let itemOffHand = armorSlots.getEquipment("Offhand");
+// 			let itemMainHand = armorSlots.getEquipment("Mainhand");
+// 			const air = new mc.ItemStack("minecraft:air");
+// 			if (itemOffHand) {
+// 				if (itemOffHand.typeId == 'ha:barrier_fake') return;
 
-				armorSlots.setEquipment("Offhand", itemMainHand);
-				armorSlots.setEquipment("Mainhand", itemOffHand);
-				player.playSound("armor.equip_generic");
-				if (item.typeId == "minecraft:totem_of_undying") FastTotemHandicap(player)
-			} else {
-				armorSlots.setEquipment("Offhand", itemMainHand);
-				armorSlots.setEquipment("Mainhand", air);
-				player.playSound("armor.equip_generic");
-				if (item.typeId == "minecraft:totem_of_undying") FastTotemHandicap(player)
-			};
-		};
-	} catch (e) { console.error(e, e.stack) };
-});
+// 				armorSlots.setEquipment("Offhand", itemMainHand);
+// 				armorSlots.setEquipment("Mainhand", itemOffHand);
+// 				player.playSound("armor.equip_generic");
+// 				if (item.typeId == "minecraft:totem_of_undying") FastTotemHandicap(player)
+// 			} else {
+// 				armorSlots.setEquipment("Offhand", itemMainHand);
+// 				armorSlots.setEquipment("Mainhand", air);
+// 				player.playSound("armor.equip_generic");
+// 				if (item.typeId == "minecraft:totem_of_undying") FastTotemHandicap(player)
+// 			};
+// 		};
+// 	} catch (e) { console.error(e, e.stack) };
+// });
 
 mc.world.afterEvents.playerDimensionChange.subscribe(returnDime => {
 	try {
@@ -121,7 +122,6 @@ mc.world.afterEvents.playerDimensionChange.subscribe(returnDime => {
 // 	} catch { };
 // });
 
-import Imaginary from "../nxmbers/src/Imaginary";
 
 mc.system.afterEvents.scriptEventReceive.subscribe(async staticEvents => {
 	try {

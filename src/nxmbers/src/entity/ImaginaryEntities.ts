@@ -7,12 +7,19 @@ import HoneySlime from './slime/HoneySlime';
 import InterstellarSlime from './slime/InterstellarSlime';
 import MarineSlime from './slime/MarineSlime';
 import PreassureAssasin from './illager/PreassureAssasin';
+import ImaginaryPlayer from './player/ImaginaryPlayer';
 
 export default class ImaginaryEntities {
     static registerEntities() {
         import('./Breeze')
         import('./skeleton/BreezeSkeleton');
         import('./skeleton/CrystallineSkeleton');
+
+         /**
+         * @remarks
+         * Register all the Imaginary player behavior scripts or classes.
+         */
+        ImaginaryPlayer.registerPlayerBehaviors();
 
         /**
          * @remarks
