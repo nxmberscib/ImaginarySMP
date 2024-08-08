@@ -243,3 +243,12 @@ item.spawn_egg.entity.cib:interstellar_slime.name=Interstellar Slime Spawn Egg
 item.spawn_egg.entity.cib:entity.preassure_assasin.name=Preassure Assasin Spawn Egg
 
 item.cib:aureum_fulminator.name=§6Aureum Fulminator
+item.cib:chipote_chillon.name=§cChipote Chillon
+
+command.unban.success=Player '%1' was successfully unbanned.
+command.unban.not_banned=Player '%1' is not currently banned.
+
+command.ban.success=Player '%1' was successfully banned.
+command.ban.success_reason=Player '%1' was successfully banned with reason '%2'.
+command.ban.success_reason.duration=Player '%1' was successfully banned for %2 with reason '%3'.
+command.ban.success_duration=Player '%1' was successfully banned by %2.
