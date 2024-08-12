@@ -15,30 +15,12 @@ export default class MuteManager {
      * @remarks
      * Mute protocol identifier
      */
-    MUTE_PROTOCOL_ID = "imaginary:mute_protocol";
+    MUTED_TIMESTAMP = "imaginary:muted_timestamp";
     /**
      * @remarks
      * Mute objective identifier
      */
-    MUTE_OBJECTIVE_ID = "imaginary:muted";
-    /**
-     * @remarks
-     * Mute objective object
-     */
-    MUTE_OBJECTIVE: ScoreboardObjective;
-
-    public toggleMuteProtocol() {
-        const on = world.getDynamicProperty(this.MUTE_PROTOCOL_ID);
-        world.setDynamicProperty(
-            this.MUTE_PROTOCOL_ID,
-            !(on === undefined ? false : on),
-        );
-    }
-
-    public isMuteProtocolEnabled(): boolean {
-        const on = world.getDynamicProperty(this.MUTE_PROTOCOL_ID) as boolean;
-        return on;
-    }
+    MUTED_BY = "imaginary:muted";
 
     /**
      *
@@ -58,8 +40,6 @@ export default class MuteManager {
         reason?: string,
         mutedBy?: string,
     ) {
-        this.MUTE_OBJECTIVE?.setScore(this.formatMuteName(player), 1);
-
         if (!(player instanceof Player) || !player.isValid()) {
             return;
         }
@@ -83,12 +63,11 @@ export default class MuteManager {
     /**
      *
      */
-    public isMuted(player: Player | string) {
-        const isMuted = this.MUTE_OBJECTIVE.getScore(
-            this.formatMuteName(player),
-        );
-
-        return !isMuted ? false : true;
+    public isMuted(player: Player) {
+        const mutedTimestamp = player.getDynamicProperty(
+            "imaginary:muted_timestamp"
+        ) as number;
+        return Date.now() > mutedTimestamp;
     }
 
     /**

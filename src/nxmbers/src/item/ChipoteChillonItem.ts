@@ -5,15 +5,18 @@ import {
 } from "@minecraft/server";
 import { Vector3Builder } from "../util/vector/VectorWrapper";
 
-export default class ChipoteChillon implements ItemCustomComponent {
+export default class ChipoteChillonItem implements ItemCustomComponent {
     public static ITEM_ID = "cib:chipote_chillon";
+    public ITEM_ID = "cib:chipote_chillon";
+
     constructor() {
         world.beforeEvents.itemUse.subscribe(this.onUse);
     }
+
     public async onUse(event: ItemComponentUseEvent) {
         const { itemStack: item, source: player } = event;
 
-        if (item.typeId != ChipoteChillon.ITEM_ID) {
+        if (item.typeId != this.ITEM_ID) {
             return;
         }
 
@@ -36,7 +39,9 @@ export default class ChipoteChillon implements ItemCustomComponent {
             },
         );
 
-        lego.getComponent("projectile").shoot(
+        const projectile = lego.getComponent("projectile");
+        projectile.owner = player;
+        projectile.shoot(
             new Vector3Builder(player.getViewDirection()).scale(4),
             {
                 uncertainty: 0.0,

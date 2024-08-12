@@ -1,51 +1,38 @@
 // @ts-check
 
-
-
-import FrozenPiglin from './piglin/FrozenPiglin';
-import HoneySlime from './slime/HoneySlime';
-import InterstellarSlime from './slime/InterstellarSlime';
-import MarineSlime from './slime/MarineSlime';
-import PreassureAssasin from './illager/PreassureAssasin';
-import ImaginaryPlayer from './player/ImaginaryPlayer';
+import FrozenPiglinEntity from "./piglin/FrozenPiglinEntity";
+import HoneySlimeEntity from "./slime/HoneySlimeEntity";
+import InterstellarSlimeEntity from "./slime/InterstellarSlimeEntity";
+import MarineSlimeEntity from "./slime/MarineSlimeEntity";
+import PreassureAssasinEntity from "./illager/PreassureAssasinEntity";
+import ImaginaryPlayer from "./player/ImaginaryPlayer";
+import Imaginary from "../Imaginary";
+import BreezeSkeletonEntity from "./skeleton/BreezeSkeletonEntity";
+import CrystallineSkeletonEntity from "./skeleton/CrystallineSkeletonEntity";
+import BreezeEntity from "./BreezeEntity";
 
 export default class ImaginaryEntities {
     static registerEntities() {
-        import('./Breeze')
-        import('./skeleton/BreezeSkeleton');
-        import('./skeleton/CrystallineSkeleton');
-
-         /**
-         * @remarks
-         * Register all the Imaginary player behavior scripts or classes.
-         */
+        // Player
         ImaginaryPlayer.registerPlayerBehaviors();
 
-        /**
-         * @remarks
-         * Register all the Imaginary skeleton-like entities.
-         */
-        //....
+        // Skeletons
+        new BreezeSkeletonEntity();
+        new CrystallineSkeletonEntity();
 
-        /**
-         * @remarks
-         * Register all the Imaginary slime-like entities.
-         */
-        new HoneySlime();
-        new InterstellarSlime();
-        new MarineSlime()
+        // Slimes
+        new HoneySlimeEntity();
+        new InterstellarSlimeEntity();
+        new MarineSlimeEntity();
 
+        // Piglins
+        new FrozenPiglinEntity();
 
-        /**
-         * @remarks
-         * Register all the Imaginary piglin-like entities.
-         */
-        new FrozenPiglin();
+        // Illagers
+        new PreassureAssasinEntity();
 
-        /**
-         * @remarks
-         * Register all the Imaginary illager entities.
-         */
-        new PreassureAssasin()
+        new BreezeEntity();
+
+        Imaginary.logger().info("Imaginary Entities loaded");
     }
 }

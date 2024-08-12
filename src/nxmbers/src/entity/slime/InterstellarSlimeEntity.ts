@@ -26,8 +26,7 @@ Player.prototype.getInterstellarTrappedData = function () {
     return this[`trapped:interstellar_slime`];
 };
 
-
-export default class InterstellarSlime {
+export default class InterstellarSlimeEntity {
     constructor() {
         world.beforeEvents.playerInteractWithEntity.subscribe(
             this.cancelInteraction.bind(this),
@@ -63,7 +62,7 @@ export default class InterstellarSlime {
      * @param player
      * @param entity
      */
-    forceRide(player: Player, entity: { id: any; }) {
+    forceRide(player: Player, entity: { id: any }) {
         /**
          * @type {SlimeVictim}
          */
