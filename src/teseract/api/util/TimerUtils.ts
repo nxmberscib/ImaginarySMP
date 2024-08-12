@@ -1,6 +1,8 @@
 import * as MinecraftServer from "@minecraft/server";
-import Teseract from "../Teseract";
+import Logger from "../Logger";
+
 export default class TimerUtils {
+    private logger = new Logger();
     public static runLater(callback: Function, tickDelay: number) {
         (async () => {
             await TimerUtils.sleep(tickDelay);
@@ -24,13 +26,13 @@ export default class TimerUtils {
         seconds %= 60;
 
         const timeUnits = [
-            { value: years, label: "years" },
-            { value: months, label: "months" },
-            { value: weeks, label: "weeks" },
-            { value: days, label: "days" },
-            { value: hours, label: "hours" },
-            { value: minutes, label: "minutes" },
-            { value: seconds, label: "seconds" },
+            { value: years, label: "y" },
+            { value: months, label: "m" },
+            { value: weeks, label: "w" },
+            { value: days, label: "d" },
+            { value: hours, label: "h" },
+            { value: minutes, label: "min" },
+            { value: seconds, label: "s" },
         ];
 
         let result = "";
@@ -71,12 +73,12 @@ export default class TimerUtils {
                     totalSeconds += value;
             }
         });
-        
+
         if (matches == null || matches.length == 0) {
-             timeString.match(/\d+/).forEach((val) => {
-                const secs = parseInt(val)
-                totalSeconds += isNaN(secs) ? 0 : secs
-             })
+            timeString.match(/\d+/).forEach((val) => {
+                const secs = parseInt(val);
+                totalSeconds += isNaN(secs) ? 0 : secs;
+            });
         }
 
         return totalSeconds;
@@ -214,7 +216,7 @@ export default class TimerUtils {
             }, delay);
             return ev;
         } catch (error: any) {
-            logger.error(error, error.stack);
+            this.logger.error(error, error.stack);
         }
     }
 
@@ -229,7 +231,7 @@ export default class TimerUtils {
             }, delay);
             return ev;
         } catch (error: any) {
-            logger.error(error, error.stack);
+            this.logger.error(error, error.stack);
         }
     }
 
@@ -237,7 +239,7 @@ export default class TimerUtils {
         try {
             MinecraftServer.system.clearRun(taskId);
         } catch (error: any) {
-            logger.error(error, error.stack);
+            this.logger.error(error, error.stack);
         }
     }
 }

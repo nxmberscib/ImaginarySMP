@@ -1,8 +1,9 @@
-import ChipoteChillon from "./ChipoteChillonItem";
+import ChipoteChillonItem from "./ChipoteChillonItem";
 
 export default class ImaginaryItems {
-    static #CHIPOTE_CHILLON: ChipoteChillon;
+    public static CHIPOTE_CHILLON: ChipoteChillonItem;
+
     public static registerItems() {
-        this.#CHIPOTE_CHILLON = new ChipoteChillon();
+        this.CHIPOTE_CHILLON = new ChipoteChillonItem();
     }
 }

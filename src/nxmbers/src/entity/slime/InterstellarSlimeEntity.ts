@@ -6,6 +6,7 @@ import {
     system,
     world,
 } from "@minecraft/server";
+import Imaginary from "nxmbers/src/Imaginary";
 
 declare module "@minecraft/server" {
     interface Player {
@@ -27,6 +28,10 @@ Player.prototype.getInterstellarTrappedData = function () {
 };
 
 export default class InterstellarSlimeEntity {
+    private logger() {
+        return Imaginary.logger();
+    }
+
     constructor() {
         world.beforeEvents.playerInteractWithEntity.subscribe(
             this.cancelInteraction.bind(this),
@@ -42,30 +47,27 @@ export default class InterstellarSlimeEntity {
             if (!data) {
                 continue;
             }
+
             if (data?.remaining <= 0) {
                 data.isTrapped = false;
                 continue;
             }
+
             if (!data?.slime.isValid()) {
                 data.remaining = 0;
                 data.isTrapped = false;
                 continue;
             }
-            data.slime.runCommand(`ride "${player.name}" start_riding @s`);
+
+            data.slime.getComponent("rideable").addRider(player);
+            // data.slime.runCommand(`ride "${player.name}" start_riding @s`);
             data.remaining = data.remaining - 1;
 
             yield;
         }
     }
 
-    /**
-     * @param player
-     * @param entity
-     */
-    forceRide(player: Player, entity: { id: any }) {
-        /**
-         * @type {SlimeVictim}
-         */
+    private forceRide(player: Player, entity: Entity) {
         const data = {
             isTrapped: true,
             id: entity.id,
@@ -73,23 +75,18 @@ export default class InterstellarSlimeEntity {
             slime: entity,
             remaining: 80,
         };
+
         player["trapped:interstellar_slime"] = data;
     }
 
-    /**
-     * @param arg
-     */
-    cancelInteraction(arg: PlayerInteractWithEntityBeforeEvent) {
+    private cancelInteraction(arg: PlayerInteractWithEntityBeforeEvent) {
         if (arg.target.typeId != "cib:interestellar_slime") {
             return;
         }
         arg.cancel = true;
     }
 
-    /**
-     * @param arg
-     */
-    attackEffects(arg: EntityHurtAfterEvent) {
+    private attackEffects(arg: EntityHurtAfterEvent) {
         try {
             const { hurtEntity: player, damageSource } = arg;
             if (
@@ -137,7 +134,7 @@ export default class InterstellarSlimeEntity {
                     break;
             }
         } catch (error) {
-            throw error;
+            this.logger().error(error);
         }
 
         // player.addEffect("slowness", 20 * 3, { amplifier: 4, showParticles: false })

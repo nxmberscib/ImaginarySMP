@@ -21,7 +21,6 @@ const entityNames = {
 	'minecraft:warden': variant => variant.value == 1 ? "§bMonstruo de Tinta§r" : null,
 	'minecraft:wither': variant => variant.value == 1 ? "§gEspanta Pajaros§r" : null,
 	'minecraft:frog': variant => variant.value == 3 ? "Patrullitas" : null,
-    'cib:crystalline_skeleton': () => "§dEsqueleto Cristalino"
 };
 
 mc.world.afterEvents.entitySpawn.subscribe(entitySpawned => {

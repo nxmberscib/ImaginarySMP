@@ -486,7 +486,7 @@
                 "max": 20
             },
             "minecraft:movement": {
-                "value": 0.3
+                "value": 0.6
             },
             "minecraft:attack": {
                 "damage": 2
@@ -717,27 +717,6 @@
                     {
                         "filters": {
                             "any_of": [
-                                {
-                                    "all_of": [
-                                        {
-                                            "test": "is_family",
-                                            "subject": "other",
-                                            "value": "player"
-                                        },
-                                        {
-                                            "test": "trusts",
-                                            "subject": "other",
-                                            "operator": "!=",
-                                            "value": true
-                                        },
-                                        {
-                                            "test": "is_sneaking",
-                                            "subject": "other",
-                                            "operator": "!=",
-                                            "value": true
-                                        }
-                                    ]
-                                },
                                 {
                                     "test": "is_family",
                                     "subject": "other",

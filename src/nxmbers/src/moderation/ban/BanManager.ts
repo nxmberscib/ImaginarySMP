@@ -1,23 +1,27 @@
 // @ts-check
 
 import { ScoreboardObjective, world, Player } from "@minecraft/server";
+import Imaginary from "nxmbers/src/Imaginary";
+import CommandManager from "teseract/api/command/CommandManager";
+import UnbanCommand from "./command/UnbanCommand";
+import BanCommand from "./command/BanCommand";
 
 export default class BanManager {
+    public BAN_PROTOCOL_ID = "imaginary:ban_protocol";
+    public BAN_OBJECTIVE_ID = "imaginary:banned";
+    public BAN_OBJECTIVE: ScoreboardObjective;
+
+    private logger() {
+        return Imaginary.logger();
+    }
+
     /**
-     * @remarks
-     * Ban protocol identifier
+     *
+     * @param player
      */
-    BAN_PROTOCOL_ID = "imaginary:ban_protocol";
-    /**
-     * @remarks
-     * Ban objective identifier
-     */
-    BAN_OBJECTIVE_ID = "imaginary:banned";
-    /**
-     * @remarks
-     * Ban objective object
-     */
-    BAN_OBJECTIVE: ScoreboardObjective;
+    private formatBanName(player: Player | string) {
+        return player instanceof Player ? `{${player.name}}` : `{${player}}`;
+    }
 
     public toggleBanProtocol() {
         const on = world.getDynamicProperty(this.BAN_PROTOCOL_ID);
@@ -27,20 +31,12 @@ export default class BanManager {
         );
     }
 
-    public isBanProtocolEnabled(): boolean {
+    public isEnabled(): boolean {
         const on = world.getDynamicProperty(this.BAN_PROTOCOL_ID) as boolean;
         return on;
     }
 
-    /**
-     *
-     * @param {Player | string} player
-     */
-    public formatBanName(player: Player | string) {
-        return player instanceof Player ? `{${player.name}}` : `{${player}}`;
-    }
-
-    public setupBanSystem() {
+    private setupBanSystem() {
         const objective = world.scoreboard.getObjective(this.BAN_OBJECTIVE_ID);
         world.setDynamicProperty(this.BAN_PROTOCOL_ID, true);
         if (!objective) {
@@ -56,7 +52,7 @@ export default class BanManager {
 
     /**
      *
-     * @param {Player | string} player
+     * @param player
      */
     public banPlayer(player: Player | string) {
         this.BAN_OBJECTIVE?.setScore(this.formatBanName(player), 1);
@@ -87,24 +83,27 @@ export default class BanManager {
         this.BAN_OBJECTIVE?.setScore(this.formatBanName(player), 0);
     }
 
-    public startBanProtocol() {
+    public constructor() {
+        this.setupBanSystem();
+        this.startBanProtocol();
+        CommandManager.registerCommand(new UnbanCommand());
+        CommandManager.registerCommand(new BanCommand());
+    }
+
+    private startBanProtocol() {
         try {
             world.afterEvents.playerSpawn.subscribe((arg) => {
                 const { player } = arg;
-                console.warn(
-                    this.BAN_OBJECTIVE.hasParticipant(
-                        this.formatBanName(player),
-                    ),
-                    this.isBanned(player),
-                    this.isBanProtocolEnabled(),
-                );
+                
                 if (
                     !this.BAN_OBJECTIVE.hasParticipant(
                         this.formatBanName(player),
-                    ) ||
-                    !this.isBanned(player) ||
-                    !this.isBanProtocolEnabled()
+                    )
                 ) {
+                    return;
+                }
+
+                if (!this.isBanned(player) || !this.isEnabled()) {
                     return;
                 }
 
@@ -112,7 +111,7 @@ export default class BanManager {
                 player.runCommand(`kick "${player.name}"`);
             });
         } catch (error) {
-            console.warn(error, error.stack);
+            this.logger().error(error);
         }
     }
 }

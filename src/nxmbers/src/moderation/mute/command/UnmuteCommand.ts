@@ -13,7 +13,7 @@ export default class UnmuteCommand {
     }
 
     @Default
-    mute(player: Player, target: Player) {
+    public onUnmute(player: Player, target: Player) {
         const remainingMute = target.getDynamicProperty(
             "imaginary:muted",
         ) as number;

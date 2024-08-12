@@ -1,8 +1,15 @@
 import { Block, Entity, system, Vector3, world } from "@minecraft/server";
+import Imaginary from "nxmbers/src/Imaginary";
+import { MobNameRegistry } from "nxmbers/src/manager/MobNameManager";
+import { Vector3Builder } from "nxmbers/src/util/vector/VectorWrapper";
 
-export default class CrystallineSkeletonEntity {
-    private CRYSTALLINE_SKELETON_ID = "cib:crystalline_skeleton";
-    private CRYSTALLINE_CLOUD_ID = "cib:crystalline_cloud";
+export default class CrystallineSkeletonEntity implements MobNameRegistry {
+    public readonly MOB_ID = "cib:crystalline_skeleton";
+    public readonly CLOUD_ID = "cib:crystalline_cloud";
+
+    private logger() {
+        return Imaginary.logger();
+    }
 
     public constructor() {
         world.afterEvents.projectileHitBlock.subscribe(
@@ -11,10 +18,14 @@ export default class CrystallineSkeletonEntity {
         world.afterEvents.projectileHitEntity.subscribe(
             this.onProjectileHitEntity.bind(this),
         );
+        Imaginary.getMobNameManager().addRegistry(this);
     }
 
+    public mobId: string = this.MOB_ID;
+    public displayName: string = "§6Esqueleto Cristalino";
+
     private onProjectileHitBlock(arg: any) {
-        if (arg.source?.typeId !== this.CRYSTALLINE_SKELETON_ID) {
+        if (arg.source?.typeId !== this.MOB_ID) {
             return;
         }
         this.arrowImpacted(
@@ -26,7 +37,7 @@ export default class CrystallineSkeletonEntity {
     }
 
     private onProjectileHitEntity(arg: any) {
-        if (arg.source?.typeId !== this.CRYSTALLINE_SKELETON_ID) {
+        if (arg.source?.typeId !== this.MOB_ID) {
             return;
         }
         this.arrowImpacted(
@@ -45,41 +56,37 @@ export default class CrystallineSkeletonEntity {
         hitBlock: Block = undefined,
         hitEntity: Entity = undefined,
     ) {
-        source.dimension.createExplosion(location, 3, {
-            source: source,
-            breaksBlocks: false,
-            causesFire: false,
-        });
-        source.dimension.spawnEntity(this.CRYSTALLINE_CLOUD_ID, location);
+        try {
+            source.dimension.createExplosion(location, 3, {
+                source: source,
+                breaksBlocks: false,
+                causesFire: false,
+            });
+            source.dimension.spawnEntity(this.CLOUD_ID, location);
 
-        if (hitEntity) {
-            const shouldAttract = Math.random() < 0.4;
+            if (hitEntity) {
+                const shouldAttract = Math.random() < 0.4;
 
-            if (shouldAttract) {
-                const knockbackDirection = {
-                    x: source.location.x - hitEntity.location.x,
-                    y: source.location.y - hitEntity.location.y + 0.5,
-                    z: source.location.z - hitEntity.location.z,
-                };
+                if (shouldAttract) {
+                    const knockbackDirection = new Vector3Builder(
+                        source.location,
+                    )
+                        .subtract(hitEntity.location)
+                        .add(new Vector3Builder(0, 0.5, 0));
 
-                const magnitude = Math.sqrt(
-                    knockbackDirection.x ** 2 +
-                        knockbackDirection.y ** 2 +
-                        knockbackDirection.z ** 2,
-                );
-                const normalizedDirection = {
-                    x: knockbackDirection.x / magnitude,
-                    y: knockbackDirection.y / magnitude,
-                    z: knockbackDirection.z / magnitude,
-                };
-
-                hitEntity.applyKnockback(
-                    normalizedDirection.x,
-                    normalizedDirection.z,
-                    magnitude,
-                    0,
-                );
+                    const magnitude = knockbackDirection.magnitude();
+                    const normalizedDirection = knockbackDirection.normalize();
+                    
+                    hitEntity.applyKnockback(
+                        normalizedDirection.x,
+                        normalizedDirection.z,
+                        magnitude,
+                        0,
+                    );
+                }
             }
+        } catch (error) {
+            this.logger().error(error);
         }
     }
 }

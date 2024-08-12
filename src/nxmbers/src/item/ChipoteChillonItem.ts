@@ -6,11 +6,10 @@ import {
 import { Vector3Builder } from "../util/vector/VectorWrapper";
 
 export default class ChipoteChillonItem implements ItemCustomComponent {
-    public static ITEM_ID = "cib:chipote_chillon";
     public ITEM_ID = "cib:chipote_chillon";
 
     constructor() {
-        world.beforeEvents.itemUse.subscribe(this.onUse);
+        world.beforeEvents.itemUse.subscribe(this.onUse.bind(this));
     }
 
     public async onUse(event: ItemComponentUseEvent) {

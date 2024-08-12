@@ -34,17 +34,6 @@
             },
             "minecraft:physics": {
                 "has_gravity": false
-            },
-            "minecraft:environment_sensor": {
-                "triggers": {
-                    "filters": {
-                        "test": "is_underwater",
-                        "subject": "self",
-                        "operator": "==",
-                        "value": true
-                    },
-                    "event": "abyssal:water_tag"
-                }
             }
         },
         "events": {
@@ -69,8 +58,8 @@
                         },
                         "queue_command": {
                             "command": [
-                                "damage @e[dx=3,dy=1,dz=3,x=~-1,y=~-1,z=~-1,type=player] 3 entity_attack entity @e[c=1,type=cib:crystalline_skeleton]",
-                                "effect @e[dx=3,dy=1,dz=3,x=~-1,y=~-1,z=~-1,type=player] darkness 1 1 true",
+                                "damage @e[dx=3,dy=1,dz=3,x=~-1,y=~-1,z=~-1,type=player] 3 magic",
+                                "effect @e[dx=3,dy=1,dz=3,x=~-1,y=~-1,z=~-1,type=player] darkness 5 1 true",
                                 "particle cib:crystalline_cloud ~ ~ ~"
                             ]
                         },

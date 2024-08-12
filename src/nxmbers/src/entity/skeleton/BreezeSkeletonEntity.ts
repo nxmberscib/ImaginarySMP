@@ -6,16 +6,24 @@ import {
     world,
 } from "@minecraft/server";
 import Imaginary from "nxmbers/src/Imaginary";
+import { MobNameRegistry } from "nxmbers/src/manager/MobNameManager";
 
-export default class BreezeSkeletonEntity {
-    private BREEZE_PROJECTILE_ID = "minecraft:breeze_wind_charge_projectile";
-    private BREEZE_SKELETON_ID = "cib:breeze_skeleton";
+export default class BreezeSkeletonEntity implements MobNameRegistry {
+    private PROJECTILE_ID = "minecraft:breeze_wind_charge_projectile";
+    private MOB_ID = "cib:breeze_skeleton";
+
+    private logger() {
+        return Imaginary.logger();
+    }
 
     public constructor() {
         world.afterEvents.projectileHitEntity.subscribe(
             this.onProjectileHitEntity.bind(this),
         );
     }
+
+    public mobId: string;
+    public displayName: string;
 
     private onProjectileHitEntity(arg: any) {
         try {
@@ -25,8 +33,8 @@ export default class BreezeSkeletonEntity {
             if (
                 !(player instanceof Player) ||
                 !player ||
-                projectile?.typeId != this.BREEZE_PROJECTILE_ID ||
-                source?.typeId != this.BREEZE_SKELETON_ID
+                projectile?.typeId != this.PROJECTILE_ID ||
+                source?.typeId != this.MOB_ID
             ) {
                 return;
             }
@@ -53,7 +61,7 @@ export default class BreezeSkeletonEntity {
                 cause: EntityDamageCause.entityAttack,
             });
         } catch (error) {
-            Imaginary.logger().error(error);
+            this.logger().error(error);
         }
     }
 }

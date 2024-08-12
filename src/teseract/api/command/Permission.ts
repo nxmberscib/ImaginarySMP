@@ -1,5 +1,6 @@
+import { Player } from "@minecraft/server";
 
-export default function Permission(permission: number): any {
+export default function Permission(permission: (player: Player) => boolean): any {
     return function (
         target: any,
         propertyKey: string,

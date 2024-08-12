@@ -12,27 +12,41 @@ import CrystallineSkeletonEntity from "./skeleton/CrystallineSkeletonEntity";
 import BreezeEntity from "./BreezeEntity";
 
 export default class ImaginaryEntities {
-    static registerEntities() {
+    private static logger() {
+        return Imaginary.logger();
+    }
+
+    public static BREEZE_SKELETON: BreezeSkeletonEntity;
+    public static CRYSTALLINE_SKELETON: CrystallineSkeletonEntity;
+    public static HONEY_SLIME: HoneySlimeEntity;
+    public static INTERSTELLAR_SLIME: InterstellarSlimeEntity;
+    public static MARINE_SLIME: MarineSlimeEntity;
+    public static FROZEN_PIGLIN: FrozenPiglinEntity;
+    public static PREASSURE_ASSASIN: PreassureAssasinEntity;
+    public static BREEZE: BreezeEntity;
+
+    public static registerEntities() {
         // Player
         ImaginaryPlayer.registerPlayerBehaviors();
 
         // Skeletons
-        new BreezeSkeletonEntity();
-        new CrystallineSkeletonEntity();
+        this.BREEZE_SKELETON = new BreezeSkeletonEntity();
+        this.CRYSTALLINE_SKELETON = new CrystallineSkeletonEntity();
 
         // Slimes
-        new HoneySlimeEntity();
-        new InterstellarSlimeEntity();
-        new MarineSlimeEntity();
+        this.HONEY_SLIME = new HoneySlimeEntity();
+        this.INTERSTELLAR_SLIME = new InterstellarSlimeEntity();
+        this.MARINE_SLIME = new MarineSlimeEntity();
 
         // Piglins
-        new FrozenPiglinEntity();
+        this.FROZEN_PIGLIN = new FrozenPiglinEntity();
 
         // Illagers
-        new PreassureAssasinEntity();
+        this.PREASSURE_ASSASIN = new PreassureAssasinEntity();
 
-        new BreezeEntity();
+        // Vanilla entities
+        this.BREEZE = new BreezeEntity();
 
-        Imaginary.logger().info("Imaginary Entities loaded");
+        this.logger().info("Imaginary Entities loaded");
     }
 }
