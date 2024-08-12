@@ -9,6 +9,8 @@ import Logger from "teseract/api/Logger";
 import Runnable from "teseract/api/util/Runnable";
 import MuteCommand from "./command/MuteCommand";
 import UnmuteCommand from "./command/UnmuteCommand";
+import Mixin from "teseract/api/util/Mixin";
+import WithLogger from "nxmbers/src/util/WithLogger";
 
 const $c = "§c";
 const $f = "§f";
@@ -16,8 +18,7 @@ const $b = "§l";
 const $r = "§r";
 const $7 = "§7";
 
-export default class Moderation extends Runnable {
-    private readonly logger: Logger;
+export default class Moderation extends Mixin(Runnable, WithLogger) {
     public readonly MUTE_INFORMATION: string =
         "muteInfo" + (212244).toString(16);
 
@@ -115,7 +116,7 @@ export default class Moderation extends Runnable {
 
         info[player instanceof Player ? player.id : player] = muteInfo;
 
-        this.logger.info(
+        this.logger().info(
             "[moderation] Player muted: " +
                 JSON.stringify(
                     info[player instanceof Player ? player.id : player],
@@ -148,7 +149,7 @@ export default class Moderation extends Runnable {
             return;
         }
 
-        this.logger.info(
+        this.logger().info(
             "[moderation] Player unmuted: " +
                 JSON.stringify(
                     info[player instanceof Player ? player.id : player],
@@ -179,15 +180,13 @@ export default class Moderation extends Runnable {
         CommandManager.registerCommand(new MuteCommand());
         CommandManager.registerCommand(new UnmuteCommand());
 
-        this.logger = Imaginary.logger();
-
         for (const [muted] of Object.entries(this.getMuteInformation() ?? {})) {
             if (muted == "lastTimeChecked") {
                 continue;
             }
 
             const info = this.getMuteInformation(muted);
-            this.logger.debug(info);
+            this.logger().debug(info);
             if (!info) {
                 continue;
             }
@@ -199,7 +198,7 @@ export default class Moderation extends Runnable {
         this.setLastTimeChecked(Date.now());
 
         this.runTimer(20);
-        this.logger.info("Mute Manager enabled and running");
+        this.logger().info("Mute Manager enabled and running");
     }
 
     public async onChatSend(event: ChatSendBeforeEvent) {

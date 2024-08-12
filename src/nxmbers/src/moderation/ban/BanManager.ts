@@ -5,15 +5,13 @@ import Imaginary from "nxmbers/src/Imaginary";
 import CommandManager from "teseract/api/command/CommandManager";
 import UnbanCommand from "./command/UnbanCommand";
 import BanCommand from "./command/BanCommand";
+import WithLogger from "nxmbers/src/util/WithLogger";
 
-export default class BanManager {
+export default class BanManager extends WithLogger {
     public BAN_PROTOCOL_ID = "imaginary:ban_protocol";
     public BAN_OBJECTIVE_ID = "imaginary:banned";
     public BAN_OBJECTIVE: ScoreboardObjective;
 
-    private logger() {
-        return Imaginary.logger();
-    }
 
     /**
      *
@@ -84,6 +82,7 @@ export default class BanManager {
     }
 
     public constructor() {
+        super()
         this.setupBanSystem();
         this.startBanProtocol();
         CommandManager.registerCommand(new UnbanCommand());

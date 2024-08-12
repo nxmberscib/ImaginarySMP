@@ -1,19 +1,17 @@
 import { EntitySpawnAfterEvent, world } from "@minecraft/server";
 import Imaginary from "../Imaginary";
+import WithLogger from "../util/WithLogger";
 
 export interface MobNameRegistry {
     mobId: string;
     displayName: string;
 }
 
-export default class MobNameManager {
+export default class MobNameManager extends WithLogger {
     private registry: Map<string, MobNameRegistry>;
 
-    private logger() {
-        return Imaginary.logger();
-    }
-
     public constructor() {
+        super();
         world.afterEvents.entitySpawn.subscribe(this.onMobSpawned.bind(this));
         this.registry = new Map();
         this.logger().info("Mob name manager initialized");
@@ -33,7 +31,7 @@ export default class MobNameManager {
             return;
         }
         const registry = this.registry.get(event.entity.typeId);
-        
+
         if (!registry) {
             return;
         }

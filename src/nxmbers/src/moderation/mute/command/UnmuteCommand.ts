@@ -1,5 +1,6 @@
 import { world, system, ChatSendBeforeEvent, Player } from "@minecraft/server";
 import Imaginary from "nxmbers/src/Imaginary";
+import WithLogger from "nxmbers/src/util/WithLogger";
 import CommandAlias from "teseract/api/command/CommandAlias";
 import CommandManager from "teseract/api/command/CommandManager";
 import Default from "teseract/api/command/Default";
@@ -7,8 +8,9 @@ import Optional from "teseract/api/command/Optional";
 import TimerUtils from "teseract/api/util/TimerUtils";
 
 @CommandAlias("unmute")
-export default class UnmuteCommand {
+export default class UnmuteCommand extends WithLogger {
     constructor() {
+        super();
         CommandManager.registerCommand(this);
     }
 
