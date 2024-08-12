@@ -5,10 +5,8 @@ export default class HoneySlimeEntity {
     constructor() {
         world.afterEvents.entityHurt.subscribe(this.attackEffects.bind(this));
     }
-    /**
-     * @param arg
-     */
-    attackEffects(arg: { hurtEntity: any; damageSource: any }) {
+
+    public attackEffects(arg: EntityHurtAfterEvent) {
         const { hurtEntity: player, damageSource } = arg;
 
         if (

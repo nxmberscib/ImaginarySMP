@@ -38,15 +38,6 @@ export default class CrystallineSkeletonEntity {
         );
     }
 
-    /**
-     * Maneja el impacto de una flecha, creando una explosión y posiblemente atrayendo entidades cercanas.
-     *
-     * @param {Entity} arrow
-     * @param {Vector3} location
-     * @param {Entity} source
-     * @param {Block} [hitBlock]
-     * @param {Entity} [hitEntity]
-     */
     private arrowImpacted(
         arrow: Entity,
         location: Vector3,
@@ -62,7 +53,6 @@ export default class CrystallineSkeletonEntity {
         source.dimension.spawnEntity(this.CRYSTALLINE_CLOUD_ID, location);
 
         if (hitEntity) {
-            // Probabilidad del 40% de atraer
             const shouldAttract = Math.random() < 0.4;
 
             if (shouldAttract) {
@@ -72,7 +62,6 @@ export default class CrystallineSkeletonEntity {
                     z: source.location.z - hitEntity.location.z,
                 };
 
-                // Normalizar el vector de knockback
                 const magnitude = Math.sqrt(
                     knockbackDirection.x ** 2 +
                         knockbackDirection.y ** 2 +
@@ -84,7 +73,6 @@ export default class CrystallineSkeletonEntity {
                     z: knockbackDirection.z / magnitude,
                 };
 
-                // Aplicar el knockback al hitEntity
                 hitEntity.applyKnockback(
                     normalizedDirection.x,
                     normalizedDirection.z,
