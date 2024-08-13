@@ -198,7 +198,7 @@ export default class Moderation extends Mixin(Runnable, WithLogger) {
         this.setLastTimeChecked(Date.now());
 
         this.runTimer(20);
-        this.logger().info("Mute Manager enabled and running");
+        this.logger().info("Mute Manager loaded and running");
     }
 
     public async onChatSend(event: ChatSendBeforeEvent) {

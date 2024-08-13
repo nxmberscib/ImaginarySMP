@@ -14,6 +14,7 @@ export default class MuteCommand extends WithLogger {
     constructor() {
         super();
         CommandManager.registerCommand(this);
+        this.logger().robust("Mute command loaded");
     }
 
     @Default
@@ -25,9 +26,12 @@ export default class MuteCommand extends WithLogger {
                 `§7${target.name} ha silenciado permanentemente.`,
             );
 
-            Imaginary.getInstance()
-                .getMuteManager()
-                .mutePlayer(target, Infinity, undefined, player.name);
+            Imaginary.getMuteManager().mutePlayer(
+                target,
+                Infinity,
+                undefined,
+                player.name,
+            );
         } else {
             const parsedDuration = TimerUtils.dateToSeconds(duration);
 
@@ -37,9 +41,7 @@ export default class MuteCommand extends WithLogger {
                 )}.`,
             );
 
-            Imaginary.getInstance()
-                .getMuteManager()
-                .mutePlayer(target, parsedDuration);
+            Imaginary.getMuteManager().mutePlayer(target, parsedDuration);
         }
     }
 
@@ -58,15 +60,21 @@ export default class MuteCommand extends WithLogger {
                 `§7${target.name} ha sido silenciado permanentemente.`,
             );
 
-            Imaginary.getInstance()
-                .getMuteManager()
-                .mutePlayer(target, Infinity, player, reason);
+            Imaginary.getMuteManager().mutePlayer(
+                target,
+                Infinity,
+                player,
+                reason,
+            );
         } else {
             const parsedDuration = TimerUtils.dateToSeconds(duration);
 
-            Imaginary.getInstance()
-                .getMuteManager()
-                .mutePlayer(target, parsedDuration, player, reason);
+            Imaginary.getMuteManager().mutePlayer(
+                target,
+                parsedDuration,
+                player,
+                reason,
+            );
 
             player.sendMessage(
                 `§7${target.name} ha sido silenciado por ${TimerUtils.parseDate(

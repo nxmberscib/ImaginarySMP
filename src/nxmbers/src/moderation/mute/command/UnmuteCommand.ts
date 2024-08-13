@@ -12,6 +12,7 @@ export default class UnmuteCommand extends WithLogger {
     constructor() {
         super();
         CommandManager.registerCommand(this);
+        this.logger().robust("Unmute command loaded");
     }
 
     @Default
@@ -25,7 +26,7 @@ export default class UnmuteCommand extends WithLogger {
             return;
         }
 
-        Imaginary.getInstance().getMuteManager().unmutePlayer(target);
+        Imaginary.getMuteManager().unmutePlayer(target);
 
         player.sendMessage(`§7${target.name} ya no está silenciado.`);
     }

@@ -10,12 +10,11 @@ import Imaginary from "../Imaginary";
 import BreezeSkeletonEntity from "./skeleton/BreezeSkeletonEntity";
 import CrystallineSkeletonEntity from "./skeleton/CrystallineSkeletonEntity";
 import BreezeEntity from "./BreezeEntity";
+import OpossumEntity from "./OpossumEntity";
+import WithLogger from "../util/WithLogger";
 
-export default class ImaginaryEntities {
-    private static logger() {
-        return Imaginary.logger();
-    }
-
+export default class ImaginaryEntities extends WithLogger {
+    public static OPOSSUM: OpossumEntity;
     public static BREEZE_SKELETON: BreezeSkeletonEntity;
     public static CRYSTALLINE_SKELETON: CrystallineSkeletonEntity;
     public static HONEY_SLIME: HoneySlimeEntity;
@@ -28,6 +27,9 @@ export default class ImaginaryEntities {
     public static registerEntities() {
         // Player
         ImaginaryPlayer.registerPlayerBehaviors();
+
+        // Foxes
+        this.OPOSSUM = new OpossumEntity();
 
         // Skeletons
         this.BREEZE_SKELETON = new BreezeSkeletonEntity();

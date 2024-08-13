@@ -26,31 +26,27 @@ export default class Imaginary {
         return this.#logger;
     }
 
-    public static getInstance() {
+    private static getInstance() {
         return this.#instance;
     }
 
     public onInitialized() {
         EntityResurrectEventSignal.initialize();
+        this.initializeGamerules();
+
         Imaginary.#instance = this;
         Imaginary.#logger = new Logger("imaginary", true);
 
-        this.initializeGamerules();
-
         this.#banManager = new BanManager();
-
         this.#muteManager = new MuteManager();
-
         this.#slotManager = new SlotManager();
-        this.#slotManager.startLocker();
-
         this.#mobNameManager = new MobNameManager();
 
         ImaginaryCommands.registerCommands();
         ImaginaryItems.registerItems();
         ImaginaryEntities.registerEntities();
 
-        Imaginary.logger().info("Imaginary was successfully enabled");
+        Imaginary.logger().info("Imaginary was successfully loaded");
     }
 
     public initializeGamerules() {

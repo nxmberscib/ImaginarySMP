@@ -8,7 +8,7 @@ import Default from "teseract/api/command/Default";
 export default class BanCommand extends WithLogger {
     @Default
     async onDefaultString(player: Player, unbannedName: string) {
-        const banManager = Imaginary.getInstance().getBanManager();
+        const banManager = Imaginary.getBanManager();
         const unbanned = unbannedName.replace(/\"+/g, '');
         await null
         banManager.banPlayer(unbanned);
@@ -17,7 +17,7 @@ export default class BanCommand extends WithLogger {
     
     @Default
     async onDefault(player: Player, unbanned: Player) {
-        const banManager = Imaginary.getInstance().getBanManager();
+        const banManager = Imaginary.getBanManager();
         await null
         banManager.banPlayer(unbanned);
         player.sendMessage(`${unbanned.name} fue baneado.`);

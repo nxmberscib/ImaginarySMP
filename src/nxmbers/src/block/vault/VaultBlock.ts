@@ -1,6 +1,6 @@
 import { ItemUseOnBeforeEvent, world } from "@minecraft/server";
 
-export default class VaultManager {
+export default class VaultBlock {
     private VAULT_KEY_ID = "minecraft:trial_key";
     private VAULT_BLOCK_ID = "minecraft:vault";
 

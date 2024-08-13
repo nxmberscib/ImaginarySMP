@@ -6,26 +6,17 @@ import {
     world,
 } from "@minecraft/server";
 import WithLogger from "../util/WithLogger";
+import Mixin from "teseract/api/util/Mixin";
+import Runnable from "teseract/api/util/Runnable";
 
-export default class SlotManager extends WithLogger {
-    public startLocker() {
-        // world.afterEvents.entitySpawn.subscribe((arg) => {
-        //     if (arg.entity?.typeId != "minecraft:item") {
-        //         return;
-        //     }
-        //     if (!arg.entity.isValid()) {
-        //         return;
-        //     }
-        //     if (arg.entity?.getComponent("item").itemStack.typeId != "ha:barrier_fake")
-        //         return;
-
-        //     arg.entity.remove()
-        // })
-        system.runInterval(() => system.runJob(this.#lockedProtocol()), 10);
-        this.logger().info("Slot manager initialized");
+export default class SlotManager extends Mixin(WithLogger, Runnable) {
+    constructor() {
+        super();
+        this.runTimer(5);
+        this.logger().info("Slot manager loaded");
     }
 
-    *#lockedProtocol() {
+    public override *onRunJob() {
         for (const player of world.getAllPlayers()) {
             const inventory = player.getComponent("inventory");
             const container = inventory.container;
@@ -60,6 +51,9 @@ export default class SlotManager extends WithLogger {
      */
     public lockSlot(player: Player, slotId: number) {
         player.setDynamicProperty("slot:" + slotId, true);
+        this.logger().robust(
+            `Slot ${slotId} locked for player '${player.name}'`,
+        );
     }
     /**
      *
@@ -68,6 +62,9 @@ export default class SlotManager extends WithLogger {
      */
     public unlockSlot(player: Player, slotId: number) {
         player.setDynamicProperty("slot:" + slotId, false);
+        this.logger().robust(
+            `Slot ${slotId} unlocked for player '${player.name}'`,
+        );
     }
 
     /**

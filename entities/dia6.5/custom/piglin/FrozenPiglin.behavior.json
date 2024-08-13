@@ -9,6 +9,21 @@
             "is_experimental": false
         },
         "component_groups": {
+            "cib:mode_switcher": {
+                "minecraft:target_nearby_sensor": {
+                    "inside_range": 2.0,
+                    "outside_range": 3.0,
+                    "must_see": false,
+                    "on_inside_range": {
+                        "event": "cib:mele_unit",
+                        "target": "self"
+                    },
+                    "on_outside_range": {
+                        "event": "cib:ranged_unit",
+                        "target": "self"
+                    }
+                }
+            },
             "ranged_unit": {
                 "minecraft:behavior.ranged_attack": {
                     "priority": 8,
@@ -26,9 +41,6 @@
                     "priority": 3,
                     "items": ["minecraft:arrow"]
                 },
-                "minecraft:equipment": {
-                    "table": "loot_tables/entities/piglin_gear_ranged.json"
-                },
                 "minecraft:variant": {
                     "value": 0
                 }
@@ -41,9 +53,6 @@
                 },
                 "minecraft:attack": {
                     "damage": 5
-                },
-                "minecraft:equipment": {
-                    "table": "loot_tables/entities/piglin_gear_melee.json"
                 },
                 "minecraft:variant": {
                     "value": 1
@@ -99,7 +108,7 @@
                     "value": 0.5
                 },
                 "minecraft:movement": {
-                    "value": 0.42
+                    "value": 0.84
                 },
                 "minecraft:experience_reward": {
                     "on_death": "query.last_hit_by_player ? 1 + (query.equipment_count * Math.Random(1,2)) : 0"
@@ -127,11 +136,7 @@
                     }
                 },
                 "minecraft:movement": {
-                    "value": 0.35
-                },
-                "minecraft:barter": {
-                    "barter_table": "loot_tables/entities/piglin_barter.json",
-                    "cooldown_after_being_attacked": 20
+                    "value": 0.7
                 },
                 "minecraft:experience_reward": {
                     "on_death": "query.last_hit_by_player ? 5 + (query.equipment_count * Math.Random(1,3)) : 0"
@@ -171,42 +176,6 @@
                                 "minecraft:undyed_shulker_box"
                             ],
                             "on_block_broken": "important_block_destroyed_event"
-                        }
-                    ]
-                }
-            },
-            "interactable_piglin": {
-                "minecraft:interact": {
-                    "interactions": [
-                        {
-                            "on_interact": {
-                                "filters": {
-                                    "all_of": [
-                                        {
-                                            "test": "has_equipment",
-                                            "subject": "other",
-                                            "domain": "hand",
-                                            "value": "gold_ingot"
-                                        },
-                                        {
-                                            "test": "is_family",
-                                            "subject": "other",
-                                            "value": "player"
-                                        },
-                                        {
-                                            "test": "has_component",
-                                            "subject": "self",
-                                            "operator": "!=",
-                                            "value": "minecraft:is_baby"
-                                        }
-                                    ]
-                                }
-                            },
-                            "barter": true,
-                            "admire": true,
-                            "use_item": true,
-                            "cooldown_after_being_attacked": 20,
-                            "interact_text": "action.interact.barter"
                         }
                     ]
                 }
@@ -263,46 +232,6 @@
                                         "subject": "self",
                                         "operator": "!=",
                                         "value": "minecraft:attack_cooldown"
-                                    }
-                                ]
-                            },
-                            "max_dist": 16
-                        },
-                        {
-                            "filters": {
-                                "all_of": [
-                                    {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "value": "player"
-                                    },
-                                    {
-                                        "test": "has_equipment",
-                                        "subject": "other",
-                                        "domain": "head",
-                                        "operator": "!=",
-                                        "value": "golden_helmet"
-                                    },
-                                    {
-                                        "test": "has_equipment",
-                                        "subject": "other",
-                                        "domain": "torso",
-                                        "operator": "!=",
-                                        "value": "golden_chestplate"
-                                    },
-                                    {
-                                        "test": "has_equipment",
-                                        "subject": "other",
-                                        "domain": "leg",
-                                        "operator": "!=",
-                                        "value": "golden_leggings"
-                                    },
-                                    {
-                                        "test": "has_equipment",
-                                        "subject": "other",
-                                        "domain": "feet",
-                                        "operator": "!=",
-                                        "value": "golden_boots"
                                     }
                                 ]
                             },
@@ -368,8 +297,8 @@
                 "suffocate_time": 0
             },
             "minecraft:health": {
-                "value": 16,
-                "max": 16
+                "value": 64,
+                "max": 64
             },
             "minecraft:hurt_on_condition": {
                 "damage_conditions": [
@@ -401,22 +330,6 @@
             },
             "minecraft:behavior.hurt_by_target": {
                 "priority": 1
-            },
-            "minecraft:behavior.admire_item": {
-                "priority": 2,
-                "admire_item_sound": "admire",
-                "sound_interval": {
-                    "range_min": 2,
-                    "range_max": 5
-                },
-                "on_admire_item_start": {
-                    "event": "admire_item_started_event",
-                    "target": "self"
-                },
-                "on_admire_item_stop": {
-                    "event": "admire_item_stopped_event",
-                    "target": "self"
-                }
             },
             "minecraft:behavior.barter": {
                 "priority": 3
@@ -890,7 +803,7 @@
                     {
                         "queue_command": {
                             "command": [
-                                "replaceitem entity @s slot.weapon.mainhand 0 diamond_sword",
+                                "replaceitem entity @s slot.weapon.mainhand 0 diamond_axe",
                                 "enchant @s sharpness 5"
                             ]
                         }
@@ -913,63 +826,16 @@
                 ]
             },
             "spawn_adult": {
-                "randomize": [
-                    {
-                        "weight": 1,
-                        "trigger": "spawn_adult_ranged"
-                    },
-                    {
-                        "weight": 1,
-                        "trigger": "spawn_adult_melee"
-                    }
-                ]
+                "trigger": "spawn_adult_ranged"
             },
-            "spawn_adult_ranged": {
+            "cib:ranged_unit": {
                 "add": {
-                    "component_groups": [
-                        "piglin_adult",
-                        "alert_for_attack_targets",
-                        "ranged_unit",
-                        "attack_cooldown",
-                        "hunter",
-                        "interactable_piglin"
-                    ]
+                    "component_groups": ["ranged_unit"]
                 }
             },
-            "spawn_adult_ranged_no_hunting": {
+            "cib:mele_unit": {
                 "add": {
-                    "component_groups": [
-                        "piglin_adult",
-                        "alert_for_attack_targets",
-                        "ranged_unit",
-                        "attack_cooldown",
-                        "not_hunter",
-                        "interactable_piglin"
-                    ]
-                }
-            },
-            "spawn_adult_melee": {
-                "add": {
-                    "component_groups": [
-                        "piglin_adult",
-                        "alert_for_attack_targets",
-                        "melee_unit",
-                        "attack_cooldown",
-                        "hunter",
-                        "interactable_piglin"
-                    ]
-                }
-            },
-            "spawn_adult_melee_no_hunting": {
-                "add": {
-                    "component_groups": [
-                        "piglin_adult",
-                        "alert_for_attack_targets",
-                        "melee_unit",
-                        "attack_cooldown",
-                        "not_hunter",
-                        "interactable_piglin"
-                    ]
+                    "component_groups": ["melee_unit"]
                 }
             },
             "spawn_baby": {
@@ -977,17 +843,13 @@
                     {
                         "weight": 9,
                         "add": {
-                            "component_groups": ["piglin_baby", "not_hunter"]
+                            "component_groups": ["piglin_baby"]
                         }
                     },
                     {
                         "weight": 1,
                         "add": {
-                            "component_groups": [
-                                "piglin_baby",
-                                "piglin_jockey",
-                                "not_hunter"
-                            ]
+                            "component_groups": ["piglin_baby", "piglin_jockey"]
                         }
                     }
                 ]
@@ -1024,16 +886,6 @@
                     "component_groups": [
                         "take_target_as_response_to_block_break"
                     ]
-                }
-            },
-            "admire_item_started_event": {
-                "remove": {
-                    "component_groups": ["interactable_piglin"]
-                }
-            },
-            "admire_item_stopped_event": {
-                "add": {
-                    "component_groups": ["interactable_piglin"]
                 }
             }
         }

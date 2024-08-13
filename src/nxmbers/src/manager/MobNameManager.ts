@@ -14,7 +14,7 @@ export default class MobNameManager extends WithLogger {
         super();
         world.afterEvents.entitySpawn.subscribe(this.onMobSpawned.bind(this));
         this.registry = new Map();
-        this.logger().info("Mob name manager initialized");
+        this.logger().info("Mob name manager loaded");
     }
 
     public addRegistry(registry: MobNameRegistry) {

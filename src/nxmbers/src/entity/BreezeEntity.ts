@@ -7,23 +7,27 @@ import {
     world,
 } from "@minecraft/server";
 import Imaginary from "../Imaginary";
+import WithLogger from "../util/WithLogger";
 
-export default class BreezeEntity {
+export default class BreezeEntity extends WithLogger {
+    public MOB_ID: string = "minecraft:breeze";
+    public CHARGE_ID: string = "minecraft:breeze_wind_charge_projectile";
     public constructor() {
+        super();
         world.afterEvents.projectileHitEntity.subscribe(this.onWindChargeHit);
+        this.logger().robust("Breeze entity loaded");
     }
 
-    public onWindChargeHit(event: ProjectileHitEntityAfterEvent) {
+    private onWindChargeHit(event: ProjectileHitEntityAfterEvent) {
         try {
             const { projectile, source } = event;
             const player = event.getEntityHit().entity;
 
             if (
-                !(player instanceof Player) ||
                 !player ||
-                projectile?.typeId !=
-                    "minecraft:breeze_wind_charge_projectile" ||
-                source?.typeId != "minecraft:breeze"
+                !(player instanceof Player) ||
+                projectile?.typeId != this.CHARGE_ID ||
+                source?.typeId != this.MOB_ID
             ) {
                 return;
             }
@@ -58,7 +62,7 @@ export default class BreezeEntity {
                 cause: EntityDamageCause.entityAttack,
             });
         } catch (error) {
-            Imaginary.logger().error(error, error.stack);
+            this.logger().error(error);
         }
     }
 }
