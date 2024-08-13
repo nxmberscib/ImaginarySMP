@@ -15,7 +15,7 @@ export default class DrownedEntity extends WithLogger {
 
     public constructor() {
         super();
-        world.afterEvents.projectileHitEntity.subscribe(this.onTridentHit);
+        world.afterEvents.projectileHitEntity.subscribe(this.onTridentHit.bind(this));
         this.logger().robust("Drowned entity loaded");
     }
 

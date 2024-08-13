@@ -11,7 +11,7 @@ export default class BrewingStandBlock {
     private onPlayerInteractWithBlock(arg: any) {
         const { block, player } = arg;
 
-        if (block.typeId != this.BREWING_STAND_ID || Math.random() > 0.40) {
+        if (block?.typeId != this.BREWING_STAND_ID || Math.random() > 0.40) {
             return;
         }
 

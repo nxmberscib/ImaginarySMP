@@ -49,6 +49,6 @@ export default class ImaginaryEntities extends WithLogger {
         // Vanilla entities
         this.BREEZE = new BreezeEntity();
 
-        this.logger().info("Imaginary Entities loaded");
+        this.logger().info("Imaginary entities loaded");
     }
 }

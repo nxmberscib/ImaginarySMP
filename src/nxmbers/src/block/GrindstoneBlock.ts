@@ -11,7 +11,7 @@ export default class GrindstoneBlock {
     private onPlayerInteractWithBlock(arg: any) {
         const { block, player } = arg;
 
-        if (block.typeId != this.GRINDSTONE_ID || Math.random() > 0.40) {
+        if (block?.typeId != this.GRINDSTONE_ID || Math.random() > 0.40) {
             return;
         }
 

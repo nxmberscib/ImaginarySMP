@@ -17,7 +17,7 @@
 			},
 			"minecraft:cooldown": {
 				"category": "slime_wand",
-				"duration": 16
+				"duration": 10
 			},
 			"minecraft:icon": {
 				"texture": "slime_wand"

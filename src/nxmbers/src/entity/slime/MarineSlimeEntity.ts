@@ -16,7 +16,7 @@ export default class MarineSlimeEntity {
      * @param {EntityDieAfterEvent} arg
      */
     spawnProtocol(arg) {
-        if (arg.deadEntity.typeId != "minecraft:glow_squid") {
+        if (arg.deadEntity?.typeId != "minecraft:glow_squid") {
             return;
         }
         arg.deadEntity.dimension.spawnEntity(

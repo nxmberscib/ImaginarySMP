@@ -7,6 +7,7 @@ import {
     world,
 } from "@minecraft/server";
 import Imaginary from "nxmbers/src/Imaginary";
+import WithLogger from "nxmbers/src/util/WithLogger";
 
 declare module "@minecraft/server" {
     interface Player {
@@ -27,12 +28,9 @@ Player.prototype.getInterstellarTrappedData = function () {
     return this[`trapped:interstellar_slime`];
 };
 
-export default class InterstellarSlimeEntity {
-    private logger() {
-        return Imaginary.logger();
-    }
-
+export default class InterstellarSlimeEntity extends WithLogger {
     constructor() {
+        super();
         world.beforeEvents.playerInteractWithEntity.subscribe(
             this.cancelInteraction.bind(this),
         );
@@ -80,7 +78,7 @@ export default class InterstellarSlimeEntity {
     }
 
     private cancelInteraction(arg: PlayerInteractWithEntityBeforeEvent) {
-        if (arg.target.typeId != "cib:interestellar_slime") {
+        if (arg.target?.typeId != "cib:interestellar_slime") {
             return;
         }
         arg.cancel = true;

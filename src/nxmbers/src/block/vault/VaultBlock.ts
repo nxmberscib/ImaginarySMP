@@ -11,7 +11,7 @@ export default class VaultBlock {
     private onTrialKeyUsed(event: ItemUseOnBeforeEvent) {
         if (
             event.itemStack?.typeId != this.VAULT_KEY_ID ||
-            event.block.typeId != this.VAULT_BLOCK_ID
+            event.block?.typeId != this.VAULT_BLOCK_ID
         ) {
             return;
         }

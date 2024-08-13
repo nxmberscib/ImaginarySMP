@@ -3,7 +3,8 @@ import Imaginary from "../Imaginary";
 import WithLogger from "../util/WithLogger";
 
 export interface MobNameRegistry {
-    mobId: string;
+    mobId?: string;
+    MOB_ID: string;
     displayName: string;
 }
 
@@ -38,7 +39,7 @@ export default class MobNameManager extends WithLogger {
 
         event.entity.nameTag = registry.displayName;
 
-        this.logger().robust(
+        this.logger().debug(
             "Mob name registry triggered: " +
                 registry.mobId +
                 `'${registry.displayName}'`,

@@ -21,7 +21,7 @@ export default class ChipoteChillonItem
     public async onUse(event: ItemComponentUseEvent) {
         const { itemStack: item, source: player } = event;
 
-        if (item.typeId != this.ITEM_ID) {
+        if (item?.typeId != this.ITEM_ID) {
             return;
         }
 

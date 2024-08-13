@@ -2,14 +2,16 @@
 import { EntityHurtAfterEvent, Player, world } from "@minecraft/server";
 import Imaginary from "nxmbers/src/Imaginary";
 import { MobNameRegistry } from "nxmbers/src/manager/MobNameManager";
+import WithLogger from "nxmbers/src/util/WithLogger";
 
-export default class HoneySlimeEntity implements MobNameRegistry {
+export default class HoneySlimeEntity
+    extends WithLogger
+    implements MobNameRegistry
+{
     public readonly MOB_ID = "cib:honey_slime";
-    private logger() {
-        return Imaginary.logger();
-    }
 
     constructor() {
+        super();
         world.afterEvents.entityHurt.subscribe(this.attackEffects.bind(this));
         Imaginary.getMobNameManager().addRegistry(this);
         this.logger().robust(this.MOB_ID + " registered");

@@ -9,16 +9,14 @@ export default class OpossumEntity
 {
     public readonly MOB_ID: string = "cib:opossum";
     public readonly CLOUD_ID: string = "cib:opossum_cloud";
+    public readonly displayName: string = "§7Sarigüeya";
 
     public constructor() {
         super();
-        world.afterEvents.entityHurt.subscribe(this.onAttack);
+        world.afterEvents.entityHurt.subscribe(this.onAttack.bind(this));
         Imaginary.getMobNameManager().addRegistry(this);
         this.logger().robust("Opossum loaded");
     }
-
-    public readonly mobId: string = this.MOB_ID;
-    public readonly displayName: string = "§7Sarigüeya";
 
     private onAttack(event: EntityHurtAfterEvent) {
         const {
@@ -26,7 +24,7 @@ export default class OpossumEntity
             damageSource: { damagingEntity: opossum },
         } = event;
 
-        if (!(player instanceof Player) || opossum.typeId != this.MOB_ID) {
+        if (!(player instanceof Player) || opossum?.typeId != this.MOB_ID) {
             return;
         }
 

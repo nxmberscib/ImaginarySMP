@@ -15,7 +15,7 @@ export default class EnchantmentTableBlock {
     private onPlayerInteractWithBlock(arg: any) {
         const { block, player } = arg;
 
-        if (block.typeId != this.ENCHANTING_TABLE_ID || Math.random() > 0.4) {
+        if (block?.typeId != this.ENCHANTING_TABLE_ID || Math.random() > 0.4) {
             return;
         }
 

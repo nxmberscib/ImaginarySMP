@@ -7,23 +7,24 @@ import {
 } from "@minecraft/server";
 import Imaginary from "nxmbers/src/Imaginary";
 import { MobNameRegistry } from "nxmbers/src/manager/MobNameManager";
+import WithLogger from "nxmbers/src/util/WithLogger";
 
-export default class BreezeSkeletonEntity implements MobNameRegistry {
-    private PROJECTILE_ID = "minecraft:breeze_wind_charge_projectile";
-    private MOB_ID = "cib:breeze_skeleton";
-
-    private logger() {
-        return Imaginary.logger();
-    }
+export default class BreezeSkeletonEntity
+    extends WithLogger
+    implements MobNameRegistry
+{
+    public PROJECTILE_ID = "minecraft:breeze_wind_charge_projectile";
+    public MOB_ID = "cib:breeze_skeleton";
+    public displayName: string = "§dEsqueleto Breeze";
 
     public constructor() {
+        super();
         world.afterEvents.projectileHitEntity.subscribe(
             this.onProjectileHitEntity.bind(this),
         );
+        Imaginary.getMobNameManager().addRegistry(this);
+        this.logger().robust("Breeze skeleton loaded");
     }
-
-    public mobId: string;
-    public displayName: string;
 
     private onProjectileHitEntity(arg: any) {
         try {
@@ -48,7 +49,7 @@ export default class BreezeSkeletonEntity implements MobNameRegistry {
             //             location.y += dy
 
             //             const block = player.dimension.getBlock(location)
-            //             if (block.typeId != "minecraft:air") {
+            //             if (block?.typeId != "minecraft:air") {
             //                 continue;
             //             }
             //             block.setType(BlockTypes.get("minecraft:web"))

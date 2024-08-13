@@ -152,7 +152,7 @@ mc.world.afterEvents.entityHitEntity.subscribe(hitSensor => {
 				hurtEntity.runCommand(`ride @s start_riding @e[type=ha:water_entity,r=3,c=1] teleport_rider`);
 			} break;
 			case 'ha:walter_npc': {
-				if (hurtEntity.typeId != 'minecraft:player') return;
+				if (hurtEntity?.typeId != 'minecraft:player') return;
 				stopMove(hurtEntity, 40);
 			} break;
 			case 'minecraft:ravager': {
@@ -486,13 +486,13 @@ function spawnInventory(player) {
 		let otherInv = entity.getComponent("minecraft:inventory").container;
 		for (let i = 0; i < inv.size; i++) {
 			let item = inv.getItem(i);
-			if (item && item.typeId != 'minecraft:barrier') {
+			if (item && item?.typeId != 'minecraft:barrier') {
 				inv.transferItem(i, otherInv);
 			};
 		};
 		for (let slot of armorSlots) {
 			let item = armorInv.getEquipment(slot);
-			if (item && item.typeId != 'minecraft:barrier') {
+			if (item && item?.typeId != 'minecraft:barrier') {
 				otherInv.addItem(item);
 				armorInv.setEquipment(slot, null);
 			};
@@ -501,7 +501,7 @@ function spawnInventory(player) {
 };
 
 function stealInventory(meleeEntity, player) {
-	if (player.typeId != 'minecraft:player') return;
+	if (player?.typeId != 'minecraft:player') return;
 	let inv = player.getComponent("minecraft:inventory").container;
 	let meleeInv = meleeEntity.getComponent("minecraft:inventory").container;
 	let slotsItems = [];
@@ -522,7 +522,7 @@ function setCooldownShield(otherEntity, player, isEquip) {
 	let cooldown = shield.getComponent("minecraft:cooldown");
 	for (let i = 0; i < inv.size; i++) {
 		let item = inv.getItem(i);
-		if (!item && item.typeId != 'minecraft:shield') continue;
+		if (!item && item?.typeId != 'minecraft:shield') continue;
 		if (player.isSneaking) {
 			if (!isEquip) {
 				cooldown.startCooldown(player);

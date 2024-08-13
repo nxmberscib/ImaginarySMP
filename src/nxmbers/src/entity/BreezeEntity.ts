@@ -14,7 +14,7 @@ export default class BreezeEntity extends WithLogger {
     public CHARGE_ID: string = "minecraft:breeze_wind_charge_projectile";
     public constructor() {
         super();
-        world.afterEvents.projectileHitEntity.subscribe(this.onWindChargeHit);
+        world.afterEvents.projectileHitEntity.subscribe(this.onWindChargeHit.bind(this));
         this.logger().robust("Breeze entity loaded");
     }
 
@@ -41,7 +41,7 @@ export default class BreezeEntity extends WithLogger {
             //             location.y += dy
 
             //             const block = player.dimension.getBlock(location)
-            //             if (block.typeId != "minecraft:air") {
+            //             if (block?.typeId != "minecraft:air") {
             //                 continue;
             //             }
             //             block.setType(BlockTypes.get("minecraft:web"))
