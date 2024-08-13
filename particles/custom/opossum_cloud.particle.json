@@ -5,7 +5,7 @@
 			"identifier": "cib:opossum_cloud",
 			"basic_render_parameters": {
 				"material": "particles_alpha",
-				"texture": "textures/particle/flame_atlas"
+				"texture": "textures/particle/snowstorm_smoke"
 			}
 		},
 		"components": {
