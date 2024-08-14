@@ -4,14 +4,16 @@ import CommandHandler from "teseract/api/command/CommandHandler";
 
 export default new (class CommandManager {
     #commands: InstanceType<any>[] = [];
-    
+
     public get prefix(): string {
-        let prefix = MinecraftServer.world.getDynamicProperty("teseract:command_prefix") as string;
+        let prefix = MinecraftServer.world.getDynamicProperty(
+            "teseract:command_prefix",
+        ) as string;
         if (prefix == undefined) {
-            prefix = "-"
+            prefix = "-";
         }
         return prefix;
-    };
+    }
 
     public onCommandSent(event: MinecraftServer.ChatSendBeforeEvent) {
         if (!event.message.startsWith(this.prefix)) {
@@ -21,12 +23,20 @@ export default new (class CommandManager {
         event.cancel = true;
 
         let regex = /(@[aepsr]\[|@"[^"]*"|"[^"]*"|\[[^\]]*\]|\S+)/g;
+        
         const [command, ...parameters] = event.message.match(regex);
+        const processedParameters = parameters.map((param) => {
+            if (param.startsWith('"') && param.endsWith('"')) {
+                return param.slice(1, -1);
+            }
+            return param;
+        });
+
         try {
             CommandHandler(
                 event.sender,
                 command.substring(this.prefix.length),
-                ...parameters,
+                ...processedParameters,
             );
         } catch (error) {
             console.error(error, error.stack);

@@ -1,17 +1,15 @@
-// @ts-check
-
 import FrozenPiglinEntity from "./piglin/FrozenPiglinEntity";
 import HoneySlimeEntity from "./slime/HoneySlimeEntity";
 import InterstellarSlimeEntity from "./slime/InterstellarSlimeEntity";
 import MarineSlimeEntity from "./slime/MarineSlimeEntity";
 import PreassureAssasinEntity from "./illager/PreassureAssasinEntity";
 import ImaginaryPlayer from "./player/ImaginaryPlayer";
-import Imaginary from "../Imaginary";
 import BreezeSkeletonEntity from "./skeleton/BreezeSkeletonEntity";
 import CrystallineSkeletonEntity from "./skeleton/CrystallineSkeletonEntity";
 import BreezeEntity from "./BreezeEntity";
 import OpossumEntity from "./OpossumEntity";
 import WithLogger from "../util/WithLogger";
+import VexEntity from "./VexEntity";
 
 export default class ImaginaryEntities extends WithLogger {
     public static OPOSSUM: OpossumEntity;
@@ -23,6 +21,7 @@ export default class ImaginaryEntities extends WithLogger {
     public static FROZEN_PIGLIN: FrozenPiglinEntity;
     public static PREASSURE_ASSASIN: PreassureAssasinEntity;
     public static BREEZE: BreezeEntity;
+    public static VEX: VexEntity;
 
     public static registerEntities() {
         // Player
@@ -48,6 +47,7 @@ export default class ImaginaryEntities extends WithLogger {
 
         // Vanilla entities
         this.BREEZE = new BreezeEntity();
+        this.VEX = new VexEntity();
 
         this.logger().info("Imaginary entities loaded");
     }

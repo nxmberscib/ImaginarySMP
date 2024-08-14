@@ -9,8 +9,8 @@ import WithLogger from "../util/WithLogger";
 import Mixin from "teseract/api/util/Mixin";
 import Runnable from "teseract/api/util/Runnable";
 
-export default class SlotManager extends Mixin(WithLogger, Runnable) {
-    constructor() {
+export default class SlotManager extends Mixin(Runnable, WithLogger) {
+    public constructor() {
         super();
         this.runTimer(5);
         this.logger().info("Slot manager loaded");

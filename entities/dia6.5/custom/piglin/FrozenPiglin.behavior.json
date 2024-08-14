@@ -279,6 +279,25 @@
             }
         },
         "components": {
+            "minecraft:behavior.nearest_attackable_target": {
+                "priority": 3,
+                "within_radius": 16,
+                "persist_time": 8,
+                "entity_types": [
+                    {
+                        "filters": {
+                            "any_of": [
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "player"
+                                }
+                            ]
+                        },
+                        "max_dist": 16
+                    }
+                ]
+            },
             "minecraft:equip_item": {},
             "minecraft:admire_item": {
                 "duration": 8,

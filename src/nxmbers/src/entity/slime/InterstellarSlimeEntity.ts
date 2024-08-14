@@ -1,13 +1,18 @@
 import {
     Entity,
+    EntityDieAfterEvent,
     EntityHurtAfterEvent,
+    ItemStack,
     Player,
     PlayerInteractWithEntityBeforeEvent,
     system,
     world,
 } from "@minecraft/server";
 import Imaginary from "nxmbers/src/Imaginary";
+import { MobNameRegistry } from "nxmbers/src/manager/MobNameManager";
 import WithLogger from "nxmbers/src/util/WithLogger";
+import Mixin from "teseract/api/util/Mixin";
+import Runnable from "teseract/api/util/Runnable";
 
 declare module "@minecraft/server" {
     interface Player {
@@ -28,17 +33,27 @@ Player.prototype.getInterstellarTrappedData = function () {
     return this[`trapped:interstellar_slime`];
 };
 
-export default class InterstellarSlimeEntity extends WithLogger {
+export default class InterstellarSlimeEntity
+    extends Mixin(Runnable, WithLogger)
+    implements MobNameRegistry
+{
+    public MOB_ID: string = "cib:interstellar_slime";
+    public displayName: string = "§dSlime Interestelar";
+
     constructor() {
         super();
+        
         world.beforeEvents.playerInteractWithEntity.subscribe(
             this.cancelInteraction.bind(this),
         );
+
         world.afterEvents.entityHurt.subscribe(this.attackEffects.bind(this));
-        system.runInterval(() => system.runJob(this.#forceRideInterval()));
+        world.afterEvents.entityDie.subscribe(this.onDied.bind(this));
+        
+        this.runTimer(1);
     }
 
-    *#forceRideInterval() {
+    public override *onRunJob() {
         for (const player of world.getAllPlayers()) {
             const data = player.getInterstellarTrappedData();
 
@@ -63,6 +78,19 @@ export default class InterstellarSlimeEntity extends WithLogger {
 
             yield;
         }
+    }
+
+    private onDied(event: EntityDieAfterEvent) {
+        if (event.deadEntity.typeId != this.MOB_ID) {
+            return;
+        }
+        if (Math.random() > 0.3) {
+            return;
+        }
+        event.deadEntity.dimension.spawnItem(
+            new ItemStack("cib:slime_wand"),
+            event.deadEntity.location,
+        );
     }
 
     private forceRide(player: Player, entity: Entity) {

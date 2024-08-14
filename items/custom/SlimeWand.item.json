@@ -12,9 +12,6 @@
 			"minecraft:stacked_by_data": true,
 			"minecraft:damage": 1,
 			"minecraft:can_destroy_in_creative": false,
-			"minecraft:durability": {
-				"max_durability": 100
-			},
 			"minecraft:cooldown": {
 				"category": "slime_wand",
 				"duration": 10

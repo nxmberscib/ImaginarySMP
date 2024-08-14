@@ -1,13 +1,14 @@
 import * as MinecraftServer from "@minecraft/server";
 
 export default class Runnable {
-    #cancelled: boolean;
-    #id: number | undefined;
-    #runningTimer: boolean;
+    private cancelled: boolean;
+    private id: number | undefined;
+    private runningTimer: boolean;
+    
     constructor() {
-        this.#cancelled = false;
-        this.#id = undefined;
-        this.#runningTimer = false;
+        this.cancelled = false;
+        this.id = undefined;
+        this.runningTimer = false;
     }
 
     /**
@@ -16,7 +17,7 @@ export default class Runnable {
      */
     public isCancelled(): boolean {
         try {
-            return this.#cancelled;
+            return this.cancelled;
         } catch (error: any) {
             console.warn(error, error.stack);
         }
@@ -28,15 +29,15 @@ export default class Runnable {
      */
     public cancel() {
         try {
-            if (!this.#id) {
+            if (!this.id) {
                 throw new Error(
                     "Runnable ID is undefined. ¿Is it an internal error?",
                 );
             }
-            if (this.#runningTimer || this.#id != undefined) {
-                MinecraftServer.system.clearRun(this.#id as number);
-                this.#runningTimer = false;
-                this.#cancelled = true;
+            if (this.runningTimer || this.id != undefined) {
+                MinecraftServer.system.clearRun(this.id as number);
+                this.runningTimer = false;
+                this.cancelled = true;
             }
         } catch (error: any) {
             console.warn(error, error.stack);
@@ -49,7 +50,7 @@ export default class Runnable {
      */
     public getIdentifier(): number | undefined {
         try {
-            return this.#id;
+            return this.id;
         } catch (error: any) {
             console.warn(error, error.stack);
         }
@@ -61,7 +62,7 @@ export default class Runnable {
      */
     public runLater(delay: number, ...args: any[]): any {
         try {
-            if (this.#runningTimer) {
+            if (this.runningTimer) {
                 throw new Error(
                     "A runnable task timer is already running on this task",
                 );
@@ -71,7 +72,7 @@ export default class Runnable {
                     "Delay argument must be a fixed point number (integer)",
                 );
             }
-            this.#id = MinecraftServer.system.runTimeout(() => {
+            this.id = MinecraftServer.system.runTimeout(() => {
                 this.onRun(args);
             }, delay);
         } catch (error: any) {
@@ -81,20 +82,21 @@ export default class Runnable {
     /**
      * Function that triggers when the runnable instance is executed
      */
-    public *onRun(...args: any[]) {}
-    public *onRunJob(...args: any[]): Generator<void, void, void> {}
+    public onRun(...args: any[]) {}
+    public *onRunJob(...args: any[]): Generator<void, void, void> {
+    }
     /**
      * Runs this task on the next tick
      * @param args Optional persistent arguments
      */
     public run(...args: any[]): any {
         try {
-            if (this.#runningTimer) {
+            if (this.runningTimer) {
                 throw new Error(
                     "A runnable task timer is already running on this task",
                 );
             }
-            this.#cancelled = false;
+            this.cancelled = false;
             MinecraftServer.system.runTimeout(() => {
                 this.onRun(args);
             }, 1);
@@ -107,12 +109,12 @@ export default class Runnable {
      * @param args Optional persistent arguments
      */
     public async runAsynchronously(...args: any[]): Promise<any> {
-        if (this.#runningTimer) {
+        if (this.runningTimer) {
             throw new Error(
                 "A runnable task timer is already running on this task",
             );
         }
-        this.#cancelled = false;
+        this.cancelled = false;
         return new Promise((resolve, reject) => {
             try {
                 MinecraftServer.system.runTimeout(() => {
@@ -136,20 +138,28 @@ export default class Runnable {
                     "Delay argument must be a fixed point number (integer)",
                 );
             }
-            if (this.#runningTimer == true && this.#cancelled != false) {
+            if (this.runningTimer == true && this.cancelled != false) {
                 return;
             }
-            this.#runningTimer = true;
-            this.#cancelled = false;
-            this.#id = MinecraftServer.system.runInterval(() => {
-                if (delay == 0 || !delay) {
-                    this.onRun(args);
-                    MinecraftServer.system.runJob(this.onRunJob());
-                } else {
-                    MinecraftServer.system.runTimeout(() => {
+            this.runningTimer = true;
+            this.cancelled = false;
+            this.id = MinecraftServer.system.runInterval(() => {
+                try {
+                    if (delay == 0 || !delay) {
                         this.onRun(args);
                         MinecraftServer.system.runJob(this.onRunJob());
-                    }, delay);
+                    } else {
+                        MinecraftServer.system.runTimeout(() => {
+                            this.onRun(args);
+                            MinecraftServer.system.runJob(this.onRunJob());
+                        }, delay);
+                    }
+                } catch (error) {
+                    console.error(
+                        "Error at runnable " + this.constructor.name,
+                        error,
+                        error.stack,
+                    );
                 }
             }, interval);
         } catch (error: any) {
