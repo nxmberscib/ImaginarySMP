@@ -14,7 +14,7 @@ export default class MuteCommand extends WithLogger {
     constructor() {
         super();
         CommandManager.registerCommand(this);
-        this.logger().robust("Mute command loaded");
+        Imaginary.LOGGER.robust("Mute command loaded");
     }
 
     @Default

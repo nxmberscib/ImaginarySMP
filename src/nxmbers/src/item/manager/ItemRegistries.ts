@@ -1,14 +1,10 @@
 import { Player } from "@minecraft/server";
 import Imaginary from "nxmbers/src/Imaginary";
+import ObtainableItem from "./interface/ObtainableItem";
 
-interface ObtainableItem {
-    itemId: string;
-    obtainedCallback: (player: Player) => void;
-    unobtainedCallback: (player: Player) => void;
-}
 
 export default class ItemRegistries {
-    private OBTAINABLE_PREFIX: string = "obtainable:";
+    private OBTAINABLE_PREFIX: string = "obtained:";
     private obtainableItems: Map<string, ObtainableItem>;
 
     public obtainableItemsRegistry() {
@@ -17,7 +13,7 @@ export default class ItemRegistries {
 
     public constructor() {
         this.obtainableItems = new Map();
-        Imaginary.logger().debug("ItemRegistries initialized");
+        Imaginary.LOGGER.debug("ItemRegistries initialized");
     }
 
     public setObtainedItem(
@@ -26,31 +22,31 @@ export default class ItemRegistries {
         obtained: boolean,
     ) {
         player.setDynamicProperty(
-            this.OBTAINABLE_PREFIX + item.itemId,
+            this.OBTAINABLE_PREFIX + item.ITEM_ID,
             obtained,
         );
     }
 
     public hasObtainedItem(player: Player, item: ObtainableItem) {
-        return player.getDynamicProperty(this.OBTAINABLE_PREFIX + item.itemId);
+        return player.getDynamicProperty(this.OBTAINABLE_PREFIX + item.ITEM_ID);
     }
 
     public registerObtainable(item: ObtainableItem) {
-        this.obtainableItems.set(item.itemId, item);
-        Imaginary.logger().debug("Obtainable item registered: " + item.itemId);
+        this.obtainableItems.set(item.ITEM_ID, item);
+        Imaginary.LOGGER.debug("Obtainable item registered: " + item.ITEM_ID);
     }
 
     public unregisterObtainable(item: string): void;
     public unregisterObtainable(item: ObtainableItem | string): void | boolean {
-        Imaginary.logger().debug(
+        Imaginary.LOGGER.debug(
             "Obtainable item unregistered: " +
-                (typeof item === "string" ? item : item.itemId),
+                (typeof item === "string" ? item : item.ITEM_ID),
         );
 
         if (typeof item === "string") {
             return this.obtainableItems.delete(item);
         }
 
-        return this.obtainableItems.delete(item.itemId);
+        return this.obtainableItems.delete(item.ITEM_ID);
     }
 }

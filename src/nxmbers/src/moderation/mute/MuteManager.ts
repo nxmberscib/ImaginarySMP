@@ -116,7 +116,7 @@ export default class Moderation extends Mixin(Runnable, WithLogger) {
 
         info[player instanceof Player ? player.id : player] = muteInfo;
 
-        this.logger().info(
+        Imaginary.LOGGER.info(
             "[moderation] Player muted: " +
                 JSON.stringify(
                     info[player instanceof Player ? player.id : player],
@@ -149,7 +149,7 @@ export default class Moderation extends Mixin(Runnable, WithLogger) {
             return;
         }
 
-        this.logger().info(
+        Imaginary.LOGGER.info(
             "[moderation] Player unmuted: " +
                 JSON.stringify(
                     info[player instanceof Player ? player.id : player],
@@ -186,7 +186,7 @@ export default class Moderation extends Mixin(Runnable, WithLogger) {
             }
 
             const info = this.getMuteInformation(muted);
-            this.logger().debug(info);
+            Imaginary.LOGGER.debug(info);
             if (!info) {
                 continue;
             }
@@ -198,7 +198,7 @@ export default class Moderation extends Mixin(Runnable, WithLogger) {
         this.setLastTimeChecked(Date.now());
 
         this.runTimer(20);
-        this.logger().info("Mute Manager loaded and running");
+        Imaginary.LOGGER.info("Mute Manager loaded and running");
     }
 
     public async onChatSend(event: ChatSendBeforeEvent) {

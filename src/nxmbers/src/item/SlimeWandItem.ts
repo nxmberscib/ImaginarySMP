@@ -5,17 +5,14 @@ import {
 } from "@minecraft/server";
 import WithLogger from "../util/WithLogger";
 import { Vector3Builder } from "../util/vector/VectorWrapper";
+import Imaginary from "../Imaginary";
 
-export default class SlimeWandItem
-    extends WithLogger
-    implements ItemCustomComponent
-{
+export default class SlimeWandItem implements ItemCustomComponent {
     public ITEM_ID: string = "cib:slime_wand";
 
     constructor() {
-        super();
         world.beforeEvents.itemUse.subscribe(this.onUse.bind(this));
-        this.logger().robust("Slime wand item loaded");
+        Imaginary.LOGGER.robust("Slime wand item loaded");
     }
 
     public async onUse(event: ItemComponentUseEvent) {
@@ -37,9 +34,13 @@ export default class SlimeWandItem
             player.dimension.playSound("mob.slime.big", player.location, {
                 pitch: 0.6,
             });
-            player.dimension.playSound("mace.heavy_smash_ground", player.location, {
-                volume: 0.35,
-            });
+            player.dimension.playSound(
+                "mace.heavy_smash_ground",
+                player.location,
+                {
+                    volume: 0.35,
+                },
+            );
 
             for (const entity of player.dimension.getEntities({
                 maxDistance: 5,
@@ -47,14 +48,14 @@ export default class SlimeWandItem
                 excludeTypes: ["player"],
                 location: player.location,
             })) {
-                this.logger().debug("Effect aplied");
+                Imaginary.LOGGER.debug("Effect aplied");
                 entity.addEffect("poison", 20 * 10);
                 entity.addEffect("slowness", 20 * 10);
             }
 
             player.startItemCooldown("slime_wand", 20 * 8);
         } catch (error) {
-            this.logger().error(error);
+            Imaginary.LOGGER.error(error);
         }
     }
 }

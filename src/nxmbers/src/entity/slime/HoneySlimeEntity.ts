@@ -2,19 +2,14 @@
 import { EntityHurtAfterEvent, Player, world } from "@minecraft/server";
 import Imaginary from "nxmbers/src/Imaginary";
 import { MobNameRegistry } from "nxmbers/src/manager/MobNameManager";
-import WithLogger from "nxmbers/src/util/WithLogger";
 
-export default class HoneySlimeEntity
-    extends WithLogger
-    implements MobNameRegistry
-{
+export default class HoneySlimeEntity implements MobNameRegistry {
     public readonly MOB_ID = "cib:honey_slime";
 
     constructor() {
-        super();
         world.afterEvents.entityHurt.subscribe(this.attackEffects.bind(this));
         Imaginary.getMobNameManager().addRegistry(this);
-        this.logger().robust(this.MOB_ID + " registered");
+        Imaginary.LOGGER.robust(this.MOB_ID + " registered");
     }
 
     public mobId: string = this.MOB_ID;
@@ -41,7 +36,7 @@ export default class HoneySlimeEntity
                 dimension.spawnEntity("minecraft:bee", player.location);
             }
         } catch (error) {
-            this.logger().error(error);
+            Imaginary.LOGGER.error(error);
         }
     }
 }

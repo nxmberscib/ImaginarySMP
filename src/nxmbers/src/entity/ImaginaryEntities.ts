@@ -10,8 +10,9 @@ import BreezeEntity from "./BreezeEntity";
 import OpossumEntity from "./OpossumEntity";
 import WithLogger from "../util/WithLogger";
 import VexEntity from "./VexEntity";
+import Imaginary from "../Imaginary";
 
-export default class ImaginaryEntities extends WithLogger {
+export default class ImaginaryEntities {
     public static OPOSSUM: OpossumEntity;
     public static BREEZE_SKELETON: BreezeSkeletonEntity;
     public static CRYSTALLINE_SKELETON: CrystallineSkeletonEntity;
@@ -49,6 +50,6 @@ export default class ImaginaryEntities extends WithLogger {
         this.BREEZE = new BreezeEntity();
         this.VEX = new VexEntity();
 
-        this.logger().info("Imaginary entities loaded");
+        Imaginary.LOGGER.info("Imaginary entities loaded");
     }
 }

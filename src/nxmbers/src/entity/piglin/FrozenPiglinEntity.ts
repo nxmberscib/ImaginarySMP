@@ -1,5 +1,3 @@
-// @ts-check
-
 import { EntityHurtAfterEvent, Player, world } from "@minecraft/server";
 import Imaginary from "nxmbers/src/Imaginary";
 import { MobNameRegistry } from "nxmbers/src/manager/MobNameManager";
@@ -14,7 +12,7 @@ export default class FrozenPiglinEntity implements MobNameRegistry {
     constructor() {
         world.afterEvents.entityHurt.subscribe(this.onAttack.bind(this));
         Imaginary.getMobNameManager().addRegistry(this);
-        this.logger().robust(this.MOB_ID + "registered");
+        Imaginary.LOGGER.robust(this.MOB_ID + "registered");
     }
 
     public mobId: string = this.MOB_ID;
@@ -51,7 +49,7 @@ export default class FrozenPiglinEntity implements MobNameRegistry {
                 amplifier: slowness?.amplifier + 1,
             });
         } catch (error) {
-            this.logger().error(error);
+            Imaginary.LOGGER.error(error);
         }
     }
 }

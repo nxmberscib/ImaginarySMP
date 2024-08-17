@@ -7,23 +7,18 @@ import {
 } from "@minecraft/server";
 import Imaginary from "nxmbers/src/Imaginary";
 import { MobNameRegistry } from "nxmbers/src/manager/MobNameManager";
-import WithLogger from "nxmbers/src/util/WithLogger";
 
-export default class BreezeSkeletonEntity
-    extends WithLogger
-    implements MobNameRegistry
-{
+export default class BreezeSkeletonEntity implements MobNameRegistry {
     public PROJECTILE_ID = "minecraft:breeze_wind_charge_projectile";
     public MOB_ID = "cib:breeze_skeleton";
     public displayName: string = "§dEsqueleto Breeze";
 
     public constructor() {
-        super();
         world.afterEvents.projectileHitEntity.subscribe(
             this.onProjectileHitEntity.bind(this),
         );
         Imaginary.getMobNameManager().addRegistry(this);
-        this.logger().robust("Breeze skeleton loaded");
+        Imaginary.LOGGER.robust("Breeze skeleton loaded");
     }
 
     private onProjectileHitEntity(arg: any) {
@@ -62,7 +57,7 @@ export default class BreezeSkeletonEntity
                 cause: EntityDamageCause.entityAttack,
             });
         } catch (error) {
-            this.logger().error(error);
+            Imaginary.LOGGER.error(error);
         }
     }
 }

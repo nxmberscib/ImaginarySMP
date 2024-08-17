@@ -2,7 +2,7 @@ import * as MinecraftServer from "@minecraft/server";
 import Logger from "../Logger";
 
 export default class TimerUtils {
-    private logger = new Logger();
+    private LOGGER = new Logger();
     public static runLater(callback: Function, tickDelay: number) {
         (async () => {
             await TimerUtils.sleep(tickDelay);
@@ -216,7 +216,7 @@ export default class TimerUtils {
             }, delay);
             return ev;
         } catch (error: any) {
-            this.logger.error(error, error.stack);
+            this.LOGGER.error(error, error.stack);
         }
     }
 
@@ -231,7 +231,7 @@ export default class TimerUtils {
             }, delay);
             return ev;
         } catch (error: any) {
-            this.logger.error(error, error.stack);
+            this.LOGGER.error(error, error.stack);
         }
     }
 
@@ -239,7 +239,7 @@ export default class TimerUtils {
         try {
             MinecraftServer.system.clearRun(taskId);
         } catch (error: any) {
-            this.logger.error(error, error.stack);
+            this.LOGGER.error(error, error.stack);
         }
     }
 }

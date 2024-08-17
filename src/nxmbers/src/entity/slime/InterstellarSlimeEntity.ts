@@ -34,7 +34,7 @@ Player.prototype.getInterstellarTrappedData = function () {
 };
 
 export default class InterstellarSlimeEntity
-    extends Mixin(Runnable, WithLogger)
+    extends Runnable
     implements MobNameRegistry
 {
     public MOB_ID: string = "cib:interstellar_slime";
@@ -42,14 +42,14 @@ export default class InterstellarSlimeEntity
 
     constructor() {
         super();
-        
+
         world.beforeEvents.playerInteractWithEntity.subscribe(
             this.cancelInteraction.bind(this),
         );
 
         world.afterEvents.entityHurt.subscribe(this.attackEffects.bind(this));
         world.afterEvents.entityDie.subscribe(this.onDied.bind(this));
-        
+
         this.runTimer(1);
     }
 
@@ -160,7 +160,7 @@ export default class InterstellarSlimeEntity
                     break;
             }
         } catch (error) {
-            this.logger().error(error);
+            Imaginary.LOGGER.error(error);
         }
 
         // player.addEffect("slowness", 20 * 3, { amplifier: 4, showParticles: false })

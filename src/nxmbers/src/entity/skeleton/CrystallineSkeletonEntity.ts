@@ -7,10 +7,6 @@ export default class CrystallineSkeletonEntity implements MobNameRegistry {
     public readonly MOB_ID = "cib:crystalline_skeleton";
     public readonly CLOUD_ID = "cib:crystalline_cloud";
 
-    private logger() {
-        return Imaginary.logger();
-    }
-
     public constructor() {
         world.afterEvents.projectileHitBlock.subscribe(
             this.onProjectileHitBlock.bind(this),
@@ -19,6 +15,7 @@ export default class CrystallineSkeletonEntity implements MobNameRegistry {
             this.onProjectileHitEntity.bind(this),
         );
         Imaginary.getMobNameManager().addRegistry(this);
+        Imaginary.LOGGER.robust("Crystalline skeleton entity loaded");
     }
 
     public mobId: string = this.MOB_ID;
@@ -76,7 +73,7 @@ export default class CrystallineSkeletonEntity implements MobNameRegistry {
 
                     const magnitude = knockbackDirection.magnitude();
                     const normalizedDirection = knockbackDirection.normalize();
-                    
+
                     hitEntity.applyKnockback(
                         normalizedDirection.x,
                         normalizedDirection.z,
@@ -86,7 +83,7 @@ export default class CrystallineSkeletonEntity implements MobNameRegistry {
                 }
             }
         } catch (error) {
-            this.logger().error(error);
+            Imaginary.LOGGER.error(error);
         }
     }
 }

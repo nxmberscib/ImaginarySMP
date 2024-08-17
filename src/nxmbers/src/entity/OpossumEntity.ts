@@ -1,14 +1,9 @@
 import { EntityHurtAfterEvent, Player, world } from "@minecraft/server";
-import WithLogger from "../util/WithLogger";
-import MobNameManager, { MobNameRegistry } from "../manager/MobNameManager";
+import { MobNameRegistry } from "../manager/MobNameManager";
 import Imaginary from "../Imaginary";
-import Mixin from "teseract/api/util/Mixin";
 import Runnable from "teseract/api/util/Runnable";
 
-export default class OpossumEntity
-    extends Mixin(WithLogger, Runnable)
-    implements MobNameRegistry
-{
+export default class OpossumEntity extends Runnable implements MobNameRegistry {
     public readonly MOB_ID: string = "cib:opossum";
     public readonly CLOUD_ID: string = "cib:opossum_cloud";
     public readonly displayName: string = "§7Sarigüeya";
@@ -17,7 +12,7 @@ export default class OpossumEntity
         super();
         world.afterEvents.entityHurt.subscribe(this.onAttack.bind(this));
         Imaginary.getMobNameManager().addRegistry(this);
-        this.logger().robust("Opossum loaded");
+        Imaginary.LOGGER.robust("Opossum loaded");
         this.runTimer(1);
     }
 
@@ -52,7 +47,7 @@ export default class OpossumEntity
                     break;
             }
         } catch (error) {
-            this.logger().error(error);
+            Imaginary.LOGGER.error(error);
         }
     }
 }

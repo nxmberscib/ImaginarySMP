@@ -12,18 +12,21 @@ import Logger from "teseract/api/Logger";
 import ImaginaryItems from "./item/ImaginaryItems";
 import MuteManager from "./moderation/mute/MuteManager";
 import MobNameManager from "./manager/MobNameManager";
+import ItemManager from "./item/manager/ItemManager";
 
 export default class Imaginary {
+    #itemManager: ItemManager;
     #muteManager: MuteManager;
     #banManager: BanManager;
     #slotManager: SlotManager;
     #mobNameManager: MobNameManager;
 
     static #instance: Imaginary;
-    static #logger: Logger;
+    public LOGGER: Logger =  new Logger("imaginary", true);
+    public static LOGGER: Logger =  new Logger("imaginary", true);
 
     public static logger() {
-        return this.#logger;
+        return this.logger;
     }
 
     private static getInstance() {
@@ -35,8 +38,8 @@ export default class Imaginary {
         this.initializeGamerules();
 
         Imaginary.#instance = this;
-        Imaginary.#logger = new Logger("imaginary", true);
 
+        this.#itemManager = new ItemManager();
         this.#banManager = new BanManager();
         this.#muteManager = new MuteManager();
         this.#slotManager = new SlotManager();
@@ -46,7 +49,7 @@ export default class Imaginary {
         ImaginaryItems.registerItems();
         ImaginaryEntities.registerEntities();
 
-        Imaginary.logger().info("Imaginary was successfully loaded");
+        Imaginary.LOGGER.info("Imaginary was successfully loaded");
     }
 
     public initializeGamerules() {
@@ -67,6 +70,10 @@ export default class Imaginary {
         world.gameRules.spawnRadius = 0;
     }
 
+    public static getItemManager() {
+        return this.getInstance().#itemManager;
+    }
+
     public static getMobNameManager() {
         return this.getInstance().#mobNameManager;
     }
@@ -83,16 +90,4 @@ export default class Imaginary {
         return this.getInstance().#slotManager;
     }
 
-    public getMobNameManager() {
-        return this.#mobNameManager;
-    }
-    public getBanManager() {
-        return this.#banManager;
-    }
-    public getMuteManager() {
-        return this.#muteManager;
-    }
-    public getSlotManager() {
-        return this.#slotManager;
-    }
 }

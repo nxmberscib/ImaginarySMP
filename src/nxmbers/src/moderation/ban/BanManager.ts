@@ -12,7 +12,6 @@ export default class BanManager extends WithLogger {
     public BAN_OBJECTIVE_ID = "imaginary:banned";
     public BAN_OBJECTIVE: ScoreboardObjective;
 
-
     /**
      *
      * @param player
@@ -110,7 +109,7 @@ export default class BanManager extends WithLogger {
                 player.runCommand(`kick "${player.name}"`);
             });
         } catch (error) {
-            this.logger().error(error);
+            Imaginary.LOGGER.error(error);
         }
     }
 }

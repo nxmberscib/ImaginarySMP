@@ -5,17 +5,14 @@ import {
 } from "@minecraft/server";
 import { Vector3Builder } from "../util/vector/VectorWrapper";
 import WithLogger from "../util/WithLogger";
+import Imaginary from "../Imaginary";
 
-export default class ChipoteChillonItem
-    extends WithLogger
-    implements ItemCustomComponent
-{
+export default class ChipoteChillonItem implements ItemCustomComponent {
     public ITEM_ID = "cib:chipote_chillon";
 
     constructor() {
-        super();
         world.beforeEvents.itemUse.subscribe(this.onUse.bind(this));
-        this.logger().robust("ChipoteChillon loaded");
+        Imaginary.LOGGER.robust("ChipoteChillon loaded");
     }
 
     public async onUse(event: ItemComponentUseEvent) {

@@ -1,11 +1,10 @@
 import { Player } from "@minecraft/server";
 import Imaginary from "nxmbers/src/Imaginary";
-import WithLogger from "nxmbers/src/util/WithLogger";
 import CommandAlias from "teseract/api/command/CommandAlias";
 import Default from "teseract/api/command/Default";
 
 @CommandAlias("unban|pardon")
-export default class UnbanCommand extends WithLogger {
+export default class UnbanCommand {
     @Default
     async onDefaultString(player: Player, unbannedName: string) {
         const banManager = Imaginary.getBanManager();

@@ -12,7 +12,7 @@ export default class UnmuteCommand extends WithLogger {
     constructor() {
         super();
         CommandManager.registerCommand(this);
-        this.logger().robust("Unmute command loaded");
+        Imaginary.LOGGER.robust("Unmute command loaded");
     }
 
     @Default

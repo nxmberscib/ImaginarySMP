@@ -13,6 +13,6 @@ export default class ImaginaryBlocks {
         new GrindstoneBlock();
         new VaultBlock();
         
-        Imaginary.logger().info("Imaginary Blocks loaded");
+        Imaginary.LOGGER.info("Imaginary Blocks loaded");
     }
 }

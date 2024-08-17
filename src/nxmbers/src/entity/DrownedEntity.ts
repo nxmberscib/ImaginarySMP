@@ -7,16 +7,16 @@ import {
     world,
 } from "@minecraft/server";
 import Imaginary from "../Imaginary";
-import WithLogger from "../util/WithLogger";
 
-export default class DrownedEntity extends WithLogger {
+export default class DrownedEntity {
     public MOB_ID: string = "minecraft:drowned";
     public TRIDENT_ID: string = "minecraft:thrown_trident";
 
     public constructor() {
-        super();
-        world.afterEvents.projectileHitEntity.subscribe(this.onTridentHit.bind(this));
-        this.logger().robust("Drowned entity loaded");
+        world.afterEvents.projectileHitEntity.subscribe(
+            this.onTridentHit.bind(this),
+        );
+        Imaginary.LOGGER.robust("Drowned entity loaded");
     }
 
     private onTridentHit(event: ProjectileHitEntityAfterEvent) {
@@ -39,7 +39,7 @@ export default class DrownedEntity extends WithLogger {
 
             source.teleport(player.location);
         } catch (error) {
-            this.logger().error(error);
+            Imaginary.LOGGER.error(error);
         }
     }
 }

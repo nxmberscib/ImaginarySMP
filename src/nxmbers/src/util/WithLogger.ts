@@ -1,10 +1,18 @@
 import Imaginary from "../Imaginary";
+import Deprecated from "./general/Deprecated";
 
+@Deprecated
 export default class WithLogger {
-    protected logger() {
-        return Imaginary.logger();
+    @Deprecated
+    protected get LOGGER() {
+        return Imaginary.LOGGER;
     }
+    @Deprecated
+    protected logger() {
+        return Imaginary.LOGGER;
+    }
+    @Deprecated
     protected static logger() {
-        return Imaginary.logger();
+        return Imaginary.LOGGER;
     }
 }

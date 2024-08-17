@@ -8,12 +8,13 @@ import {
 import WithLogger from "../util/WithLogger";
 import Mixin from "teseract/api/util/Mixin";
 import Runnable from "teseract/api/util/Runnable";
+import Imaginary from "../Imaginary";
 
 export default class SlotManager extends Mixin(Runnable, WithLogger) {
     public constructor() {
         super();
         this.runTimer(5);
-        this.logger().info("Slot manager loaded");
+        Imaginary.LOGGER.info("Slot manager loaded");
     }
 
     public override *onRunJob() {
@@ -51,7 +52,7 @@ export default class SlotManager extends Mixin(Runnable, WithLogger) {
      */
     public lockSlot(player: Player, slotId: number) {
         player.setDynamicProperty("slot:" + slotId, true);
-        this.logger().robust(
+        Imaginary.LOGGER.robust(
             `Slot ${slotId} locked for player '${player.name}'`,
         );
     }
@@ -62,7 +63,7 @@ export default class SlotManager extends Mixin(Runnable, WithLogger) {
      */
     public unlockSlot(player: Player, slotId: number) {
         player.setDynamicProperty("slot:" + slotId, false);
-        this.logger().robust(
+        Imaginary.LOGGER.robust(
             `Slot ${slotId} unlocked for player '${player.name}'`,
         );
     }

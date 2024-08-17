@@ -15,12 +15,12 @@ export default class MobNameManager extends WithLogger {
         super();
         world.afterEvents.entitySpawn.subscribe(this.onMobSpawned.bind(this));
         this.registry = new Map();
-        this.logger().info("Mob name manager loaded");
+        Imaginary.LOGGER.info("Mob name manager loaded");
     }
 
     public addRegistry(registry: MobNameRegistry) {
         this.registry.set(registry.mobId, registry);
-        this.logger().robust(
+        Imaginary.LOGGER.robust(
             "Mob name registry added: " +
                 registry.mobId +
                 `'${registry.displayName}'`,
@@ -39,7 +39,7 @@ export default class MobNameManager extends WithLogger {
 
         event.entity.nameTag = registry.displayName;
 
-        this.logger().debug(
+        Imaginary.LOGGER.debug(
             "Mob name registry triggered: " +
                 registry.mobId +
                 `'${registry.displayName}'`,
