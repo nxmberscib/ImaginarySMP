@@ -228,6 +228,8 @@ chat_rank.owner=§c§l[OWNER]§r
 chat_rank.admin=§e§l[ADMIN]§r
 chat_rank.vip=§a§l[VIP]§r
 
+chat.feedback.item.aureum_fulminator=§e%1 ha obtenido un Fulminador Aureo
+
 entity.cib:entity.crystalline_skeleton.name=§6Crystalline Skeleton
 entity.cib:honey_slime.name=§eHoney Slime
 entity.cib:marine_slime.name=§bMarine Slime
@@ -239,8 +241,9 @@ item.spawn_egg.entity.cib:marine_slime.name=Generador de Slime Marino
 item.spawn_egg.entity.cib:interstellar_slime.name=Generador de Slime Interestelar
 item.spawn_egg.entity.cib:entity.preassure_assasin.name=Gnerador de Asesino de Presion
 
-item.cib:aureum_fulminator.name=§6Fulminador Aureo
-item.cib:chipote_chillon.name=§cChipote Chillon
+item.cib:aureum_fulminator=§6Fulminador Aureo
+item.cib:chipote_chillon=§cChipote Chillon
+item.cib:slime_wand=§aVara de Slime
 
 command.unban.success=Player '%1' was successfully unbanned.
 command.unban.not_banned=Player '%1' is not currently banned.

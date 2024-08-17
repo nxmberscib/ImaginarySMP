@@ -231,6 +231,8 @@ chat_rank.owner=§c§l[OWNER]§r
 chat_rank.admin=§e§l[ADMIN]§r
 chat_rank.vip=§a§l[VIP]§r
 
+chat.feedback.item.aureum_fulminator=§e%1 has obtained an Aureum Fulminator
+
 entity.cib:entity.crystalline_skeleton.name=§6Crystalline Skeleton
 entity.cib:breeze_skeleton.name=§dBreeze Skeleton
 entity.cib:honey_slime.name=§eHoney Slime
@@ -250,9 +252,9 @@ item.spawn_egg.entity.cib:opossum.name=Opossum Spawn Egg
 item.spawn_egg.entity.cib:preassure_assasin.name=Preassure Assasin Spawn Egg
 item.spawn_egg.entity.cib:frozen_piglin.name=Frozen Piglin Spawn Egg
 
-item.cib:aureum_fulminator.name=§6Aureum Fulminator
-item.cib:chipote_chillon.name=§cChipote Chillon
-item.cib:slime_wand.name=§aSlime Wand
+item.cib:aureum_fulminator=§6Aureum Fulminator
+item.cib:chipote_chillon=§cChipote Chillon
+item.cib:slime_wand=§aSlime Wand
 
 command.unban.success=Player '%1' was successfully unbanned.
 command.unban.not_banned=Player '%1' is not currently banned.
