@@ -1,13 +1,13 @@
-import { ItemStack, Player, system, world } from "@minecraft/server";
+import { ItemStack, Player, world } from "@minecraft/server";
 import Imaginary from "nxmbers/src/Imaginary";
 import Runnable from "teseract/api/util/Runnable";
-import ItemManager from "../ItemManager";
-import ImaginaryItems from "../../ImaginaryItems";
 import CommandAlias from "teseract/api/command/CommandAlias";
 import SubCommand from "teseract/api/command/SubCommand";
 import CommandManager from "teseract/api/command/CommandManager";
+import Permission from "teseract/api/command/Permission";
 
 @CommandAlias("-obtainable")
+@Permission((p) => p.hasTag("admin") || p.isOp())
 export default class ObtainableItemsThread extends Runnable {
     public constructor() {
         super();

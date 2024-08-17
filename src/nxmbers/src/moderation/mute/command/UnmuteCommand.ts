@@ -5,9 +5,11 @@ import CommandAlias from "teseract/api/command/CommandAlias";
 import CommandManager from "teseract/api/command/CommandManager";
 import Default from "teseract/api/command/Default";
 import Optional from "teseract/api/command/Optional";
+import Permission from "teseract/api/command/Permission";
 import TimerUtils from "teseract/api/util/TimerUtils";
 
 @CommandAlias("unmute")
+@Permission((p) => p.hasTag("admin") || p.isOp())
 export default class UnmuteCommand extends WithLogger {
     constructor() {
         super();
