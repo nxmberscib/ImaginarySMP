@@ -20,7 +20,16 @@ export default class AureumFulminatorItem implements ObtainableItem {
             translate: "chat.feedback.item.aureum_fulminator",
             with: [player.name],
         });
+
+        Imaginary.getSlotManager().unlockSlot(player, 1);
+
+        Imaginary.LOGGER.robust(`${player.name} obtained an aureum fulminator`);
     }
 
-    public unobtainedCallback(player: Player): void {}
+    public unobtainedCallback(player: Player): void {
+        Imaginary.getSlotManager().lockSlot(player, 1);
+        Imaginary.LOGGER.robust(
+            `${player.name} unobtained an aureum fulminator, maybe this was triggered by an admin?`,
+        );
+    }
 }

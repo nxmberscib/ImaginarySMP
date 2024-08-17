@@ -2,7 +2,6 @@ import { Player } from "@minecraft/server";
 import Imaginary from "nxmbers/src/Imaginary";
 import ObtainableItem from "./interface/ObtainableItem";
 
-
 export default class ItemRegistries {
     private OBTAINABLE_PREFIX: string = "obtained:";
     private obtainableItems: Map<string, ObtainableItem>;
@@ -25,6 +24,9 @@ export default class ItemRegistries {
             this.OBTAINABLE_PREFIX + item.ITEM_ID,
             obtained,
         );
+        if (obtained == false) {
+            item.unobtainedCallback(player);
+        }
     }
 
     public hasObtainedItem(player: Player, item: ObtainableItem) {
