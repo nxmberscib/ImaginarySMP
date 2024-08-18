@@ -240,16 +240,35 @@ item.spawn_egg.entity.cib:crystalline_skeleton.name=Generador de Esqueleto Crist
 item.spawn_egg.entity.cib:honey_slime.name=Generador de Slime de Miel
 item.spawn_egg.entity.cib:marine_slime.name=Generador de Slime Marino
 item.spawn_egg.entity.cib:interstellar_slime.name=Generador de Slime Interestelar
-item.spawn_egg.entity.cib:entity.preassure_assasin.name=Gnerador de Asesino de Presion
+item.spawn_egg.entity.cib:entity.preassure_assasin.name=Generador de Asesino de Presion
 
 item.cib:aureum_fulminator.name=§6Fulminador Aureo
 item.cib:chipote_chillon.name=§cChipote Chillon
 item.cib:slime_wand=§aVara de Slime
 
-command.unban.success=Player '%1' was successfully unbanned.
-command.unban.not_banned=Player '%1' is not currently banned.
+## Command Translations
 
-command.ban.success=Player '%1' was successfully banned.
-command.ban.success_reason=Player '%1' was successfully banned with reason '%2'.
-command.ban.success_reason.duration=Player '%1' was successfully banned for %2 with reason '%3'.
-command.ban.success_duration=Player '%1' was successfully banned by %2.
+command.unban.success=El jugador '%1' ha sido desbaneado correctamente.
+command.unban.not_banned=El jugador '%1' no esta baneado.
+
+command.ban.success=El jugador '%1' ha sido baneado correctamente.
+command.ban.success_reason=El jugador '%1' ha sido baneado correctamente por con razón '%2'.
+command.ban.success_reason.duration=El jugador '%1' ha sido baneado correctamente por %2 con razón '%3'.
+command.ban.success_duration=El jugador '%1' ha sido baneado correctamente por %2.
+
+## UI Translations
+
+ui.config_menu.close_chat=§aCierra el menú de chat para entrar al menú de configuración
+
+ui.config_menu.main_title=Configuración de Usuario
+
+ui.swappable.enabled=§aActivado
+ui.swappable.disabled=§cDesactivado
+
+ui.swappable.toggle_swappable=Alternar %1
+
+ui.swappable.fast_totem=Totem Rápido
+ui.swappable.fast_shield=Escudo Rápido
+
+ui.swappable.enable_option=§aActivar
+ui.swappable.disable_option=§cDesactivar

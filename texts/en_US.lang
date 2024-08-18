@@ -256,6 +256,8 @@ item.cib:aureum_fulminator=§6Aureum Fulminator
 item.cib:chipote_chillon=§cChipote Chillon
 item.cib:slime_wand=§aSlime Wand
 
+## Command translations
+
 command.unban.success=Player '%1' was successfully unbanned.
 command.unban.not_banned=Player '%1' is not currently banned.
 
@@ -263,3 +265,19 @@ command.ban.success=Player '%1' was successfully banned.
 command.ban.success_reason=Player '%1' was successfully banned with reason '%2'.
 command.ban.success_reason.duration=Player '%1' was successfully banned for %2 with reason '%3'.
 command.ban.success_duration=Player '%1' was successfully banned by %2.
+
+## UI Translations
+ui.config_menu.close_chat=§aClose the chat for entering the config menu
+
+ui.config_menu.main_title=User Config
+
+ui.swappable.enabled=§aEnabled
+ui.swappable.disabled=§cDisabled
+
+ui.swappable.toggle_swappable=Toggle %1
+
+ui.swappable.fast_totem=Fast Totem
+ui.swappable.fast_shield=Fast Shield
+
+ui.swappable.enable_option=§aEnable
+ui.swappable.disable_option=§cDisable
