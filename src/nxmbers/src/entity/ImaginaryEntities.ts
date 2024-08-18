@@ -7,7 +7,7 @@ import ImaginaryPlayer from "./player/ImaginaryPlayer";
 import BreezeSkeletonEntity from "./skeleton/BreezeSkeletonEntity";
 import CrystallineSkeletonEntity from "./skeleton/CrystallineSkeletonEntity";
 import BreezeEntity from "./BreezeEntity";
-import OpossumEntity from "./OpossumEntity";
+import OpossumEntity from "./opossum/OpossumEntity";
 import WithLogger from "../util/WithLogger";
 import VexEntity from "./VexEntity";
 import Imaginary from "../Imaginary";

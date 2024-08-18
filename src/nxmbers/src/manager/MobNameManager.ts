@@ -19,11 +19,11 @@ export default class MobNameManager extends WithLogger {
     }
 
     public addRegistry(registry: MobNameRegistry) {
-        this.registry.set(registry.mobId, registry);
+        this.registry.set(registry.mobId ?? registry.MOB_ID, registry);
         Imaginary.LOGGER.robust(
             "Mob name registry added: " +
-                registry.mobId +
-                `'${registry.displayName}'`,
+                (registry.mobId ?? registry.MOB_ID) +
+                ` '${registry.displayName}'`,
         );
     }
 
@@ -39,10 +39,10 @@ export default class MobNameManager extends WithLogger {
 
         event.entity.nameTag = registry.displayName;
 
-        Imaginary.LOGGER.debug(
+        Imaginary.LOGGER.robust(
             "Mob name registry triggered: " +
-                registry.mobId +
-                `'${registry.displayName}'`,
+                (registry.mobId ?? registry.MOB_ID) +
+                ` '${registry.displayName}'`,
         );
     }
 }

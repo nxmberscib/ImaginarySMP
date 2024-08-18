@@ -1,0 +1,75 @@
+{
+    "format_version": "1.16.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "cib:ice_projectile",
+            "runtime_identifier": "snowball",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "is_experimental": false
+        },
+        "component_groups": {
+            "despawn": {
+                "minecraft:instant_despawn": {
+                    "remove_child_entities": false
+                }
+            }
+        },
+        "components": {
+            // "minecraft:damage_sensor": {
+            //     "triggers": [
+            //         {
+            //             "on_damage": {
+            //                 "filters": {
+            //                     "all_of": [
+            //                         {
+            //                             "test": "has_damage",
+            //                             "subject": "other",
+            //                             "value": "entity_explosion"
+            //                         },
+            //                         {
+            //                             "test": "is_family",
+            //                             "subject": "other",
+            //                             "value": "player"
+            //                         }
+            //                     ]
+            //                 }
+            //             },
+            //             "deals_damage": false
+            //         }
+            //     ]
+            // },
+            "minecraft:collision_box": {
+                "width": 0.25,
+                "height": 0.25
+            },
+            "minecraft:projectile": {
+                "on_hit": {
+                    "impact_damage": {
+                        "damage": 10,
+                        "destroy_on_hit": true,
+                        "knockback": true
+                    }
+                },
+                "anchor": 1,
+                "power": 3.2,
+                "gravity": 0.0,
+                "angle_offset": 0.0,
+                "offset": [0, -0.1, 0]
+            },
+            "minecraft:physics": {},
+            "minecraft:pushable": {
+                "is_pushable": true,
+                "is_pushable_by_piston": true
+            },
+            "minecraft:conditional_bandwidth_optimization": {
+                "default_values": {
+                    "max_optimized_distance": 100.0,
+                    "max_dropped_ticks": 7,
+                    "use_motion_prediction_hints": true
+                }
+            }
+        },
+        "events": {}
+    }
+}

@@ -6,7 +6,7 @@ export default class ItemRegistries {
     private OBTAINABLE_PREFIX: string = "obtained:";
     private obtainableItems: Map<string, ObtainableItem>;
 
-    public obtainableItemsRegistry() {
+    public obtainableRegistry() {
         return this.obtainableItems;
     }
 
@@ -17,20 +17,45 @@ export default class ItemRegistries {
 
     public setObtainedItem(
         player: Player,
-        item: ObtainableItem,
+        item: ObtainableItem | string,
         obtained: boolean,
     ) {
+        const obtainable =
+            typeof item === "string"
+                ? this.obtainableRegistry().get(item)
+                : item;
+
+        if (typeof item === "string" && !obtainable) {
+            return Imaginary.LOGGER.error(
+                `Obtainable '${item}' does not exist in registry`,
+            );
+        }
+
         player.setDynamicProperty(
-            this.OBTAINABLE_PREFIX + item.ITEM_ID,
+            this.OBTAINABLE_PREFIX + obtainable.ITEM_ID,
             obtained,
         );
         if (obtained == false) {
-            item.unobtainedCallback(player);
+            obtainable.unobtainedCallback(player);
         }
     }
 
-    public hasObtainedItem(player: Player, item: ObtainableItem) {
-        return player.getDynamicProperty(this.OBTAINABLE_PREFIX + item.ITEM_ID);
+    public hasObtainedItem(player: Player, item: ObtainableItem | string) {
+        const obtainable =
+            typeof item === "string"
+                ? this.obtainableRegistry().get(item)
+                : item;
+
+        if (typeof item === "string" && !obtainable) {
+            return Imaginary.LOGGER.error(
+                `Obtainable '${item}' does not exist in registry`,
+            );
+        }
+        return (
+            (player.getDynamicProperty(
+                this.OBTAINABLE_PREFIX + obtainable.ITEM_ID,
+            ) as boolean) ?? false
+        );
     }
 
     public registerObtainable(item: ObtainableItem) {
@@ -40,6 +65,17 @@ export default class ItemRegistries {
 
     public unregisterObtainable(item: string): void;
     public unregisterObtainable(item: ObtainableItem | string): void | boolean {
+        const obtainable =
+            typeof item === "string"
+                ? this.obtainableRegistry().get(item)
+                : item;
+
+        if (typeof item === "string" && !obtainable) {
+            return Imaginary.LOGGER.error(
+                `Obtainable '${item}' does not exist in registry`,
+            );
+        }
+        
         Imaginary.LOGGER.debug(
             "Obtainable item unregistered: " +
                 (typeof item === "string" ? item : item.ITEM_ID),
@@ -49,6 +85,6 @@ export default class ItemRegistries {
             return this.obtainableItems.delete(item);
         }
 
-        return this.obtainableItems.delete(item.ITEM_ID);
+        return this.obtainableItems.delete(obtainable.ITEM_ID);
     }
 }

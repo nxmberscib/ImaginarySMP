@@ -29,7 +29,7 @@ export default class ConnectionListener {
             !registries.hasObtainedItem(
                 player,
                 registries
-                    .obtainableItemsRegistry()
+                    .obtainableRegistry()
                     .get(ImaginaryItems.AUREUM_FULMINATOR.ITEM_ID),
             )
         ) {

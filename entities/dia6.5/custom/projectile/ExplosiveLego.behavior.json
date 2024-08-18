@@ -64,7 +64,7 @@
                     }
                 },
                 "anchor": 1,
-                "power": 1.6,
+                "power": 2.2,
                 "gravity": 0.0,
                 "angle_offset": 0.0,
                 "offset": [0, -0.1, 0]

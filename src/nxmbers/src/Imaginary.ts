@@ -1,29 +1,29 @@
+import { world } from "@minecraft/server";
+import { EntityResurrectEventSignal } from "teseract/api/event/EntityResurrectEvent";
 import SlotManager from "./manager/SlotManager";
 import ImaginaryEntities from "./entity/ImaginaryEntities";
 import BanManager from "./moderation/ban/BanManager";
-import { GameRules, world } from "@minecraft/server";
 import ImaginaryCommands from "./command/ImaginaryCommands";
-import {
-    EntityResurrectEvent,
-    EntityResurrectEventSignal,
-} from "teseract/api/event/EntityResurrectEvent";
-// import MuteManager from "./manager/MuteManager";
 import Logger from "teseract/api/Logger";
 import ImaginaryItems from "./item/ImaginaryItems";
 import MuteManager from "./moderation/mute/MuteManager";
 import MobNameManager from "./manager/MobNameManager";
 import ItemManager from "./item/manager/ItemManager";
+import DiscordManager from "./discord/DiscordManager";
+import FastTotemManager from "./fast_totem/FastTotemManager";
 
 export default class Imaginary {
+    #fastTotemManager: FastTotemManager;
     #itemManager: ItemManager;
     #muteManager: MuteManager;
     #banManager: BanManager;
     #slotManager: SlotManager;
     #mobNameManager: MobNameManager;
+    #discordManager: DiscordManager;
 
     static #instance: Imaginary;
-    public LOGGER: Logger =  new Logger("imaginary", true);
-    public static LOGGER: Logger =  new Logger("imaginary", true);
+    public LOGGER: Logger = new Logger("imaginary", true);
+    public static LOGGER: Logger = new Logger("imaginary", true);
 
     public static logger() {
         return this.logger;
@@ -39,11 +39,13 @@ export default class Imaginary {
 
         Imaginary.#instance = this;
 
+        this.#fastTotemManager = new FastTotemManager();
         this.#itemManager = new ItemManager();
         this.#banManager = new BanManager();
         this.#muteManager = new MuteManager();
         this.#slotManager = new SlotManager();
         this.#mobNameManager = new MobNameManager();
+        this.#discordManager = new DiscordManager();
 
         ImaginaryCommands.registerCommands();
         ImaginaryItems.registerItems();
@@ -70,6 +72,10 @@ export default class Imaginary {
         world.gameRules.spawnRadius = 0;
     }
 
+    public static getFastTotemManager() {
+        return this.getInstance().#fastTotemManager;
+    }
+
     public static getItemManager() {
         return this.getInstance().#itemManager;
     }
@@ -90,4 +96,7 @@ export default class Imaginary {
         return this.getInstance().#slotManager;
     }
 
+    public static getDiscordManager() {
+        return this.getInstance().#discordManager;
+    }
 }

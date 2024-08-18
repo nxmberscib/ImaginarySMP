@@ -1,4 +1,10 @@
-import { EntityHurtAfterEvent, Player, world } from "@minecraft/server";
+import {
+    BlockPermutation,
+    BlockTypes,
+    EntityHurtAfterEvent,
+    Player,
+    world,
+} from "@minecraft/server";
 import Imaginary from "nxmbers/src/Imaginary";
 import { MobNameRegistry } from "nxmbers/src/manager/MobNameManager";
 
@@ -18,11 +24,14 @@ export default class FrozenPiglinEntity implements MobNameRegistry {
     public mobId: string = this.MOB_ID;
     public displayName: string = "§bPiglin Congelado";
 
-    private onAttack(event: EntityHurtAfterEvent) {
+    private async onAttack(event: EntityHurtAfterEvent) {
         try {
             const {
                 damage,
-                damageSource: { damagingEntity: damager },
+                damageSource: {
+                    damagingEntity: damager,
+                    damagingProjectile: projectile,
+                },
                 hurtEntity: player,
             } = event;
 
@@ -33,6 +42,22 @@ export default class FrozenPiglinEntity implements MobNameRegistry {
             if (damager?.typeId != this.MOB_ID) {
                 return;
             }
+
+            // if (projectile) {
+            //     const location = player.getHeadLocation()
+            //     const block = player.dimension.getBlock(location);
+            //     const old = block.permutation;
+            //     block.setPermutation(
+            //         BlockPermutation.resolve("minecraft:blue_ice"),
+            //     );
+            //     const blockLocation = block.center()
+            //     const {x,y,z} = blockLocation
+            //     await player.runCommandAsync(
+            //         `fill ${x} ${y} ${z} ${x} ${y} ${z} air destroy`,
+            //     );
+
+            //     block.setPermutation(old);
+            // }
 
             let slowness = player.getEffect("slowness");
 

@@ -5,17 +5,20 @@ import {
     Player,
     world,
 } from "@minecraft/server";
+import Imaginary from "nxmbers/src/Imaginary";
 import { MobNameRegistry } from "nxmbers/src/manager/MobNameManager";
 
 export default class MarineSlimeEntity implements MobNameRegistry {
     public MOB_ID: string = "cib:marine_slime";
+    public displayName: string = "§bSlime Marino";
 
     constructor() {
         world.afterEvents.entityDie.subscribe(this.spawnProtocol.bind(this));
         world.afterEvents.entityHurt.subscribe(this.attackEffects.bind(this));
+        
+        Imaginary.getMobNameManager().addRegistry(this);
+        Imaginary.LOGGER.robust("Marine slime entity loaded");
     }
-
-    public displayName: string = "§bSlime Marino";
 
     public spawnProtocol(arg: EntityDieAfterEvent) {
         if (arg.deadEntity?.typeId != "minecraft:glow_squid") {

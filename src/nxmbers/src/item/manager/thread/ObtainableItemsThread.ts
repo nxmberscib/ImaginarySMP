@@ -19,12 +19,12 @@ export default class ObtainableItemsThread extends Runnable {
     @SubCommand("--reset")
     private onReset(sender: Player, obtainable: string, target: Player) {
         const registries = Imaginary.getItemManager().getRegistries();
-        if (!registries.obtainableItemsRegistry().has(obtainable)) {
+        if (!registries.obtainableRegistry().has(obtainable)) {
             return sender.sendMessage(`§cUknown obtainable item: '${obtainable}' is not a registered obtainable item.`)
         }
         registries.setObtainedItem(
             target,
-            registries.obtainableItemsRegistry().get(obtainable),
+            registries.obtainableRegistry().get(obtainable),
             false,
         );
         sender.sendMessage(`§7Obtainable item '${obtainable}' was reset for player '${target.name}'`)
@@ -58,7 +58,7 @@ export default class ObtainableItemsThread extends Runnable {
             for (const player of world.getAllPlayers()) {
                 for (const [id, obtainable] of Imaginary.getItemManager()
                     .getRegistries()
-                    .obtainableItemsRegistry()
+                    .obtainableRegistry()
                     .entries()) {
                     const obtainableId = this.formatObtainable(id);
 
