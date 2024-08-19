@@ -1,0 +1,59 @@
+{
+	"format_version": "1.8.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "cib:jirafita",
+			"min_engine_version": "1.8.0",
+			"materials": {
+				"default": "llama"
+			},
+			"textures": {
+				"creamy": "textures/entity/llama/jirafita",
+				"white": "textures/entity/llama/jirafita",
+				"brown": "textures/entity/llama/jirafita",
+				"gray": "textures/entity/llama/jirafita",
+				"decor_none": "textures/entity/llama/jirafita",
+				"decor_white": "textures/entity/llama/jirafita",
+				"decor_orange": "textures/entity/llama/jirafita",
+				"decor_magenta": "textures/entity/llama/jirafita",
+				"decor_light_blue": "textures/entity/llama/jirafita",
+				"decor_yellow": "textures/entity/llama/jirafita",
+				"decor_lime": "textures/entity/llama/jirafita",
+				"decor_pink": "textures/entity/llama/jirafita",
+				"decor_gray": "textures/entity/llama/jirafita",
+				"decor_silver": "textures/entity/llama/jirafita",
+				"decor_cyan": "textures/entity/llama/jirafita",
+				"decor_purple": "textures/entity/llama/jirafita",
+				"decor_blue": "textures/entity/llama/jirafita",
+				"decor_brown": "textures/entity/llama/jirafita",
+				"decor_green": "textures/entity/llama/jirafita",
+				"decor_red": "textures/entity/llama/jirafita",
+				"decor_black": "textures/entity/llama/jirafita",
+				"decor_wandering_trader": "textures/entity/llama/jirafita",
+				"trader_llama_decor": "textures/entity/llama/jirafita"
+			},
+			"geometry": {
+				"default": "geometry.llama.v1.8"
+			},
+			"animations": {
+				"setup": "animation.llama.setup",
+				"walk": "animation.quadruped.walk",
+				"look_at_target": "animation.common.look_at_target",
+				"baby_transform": "animation.llama.baby_transform"
+			},
+			"animation_controllers": [
+				{
+					"move": "controller.animation.llama.move"
+				},
+				{
+					"baby": "controller.animation.llama.baby"
+				}
+			],
+			"render_controllers": ["controller.render.llama"],
+			"spawn_egg": {
+				"base_color": "#fff0c9",
+				"overlay_color": "#b8ac8d"
+			}
+		}
+	}
+}

@@ -269,3 +269,5 @@ ui.swappable.fast_shield=Escudo Rápido
 
 ui.swappable.enable_option=§aActivar
 ui.swappable.disable_option=§cDesactivar
+
+action.hint.exit.cib:vex_firework=¡Estás en un cohete!
