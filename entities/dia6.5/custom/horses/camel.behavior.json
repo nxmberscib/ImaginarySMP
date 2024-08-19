@@ -10,6 +10,16 @@
 			"is_experimental": false
 		},
 		"component_groups": {
+			"into_jirafita": {
+				"minecraft:transformation": {
+					"drop_equipment": false,
+					"drop_inventory": false,
+					"into": "cib:jirafita",
+					"keep_level": false,
+					"keep_owner": false,
+					"preserve_equipment": false
+				}
+			},
 			"minecraft:camel_saddled": {
 				"minecraft:is_saddled": {},
 				"minecraft:input_ground_controlled": {},
@@ -321,16 +331,21 @@
 		},
 		"events": {
 			"minecraft:entity_spawned": {
-				"randomize": [
-					{
-						"weight": 95,
-						"trigger": "minecraft:spawn_adult"
-					},
-					{
-						"weight": 5,
-						"trigger": "minecraft:entity_born"
-					}
-				]
+				"add": {
+					"component_groups": [
+						"into_jirafita"
+					]
+				}
+				// "randomize": [
+				// 	{
+				// 		"weight": 95,
+				// 		"trigger": "minecraft:spawn_adult"
+				// 	},
+				// 	{
+				// 		"weight": 5,
+				// 		"trigger": "minecraft:entity_born"
+				// 	}
+				// ]
 			},
 			"minecraft:spawn_adult": {
 				"add": {

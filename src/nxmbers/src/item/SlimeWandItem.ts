@@ -6,6 +6,8 @@ import {
 import WithLogger from "../util/WithLogger";
 import { Vector3Builder } from "../util/vector/VectorWrapper";
 import Imaginary from "../Imaginary";
+import { calculateKnockbackVector } from "../util/KnockbackFromPoint";
+import TimerUtils from "teseract/api/util/TimerUtils";
 
 export default class SlimeWandItem implements ItemCustomComponent {
     public ITEM_ID: string = "cib:slime_wand";
@@ -48,12 +50,14 @@ export default class SlimeWandItem implements ItemCustomComponent {
                 excludeTypes: ["player"],
                 location: player.location,
             })) {
-                Imaginary.LOGGER.debug("Effect aplied");
                 entity.addEffect("poison", 20 * 10);
                 entity.addEffect("slowness", 20 * 10);
+                const knockbackVector = calculateKnockbackVector(entity.location, player.location, 4)
+                knockbackVector.y = 0.5
+                entity.applyImpulse(knockbackVector)
             }
 
-            player.startItemCooldown("slime_wand", 20 * 8);
+            player.startItemCooldown("slime_wand", TimerUtils.fromSecondsToTicks(15));
         } catch (error) {
             Imaginary.LOGGER.error(error);
         }

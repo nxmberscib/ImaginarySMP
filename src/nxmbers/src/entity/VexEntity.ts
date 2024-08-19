@@ -30,8 +30,9 @@ export default class VexEntity extends WithLogger {
             player.location,
         );
 
-        // rocket.getComponent("rideable")?.addRider(player);
-        rocket.applyImpulse(new Vector3Builder(0, 5, 0));
-        // rocket.getComponent("projectile")?.shoot(new Vector3Builder(0, 5, 0));
+        rocket.getComponent("projectile")?.shoot(new Vector3Builder(0, 0.5, 0));
+        rocket.triggerEvent("start_timer");
+        rocket.getComponent("rideable")?.addRider(player);
+        // rocket.applyImpulse(new Vector3Builder(0, 10, 0));
     }
 }

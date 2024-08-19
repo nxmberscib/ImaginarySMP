@@ -7,10 +7,13 @@ import {
     world,
 } from "@minecraft/server";
 import Imaginary from "../Imaginary";
+import { MobNameRegistry } from "../manager/MobNameManager";
 
-export default class BreezeEntity {
+export default class BreezeEntity implements MobNameRegistry {
     public MOB_ID: string = "minecraft:breeze";
     public CHARGE_ID: string = "minecraft:breeze_wind_charge_projectile";
+    public displayName: string = "Breeze Mágico"; 
+    
     public constructor() {
         world.afterEvents.projectileHitEntity.subscribe(
             this.onWindChargeHit.bind(this),
@@ -57,6 +60,7 @@ export default class BreezeEntity {
 
             player.addEffect("blindness", 20 * 3);
             player.addEffect("poison", 20 * 3);
+            
             player.applyDamage(8, {
                 damagingEntity: source,
                 cause: EntityDamageCause.entityAttack,

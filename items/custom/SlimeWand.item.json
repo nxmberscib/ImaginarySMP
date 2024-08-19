@@ -14,7 +14,7 @@
 			"minecraft:can_destroy_in_creative": false,
 			"minecraft:cooldown": {
 				"category": "slime_wand",
-				"duration": 10
+				"duration": 15
 			},
 			"minecraft:icon": {
 				"texture": "slime_wand"

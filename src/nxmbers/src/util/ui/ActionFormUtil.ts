@@ -31,11 +31,6 @@ export abstract class BaseActionForm extends ActionFormData {
 
     constructor() {
         super();
-        this.initializeButtons();
-    }
-
-    private initializeButtons() {
-        // Inicialización pospuesta hasta el envío del formulario
     }
 
     public async sendForm(player: Player) {

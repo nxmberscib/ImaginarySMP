@@ -6,6 +6,7 @@ import {
     world,
 } from "@minecraft/server";
 import Imaginary from "nxmbers/src/Imaginary";
+import ImaginaryItems from "nxmbers/src/item/ImaginaryItems";
 import { MobNameRegistry } from "nxmbers/src/manager/MobNameManager";
 
 export default class BreezeSkeletonEntity implements MobNameRegistry {
@@ -51,8 +52,13 @@ export default class BreezeSkeletonEntity implements MobNameRegistry {
             //         }
             //     }
             // }
-
-            player.applyDamage(6, {
+            const obtainedFulminator = Imaginary.getItemManager()
+                .getRegistries()
+                .hasObtainedItem(
+                    player,
+                    ImaginaryItems.AUREUM_FULMINATOR.ITEM_ID,
+                );
+            player.applyDamage(6 + (obtainedFulminator ? 0 : 6), {
                 damagingEntity: source,
                 cause: EntityDamageCause.entityAttack,
             });

@@ -204,7 +204,10 @@ mc.world.afterEvents.entityHitEntity.subscribe(hitSensor => {
 				};
 			} break;
 			case 'minecraft:vex': {
-				over.createExplosion(hurtEntity.location, 13, { allowUnderwater: true, source: meleeEntity });
+				/**
+				 * @removed Vexes now attach you on a rocket that explodes on day 6.5
+				 */
+				// over.createExplosion(hurtEntity.location, 13, { allowUnderwater: true, source: meleeEntity });
 			} break;
 			case 'minecraft:allay': {
 				let variant = meleeEntity.getComponent("minecraft:variant");

@@ -11,6 +11,7 @@ import OpossumEntity from "./opossum/OpossumEntity";
 import WithLogger from "../util/WithLogger";
 import VexEntity from "./VexEntity";
 import Imaginary from "../Imaginary";
+import JirafitaEntity from "./llama/JirafitaEntity";
 
 export default class ImaginaryEntities {
     public static OPOSSUM: OpossumEntity;
@@ -23,6 +24,7 @@ export default class ImaginaryEntities {
     public static PREASSURE_ASSASIN: PreassureAssasinEntity;
     public static BREEZE: BreezeEntity;
     public static VEX: VexEntity;
+    public static JIRAFITA: JirafitaEntity;
 
     public static registerEntities() {
         // Player
@@ -49,6 +51,8 @@ export default class ImaginaryEntities {
         // Vanilla entities
         this.BREEZE = new BreezeEntity();
         this.VEX = new VexEntity();
+
+        this.JIRAFITA = new JirafitaEntity();
 
         Imaginary.LOGGER.info("Imaginary entities loaded");
     }

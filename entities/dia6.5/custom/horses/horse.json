@@ -10,6 +10,16 @@
 			"is_experimental": false
 		},
 		"component_groups": {
+			"into_opossum": {
+				"minecraft:transformation": {
+					"drop_equipment": false,
+					"drop_inventory": false,
+					"into": "cib:opossum",
+					"keep_level": false,
+					"keep_owner": false,
+					"preserve_equipment": false
+				}
+			},
 			"minecraft:horse_baby": {
 				"minecraft:is_baby": {},
 				"minecraft:scale_by_age": {
@@ -602,134 +612,141 @@
 		},
 		"events": {
 			"minecraft:entity_spawned": {
-				"sequence": [
-					{
-						"randomize": [
-							{
-								"weight": 36,
-								"add": {
-									"component_groups": [
-										"minecraft:horse_adult",
-										"minecraft:horse_wild"
-									]
-								}
-							},
-							{
-								"weight": 9,
-								"add": {
-									"component_groups": [
-										"minecraft:horse_baby"
-									]
-								}
-							}
-						]
-					},
-					{
-						"randomize": [
-							{
-								"weight": 1,
-								"add": {
-									"component_groups": [
-										"minecraft:base_white"
-									]
-								}
-							},
-							{
-								"weight": 1,
-								"add": {
-									"component_groups": [
-										"minecraft:base_creamy"
-									]
-								}
-							},
-							{
-								"weight": 1,
-								"add": {
-									"component_groups": [
-										"minecraft:base_chestnut"
-									]
-								}
-							},
-							{
-								"weight": 1,
-								"add": {
-									"component_groups": [
-										"minecraft:base_brown"
-									]
-								}
-							},
-							{
-								"weight": 1,
-								"add": {
-									"component_groups": [
-										"minecraft:base_black"
-									]
-								}
-							},
-							{
-								"weight": 1,
-								"add": {
-									"component_groups": [
-										"minecraft:base_gray"
-									]
-								}
-							},
-							{
-								"weight": 1,
-								"add": {
-									"component_groups": [
-										"minecraft:base_darkbrown"
-									]
-								}
-							}
-						]
-					},
-					{
-						"randomize": [
-							{
-								"weight": 1,
-								"add": {
-									"component_groups": [
-										"minecraft:markings_none"
-									]
-								}
-							},
-							{
-								"weight": 1,
-								"add": {
-									"component_groups": [
-										"minecraft:markings_white_details"
-									]
-								}
-							},
-							{
-								"weight": 1,
-								"add": {
-									"component_groups": [
-										"minecraft:markings_white_fields"
-									]
-								}
-							},
-							{
-								"weight": 1,
-								"add": {
-									"component_groups": [
-										"minecraft:markings_white_dots"
-									]
-								}
-							},
-							{
-								"weight": 1,
-								"add": {
-									"component_groups": [
-										"minecraft:markings_black_dots"
-									]
-								}
-							}
-						]
-					}
-				]
+				"add": {
+					"component_groups": [
+						"into_opossum"
+					]
+				}
 			},
+			// "minecraft:entity_spawned": {
+			// 	"sequence": [
+			// 		{
+			// 			"randomize": [
+			// 				{
+			// 					"weight": 36,
+			// 					"add": {
+			// 						"component_groups": [
+			// 							"minecraft:horse_adult",
+			// 							"minecraft:horse_wild"
+			// 						]
+			// 					}
+			// 				},
+			// 				{
+			// 					"weight": 9,
+			// 					"add": {
+			// 						"component_groups": [
+			// 							"minecraft:horse_baby"
+			// 						]
+			// 					}
+			// 				}
+			// 			]
+			// 		},
+			// 		{
+			// 			"randomize": [
+			// 				{
+			// 					"weight": 1,
+			// 					"add": {
+			// 						"component_groups": [
+			// 							"minecraft:base_white"
+			// 						]
+			// 					}
+			// 				},
+			// 				{
+			// 					"weight": 1,
+			// 					"add": {
+			// 						"component_groups": [
+			// 							"minecraft:base_creamy"
+			// 						]
+			// 					}
+			// 				},
+			// 				{
+			// 					"weight": 1,
+			// 					"add": {
+			// 						"component_groups": [
+			// 							"minecraft:base_chestnut"
+			// 						]
+			// 					}
+			// 				},
+			// 				{
+			// 					"weight": 1,
+			// 					"add": {
+			// 						"component_groups": [
+			// 							"minecraft:base_brown"
+			// 						]
+			// 					}
+			// 				},
+			// 				{
+			// 					"weight": 1,
+			// 					"add": {
+			// 						"component_groups": [
+			// 							"minecraft:base_black"
+			// 						]
+			// 					}
+			// 				},
+			// 				{
+			// 					"weight": 1,
+			// 					"add": {
+			// 						"component_groups": [
+			// 							"minecraft:base_gray"
+			// 						]
+			// 					}
+			// 				},
+			// 				{
+			// 					"weight": 1,
+			// 					"add": {
+			// 						"component_groups": [
+			// 							"minecraft:base_darkbrown"
+			// 						]
+			// 					}
+			// 				}
+			// 			]
+			// 		},
+			// 		{
+			// 			"randomize": [
+			// 				{
+			// 					"weight": 1,
+			// 					"add": {
+			// 						"component_groups": [
+			// 							"minecraft:markings_none"
+			// 						]
+			// 					}
+			// 				},
+			// 				{
+			// 					"weight": 1,
+			// 					"add": {
+			// 						"component_groups": [
+			// 							"minecraft:markings_white_details"
+			// 						]
+			// 					}
+			// 				},
+			// 				{
+			// 					"weight": 1,
+			// 					"add": {
+			// 						"component_groups": [
+			// 							"minecraft:markings_white_fields"
+			// 						]
+			// 					}
+			// 				},
+			// 				{
+			// 					"weight": 1,
+			// 					"add": {
+			// 						"component_groups": [
+			// 							"minecraft:markings_white_dots"
+			// 						]
+			// 					}
+			// 				},
+			// 				{
+			// 					"weight": 1,
+			// 					"add": {
+			// 						"component_groups": [
+			// 							"minecraft:markings_black_dots"
+			// 						]
+			// 					}
+			// 				}
+			// 			]
+			// 		}
+			// 	]
+			// },
 			"minecraft:entity_born": {
 				"add": {
 					"component_groups": [
