@@ -14,39 +14,35 @@ import FastTotemManager from "./fast_totem/FastTotemManager";
 import ImaginaryBlocks from "./block/ImaginaryBlocks";
 
 export default class Imaginary {
-    #fastTotemManager: FastTotemManager;
-    #itemManager: ItemManager;
-    #muteManager: MuteManager;
-    #banManager: BanManager;
-    #slotManager: SlotManager;
-    #mobNameManager: MobNameManager;
-    #discordManager: DiscordManager;
+    private static fastTotemManager: FastTotemManager;
+    private static itemManager: ItemManager;
+    private static muteManager: MuteManager;
+    private static banManager: BanManager;
+    private static slotManager: SlotManager;
+    private static mobNameManager: MobNameManager;
+    private static discordManager: DiscordManager;
 
-    static #instance: Imaginary;
+    static instance: Imaginary;
     public LOGGER: Logger = new Logger("imaginary", true);
     public static LOGGER: Logger = new Logger("imaginary", true);
 
     public static logger() {
         return this.logger;
     }
-
-    private static getInstance() {
-        return this.#instance;
-    }
-
+    
     public onInitialized() {
         EntityResurrectEventSignal.initialize();
         this.initializeGamerules();
 
-        Imaginary.#instance = this;
+        Imaginary.instance = this;
 
-        this.#fastTotemManager = new FastTotemManager();
-        this.#itemManager = new ItemManager();
-        this.#banManager = new BanManager();
-        this.#muteManager = new MuteManager();
-        this.#slotManager = new SlotManager();
-        this.#mobNameManager = new MobNameManager();
-        this.#discordManager = new DiscordManager();
+        Imaginary.fastTotemManager = new FastTotemManager();
+        Imaginary.itemManager = new ItemManager();
+        Imaginary.banManager = new BanManager();
+        Imaginary.muteManager = new MuteManager();
+        Imaginary.slotManager = new SlotManager();
+        Imaginary.mobNameManager = new MobNameManager();
+        Imaginary.discordManager = new DiscordManager();
 
         ImaginaryCommands.registerCommands();
         ImaginaryItems.registerItems();
@@ -75,30 +71,30 @@ export default class Imaginary {
     }
 
     public static getFastTotemManager() {
-        return this.getInstance().#fastTotemManager;
+        return this.fastTotemManager;
     }
 
     public static getItemManager() {
-        return this.getInstance().#itemManager;
+        return this.itemManager;
     }
 
     public static getMobNameManager() {
-        return this.getInstance().#mobNameManager;
+        return this.mobNameManager;
     }
 
     public static getBanManager() {
-        return this.getInstance().#banManager;
+        return this.banManager;
     }
 
     public static getMuteManager() {
-        return this.getInstance().#muteManager;
+        return this.muteManager;
     }
 
     public static getSlotManager() {
-        return this.getInstance().#slotManager;
+        return this.slotManager;
     }
 
     public static getDiscordManager() {
-        return this.getInstance().#discordManager;
+        return this.discordManager;
     }
 }
