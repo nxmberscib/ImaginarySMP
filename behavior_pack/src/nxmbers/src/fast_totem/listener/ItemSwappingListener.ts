@@ -14,10 +14,7 @@ export default class ItemSwappingListener {
         if (!Imaginary.getFastTotemManager().SWAPPABLE_ITEMS.includes(itemStack.typeId)) {
             return;
         }
-        console.warn(Imaginary.getFastTotemManager().isSwappableEnabled(
-            player,
-            itemStack.typeId,
-        ))
+        
         if (
             !Imaginary.getFastTotemManager().isSwappableEnabled(
                 player,

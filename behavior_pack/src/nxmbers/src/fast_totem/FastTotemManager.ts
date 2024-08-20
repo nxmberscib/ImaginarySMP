@@ -24,7 +24,7 @@ export default class FastTotemManager {
         enabled?: boolean,
     ) {
         let isEnabled = enabled;
-        console.warn(enabled);
+        
         if (enabled == undefined) {
             isEnabled = !this.isSwappableEnabled(player, swappable);
         }
