@@ -1,0 +1,33 @@
+{
+	"format_version": "1.19.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.chipote_chillon",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "chipote_chillon_item",
+					"pivot": [0, 14, 0],
+					"binding": "q.item_slot_to_bone_name(c.item_slot)",
+					"cubes": [
+						{"origin": [-1, 0, -1], "size": [2, 13, 2], "uv": [34, 15]},
+						{"origin": [-1, 1, -1], "size": [2, 2, 2], "inflate": 0.1, "uv": [0, 0]},
+						{"origin": [-1.5, 20, -1], "size": [3, 1, 2], "uv": [20, 15]},
+						{"origin": [-3, 13, -4], "size": [6, 7, 8], "uv": [0, 15]},
+						{"origin": [-5, 13, -4], "size": [1.25, 7, 8], "uv": [0, 30]},
+						{"origin": [-6.45, 13, -4], "size": [12.65, 7, 8], "inflate": -0.4, "uv": [0, 0]},
+						{"origin": [5.75, 13, -4], "size": [3, 7, 8], "uv": [20, 22]},
+						{"origin": [-9, 13, -4], "size": [3, 7, 8], "uv": [20, 22], "mirror": true},
+						{"origin": [3.75, 13, -4], "size": [1.25, 7, 8], "uv": [0, 30], "mirror": true}
+					]
+				}
+			]
+		}
+	]
+}

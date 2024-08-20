@@ -1,0 +1,48 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "cib:opossum",
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "textures": {
+                "red": "textures/entity/opossum",
+                "frozen": "textures/entity/opossum",
+                "rocky": "textures/entity/opossum",
+                "skunk": "textures/entity/opossum",
+                "arctic": "textures/entity/opossum"
+            },
+            "geometry": {
+                "default": "geometry.fox"
+            },
+            "animations": {
+                "walk": "animation.quadruped.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "baby_transform": "animation.fox.baby_transform",
+                "crouch": "animation.fox.crouch",
+                "sleep": "animation.fox.sleep",
+                "setup": "animation.fox.setup",
+                "sit": "animation.fox.sit",
+                "wiggle": "animation.fox.wiggle",
+                "stuck": "animation.fox.stuck",
+                "pounce": "animation.fox.pounce",
+                "move": "controller.animation.fox.move"
+            },
+            "scripts": {
+                "animate": [
+                    "setup",
+                    {
+                        "baby_transform": "query.is_baby"
+                    },
+                    "move"
+                ]
+            },
+            "render_controllers": ["controller.render.fox"],
+            "spawn_egg": {
+                "base_color": "#424242",
+                "overlay_color": "#070707"
+            }
+        }
+    }
+}

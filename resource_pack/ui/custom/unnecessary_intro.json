@@ -1,0 +1,903 @@
+
+{
+	"namespace": "unnecessary_intro",
+	
+	"intro_factory": {
+		"type": "panel",
+		"factory": {
+			"name": "hud_title_text_factory",
+			"control_ids": {
+				"hud_title_text": "intro@unnecessary_intro.intro_panel"
+			}
+		}
+	},
+	
+	"intro_panel": {
+		"type": "panel",
+		"controls": [
+			{
+				"0@unnecessary_intro.intro_panel_titles1": {}
+			},
+			{
+				"1@unnecessary_intro.intro_panel_titles2": {}
+			}
+		],
+		"bindings": [
+			{
+				"binding_name": "#hud_subtitle_text_string"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(#hud_subtitle_text_string = 'intro')",
+				"target_property_name": "#visible"
+			}
+		]
+	},
+	
+	"intro_back": {
+		"type": "image",
+		"size": [ "1%c + 1500px", "1%c + 1500px" ],
+		"anchor_from": "center",
+		"anchor_to": "center",
+		"offset": [ 0, 0 ],
+		"alpha": 0.0,
+		"layer": 100,
+		"allow_debug_missing_texture": false,
+		"force_texture_reload": true,
+		"texture": "textures/ui/cinematic_stuff/black_screen",
+		"anims": [ "@unnecessary_intro.alpha_0" ]
+	},
+	
+	"intro_panel_titles1": {
+		"type": "panel",
+		"controls": [
+			{ "back@unnecessary_intro.intro_back": {} },
+			{
+				"image": {
+					"type": "image",
+					"size": [ "1%c + 130px", "1%c + 130px" ],
+					"anchor_from": "center",
+					"anchor_to": "center",
+					"offset": [ 0, -40 ],
+					"alpha": 0.0,
+					"layer": 101,
+					"allow_debug_missing_texture": false,
+					"force_texture_reload": true,
+					"texture": "textures/ui/cinematic_stuff/cara2",
+					"anims": [ "@unnecessary_intro.alpha0" ]
+				}
+			},
+			{
+				"outro_text_1": {
+					"type": "label",
+					"anchor_from": "center",
+					"anchor_to": "center",
+					"shadow": true,
+					"font_size": "normal",
+					"offset": [ 0, 50 ],
+					"localize": true,
+					"color": [ 1.0,0.3333,0.3333 ],
+					"text_alignment": "center",
+					"text": "ui.intro_text1",
+					"alpha": 0.0,
+					"layer": 101,
+					"anims": [ "@unnecessary_intro.alpha1" ]
+				}
+			},
+			{
+				"outro_text_2": {
+					"type": "label",
+					"anchor_from": "center",
+					"anchor_to": "center",
+					"shadow": true,
+					"font_size": "normal",
+					"offset": [ 0, 50 ],
+					"localize": true,
+					"color": [ 1.0,0.3333,0.3333 ],
+					"text_alignment": "center",
+					"text": "ui.intro_text2",
+					"alpha": 0.0,
+					"layer": 101,
+					"anims": [ "@unnecessary_intro.alpha2" ]
+				}
+			},
+			{
+				"outro_text_3": {
+					"type": "label",
+					"anchor_from": "center",
+					"anchor_to": "center",
+					"shadow": true,
+					"font_size": "normal",
+					"offset": [ 0, 50 ],
+					"localize": true,
+					"color": [ 1.0,0.3333,0.3333 ],
+					"text_alignment": "center",
+					"text": "ui.intro_text3",
+					"alpha": 0.0,
+					"layer": 101,
+					"anims": [ "@unnecessary_intro.alpha3" ]
+				}
+			},
+			{
+				"outro_text_4": {
+					"type": "label",
+					"anchor_from": "center",
+					"anchor_to": "center",
+					"shadow": true,
+					"font_size": "normal",
+					"offset": [ 0, 50 ],
+					"localize": true,
+					"color": [ 1.0,0.3333,0.3333 ],
+					"text_alignment": "center",
+					"text": "ui.intro_text4",
+					"alpha": 0.0,
+					"layer": 101,
+					"anims": [ "@unnecessary_intro.alpha4" ]
+				}
+			},
+			{
+				"outro_text_5": {
+					"type": "label",
+					"anchor_from": "center",
+					"anchor_to": "center",
+					"shadow": true,
+					"font_size": "normal",
+					"offset": [ 0, 50 ],
+					"localize": true,
+					"color": [ 1.0,0.3333,0.3333 ],
+					"text_alignment": "center",
+					"text": "ui.intro_text5",
+					"alpha": 0.0,
+					"layer": 101,
+					"anims": [ "@unnecessary_intro.alpha5" ]
+				}
+			},
+			{
+				"outro_text_6": {
+					"type": "label",
+					"anchor_from": "center",
+					"anchor_to": "center",
+					"shadow": true,
+					"font_size": "normal",
+					"offset": [ 0, 50 ],
+					"localize": true,
+					"color": [ 1.0,0.3333,0.3333 ],
+					"text_alignment": "center",
+					"text": "ui.intro_text6",
+					"alpha": 0.0,
+					"layer": 101,
+					"anims": [ "@unnecessary_intro.alpha6" ]
+				}
+			},
+			{
+				"outro_text_7": {
+					"type": "label",
+					"anchor_from": "center",
+					"anchor_to": "center",
+					"shadow": true,
+					"font_size": "normal",
+					"offset": [ 0, 50 ],
+					"localize": true,
+					"color": [ 1.0,0.3333,0.3333 ],
+					"text_alignment": "center",
+					"text": "ui.intro_text7",
+					"alpha": 0.0,
+					"layer": 101,
+					"anims": [ "@unnecessary_intro.alpha7" ]
+				}
+			},
+			{
+				"image2": {
+					"type": "image",
+					"size": [ "1%c + 180px", "1%c + 180px" ],
+					"anchor_from": "center",
+					"anchor_to": "center",
+					"offset": [ 0, 0 ],
+					"alpha": 0.0,
+					"layer": 101,
+					"allow_debug_missing_texture": false,
+					"force_texture_reload": true,
+					"texture": "textures/ui/cinematic_stuff/bloque1",
+					"anims": [ "@unnecessary_intro.alpha8" ]
+				}
+			}
+		]
+	},
+	
+	"intro_panel_titles2": {
+		"type": "panel",
+		"controls": [
+			{
+				"image1": {
+					"type": "image",
+					"size": [ "1%c + 240px", "1%c + 240px" ],
+					"anchor_from": "center",
+					"anchor_to": "center",
+					"offset": [ 0, -75 ],
+					"alpha": 0.0,
+					"layer": 101,
+					"allow_debug_missing_texture": false,
+					"force_texture_reload": true,
+					"texture": "textures/ui/cinematic_stuff/owao_eltitulo",
+					"anims": [ "@unnecessary_intro.alpha9" ]
+				}
+			},
+			{
+				"text1": {
+					"type": "label",
+					"anchor_from": "center",
+					"anchor_to": "center",
+					"shadow": true,
+					"font_size": "extra_large",
+					"offset": [ "1%c + -900px", "1%x + 15px" ],
+					"localize": true,
+					"color": [ 0.3333,1.0,0.3333 ],
+					"text_alignment": "center",
+					"font_scale_factor": 0.75,
+					"text": "Creado por: \nZimbaweVIP",
+					"alpha": 1.0,
+					"layer": 101,
+					"anims": [ "@unnecessary_intro.alpha10" ]
+				}
+			},
+			{
+				"text2": {
+					"type": "label",
+					"anchor_from": "center",
+					"anchor_to": "center",
+					"shadow": true,
+					"font_size": "extra_large",
+					"offset": [ "1%c + -900px", "1%x + 15px" ],
+					"localize": true,
+					"color": [ 0.6667,0.0,0.6667 ],
+					"text_alignment": "center",
+					"font_scale_factor": 0.7,
+					"text": "Desarrollado por:\nHa Juegos\nDiFox24!\nConvex!\nCibNumeritos",
+					"alpha": 1.0,
+					"layer": 101,
+					"anims": [ "@unnecessary_intro.alpha11" ]
+				}
+			},
+			{
+				"text3": {
+					"type": "label",
+					"anchor_from": "center",
+					"anchor_to": "center",
+					"shadow": true,
+					"font_size": "extra_large",
+					"offset": [ "1%c + -900px", "1%x + 15px" ],
+					"localize": true,
+					"color": [ 0.3804,0.0627,0.0275 ],
+					"text_alignment": "center",
+					"font_scale_factor": 0.55,
+					"text": "Aumentos de dificultad creados por:\nZimbaweVIP\nKrekoh\nRoyer\nCib Numeritos",
+					"alpha": 1.0,
+					"layer": 101,
+					"anims": [ "@unnecessary_intro.alpha12" ]
+				}
+			},
+			{
+				"text4": {
+					"type": "label",
+					"anchor_from": "center",
+					"anchor_to": "center",
+					"shadow": true,
+					"font_size": "extra_large",
+					"offset": [ "1%c + -900px", "1%x + 15px" ],
+					"localize": true,
+					"color": [ 1.0,0.6667,0.0 ],
+					"text_alignment": "center",
+					"font_scale_factor": 0.7,
+					"text": "Construcciones hechas por:\nKarmaCraft3\nPhoboss\nNixTroll",
+					"alpha": 1.0,
+					"layer": 101,
+					"anims": [ "@unnecessary_intro.alpha13" ]
+				}
+			},
+			{
+				"text5": {
+					"type": "label",
+					"anchor_from": "center",
+					"anchor_to": "center",
+					"shadow": true,
+					"font_size": "extra_large",
+					"offset": [ "1%c + -900px", "1%x + 15px" ],
+					"localize": true,
+					"color": [ 1.0,1.0,1.0 ],
+					"text_alignment": "center",
+					"font_scale_factor": 0.7,
+					"text": "Texturas creadas por:\nZocal Studio\nItsWaved\nAstral302\nZimbaweVIP",
+					"alpha": 1.0,
+					"layer": 101,
+					"anims": [ "@unnecessary_intro.alpha14" ]
+				}
+			},
+			{
+				"text6": {
+					"type": "label",
+					"anchor_from": "center",
+					"anchor_to": "center",
+					"shadow": true,
+					"font_size": "extra_large",
+					"offset": [ "1%c + -900px", "1%x + 15px" ],
+					"localize": true,
+					"color": [ 0.8902,0.8314,0.8196 ],
+					"text_alignment": "center",
+					"font_scale_factor": 0.7,
+					"text": "Orientaciones de Bugs:\nMalvaez\nMor4mix\nAzulbunn16",
+					"alpha": 1.0,
+					"layer": 101,
+					"anims": [ "@unnecessary_intro.alpha15" ]
+				}
+			},
+			{
+				"text7": {
+					"type": "label",
+					"anchor_from": "center",
+					"anchor_to": "center",
+					"shadow": true,
+					"font_size": "extra_large",
+					"offset": [ "1%c + -900px", "1%x + 15px" ],
+					"localize": true,
+					"color": [ 0.1725,0.7294,0.6588 ],
+					"text_alignment": "center",
+					"font_scale_factor": 0.55,
+					"text": "Musica y sonido creada por:\nZocal Studio",
+					"alpha": 1.0,
+					"layer": 101,
+					"anims": [ "@unnecessary_intro.alpha16" ]
+				}
+			},
+			{
+				"text8": {
+					"type": "label",
+					"anchor_from": "center",
+					"anchor_to": "center",
+					"shadow": true,
+					"font_size": "extra_large",
+					"offset": [ "1%c + -900px", "1%x + 15px" ],
+					"localize": true,
+					"color": [ 0.1725,0.7294,0.6588 ],
+					"text_alignment": "center",
+					"font_scale_factor": 0.55,
+					"text": "Host y Financiacion:\nSparkedHost\nZimbaweVIP",
+					"alpha": 1.0,
+					"layer": 101,
+					"anims": [ "@unnecessary_intro.alpha17" ]
+				}
+			},
+			{
+				"image2": {
+					"type": "image",
+					"size": [ "1%c + 110px", "1%c + 110px" ],
+					"anchor_from": "center",
+					"anchor_to": "center",
+					"offset": [ 0, 25 ],
+					"alpha": 0.0,
+					"layer": 101,
+					"allow_debug_missing_texture": false,
+					"force_texture_reload": true,
+					"texture": "textures/ui/cinematic_stuff/bloque2",
+					"alpha": 0.0,
+					"layer": 101,
+					"anims": [ "@unnecessary_intro.alpha18" ]
+				}
+			}
+		]
+	},
+	
+	"alpha18": {
+		"anim_type": "wait",
+		"duration": 91.07,
+		"next": "@unnecessary_intro.alpha18_1"
+	},
+	"alpha18_1": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 0.0,
+		"to": 0.8,
+		"duration": 1.5,
+		"next": "@unnecessary_intro.alpha18_2"
+	},
+	"alpha18_2": {
+		"anim_type": "wait",
+		"duration": 2.68,
+		"next": "@unnecessary_intro.alpha18_3"
+	},
+	"alpha18_3": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 0.8,
+		"to": 0.0,
+		"duration": 1.5
+	},
+	
+	"alpha17": {
+		"anim_type": "wait",
+		"duration": 85.96,
+		"next": "@unnecessary_intro.alpha17_1"
+	},
+	"alpha17_1": {
+		"anim_type": "offset",
+		"duration": 1.0,
+		"easing": "in_out_sine",
+		"from": [ "1%c + -900px", "1%x + 15px" ],
+		"to": [ "1%c + 0px", "1%x + 15px" ],
+		"next": "@unnecessary_intro.alpha17_2"
+	},
+	"alpha17_2": {
+		"anim_type": "wait",
+		"duration": 2.48,
+		"next": "@unnecessary_intro.alpha17_3"
+	},
+	"alpha17_3": {
+		"anim_type": "offset",
+		"duration": 1.0,
+		"easing": "in_out_sine",
+		"from": [ "1%c + 0px", "1%x + 15px" ],
+		"to": [ "1%c + 900px", "1%x + 15px" ]
+	},
+	
+	"alpha16": {
+		"anim_type": "wait",
+		"duration": 82.70,
+		"next": "@unnecessary_intro.alpha16_1"
+	},
+	"alpha16_1": {
+		"anim_type": "offset",
+		"duration": 1.0,
+		"easing": "in_out_sine",
+		"from": [ "1%c + -900px", "1%x + 15px" ],
+		"to": [ "1%c + 0px", "1%x + 15px" ],
+		"next": "@unnecessary_intro.alpha16_2"
+	},
+	"alpha16_2": {
+		"anim_type": "wait",
+		"duration": 2.27,
+		"next": "@unnecessary_intro.alpha16_3"
+	},
+	"alpha16_3": {
+		"anim_type": "offset",
+		"duration": 1.0,
+		"easing": "in_out_sine",
+		"from": [ "1%c + 0px", "1%x + 15px" ],
+		"to": [ "1%c + 900px", "1%x + 15px" ]
+	},
+	
+	"alpha15": {
+		"anim_type": "wait",
+		"duration": 78.94,
+		"next": "@unnecessary_intro.alpha15_1"
+	},
+	"alpha15_1": {
+		"anim_type": "offset",
+		"duration": 1.0,
+		"easing": "in_out_sine",
+		"from": [ "1%c + -900px", "1%x + 15px" ],
+		"to": [ "1%c + 0px", "1%x + 15px" ],
+		"next": "@unnecessary_intro.alpha15_2"
+	},
+	"alpha15_2": {
+		"anim_type": "wait",
+		"duration": 2.38,
+		"next": "@unnecessary_intro.alpha15_3"
+	},
+	"alpha15_3": {
+		"anim_type": "offset",
+		"duration": 1.0,
+		"easing": "in_out_sine",
+		"from": [ "1%c + 0px", "1%x + 15px" ],
+		"to": [ "1%c + 900px", "1%x + 15px" ]
+	},
+	
+	"alpha14": {
+		"anim_type": "wait",
+		"duration": 75.57,
+		"next": "@unnecessary_intro.alpha14_1"
+	},
+	"alpha14_1": {
+		"anim_type": "offset",
+		"duration": 1.0,
+		"easing": "in_out_sine",
+		"from": [ "1%c + -900px", "1%x + 15px" ],
+		"to": [ "1%c + 0px", "1%x + 15px" ],
+		"next": "@unnecessary_intro.alpha14_2"
+	},
+	"alpha14_2": {
+		"anim_type": "wait",
+		"duration": 2.18,
+		"next": "@unnecessary_intro.alpha14_3"
+	},
+	"alpha14_3": {
+		"anim_type": "offset",
+		"duration": 1.0,
+		"easing": "in_out_sine",
+		"from": [ "1%c + 0px", "1%x + 15px" ],
+		"to": [ "1%c + 900px", "1%x + 15px" ]
+	},
+	
+	"alpha13": {
+		"anim_type": "wait",
+		"duration": 70.73,
+		"next": "@unnecessary_intro.alpha13_1"
+	},
+	"alpha13_1": {
+		"anim_type": "offset",
+		"duration": 1.0,
+		"easing": "in_out_sine",
+		"from": [ "1%c + -900px", "1%x + 15px" ],
+		"to": [ "1%c + 0px", "1%x + 15px" ],
+		"next": "@unnecessary_intro.alpha13_2"
+	},
+	"alpha13_2": {
+		"anim_type": "wait",
+		"duration": 2.76,
+		"next": "@unnecessary_intro.alpha13_3"
+	},
+	"alpha13_3": {
+		"anim_type": "offset",
+		"duration": 1.0,
+		"easing": "in_out_sine",
+		"from": [ "1%c + 0px", "1%x + 15px" ],
+		"to": [ "1%c + 900px", "1%x + 15px" ]
+	},
+	
+	"alpha12": {
+		"anim_type": "wait",
+		"duration": 66.86,
+		"next": "@unnecessary_intro.alpha12_1"
+	},
+	"alpha12_1": {
+		"anim_type": "offset",
+		"duration": 1.0,
+		"easing": "in_out_sine",
+		"from": [ "1%c + -900px", "1%x + 15px" ],
+		"to": [ "1%c + 0px", "1%x + 15px" ],
+		"next": "@unnecessary_intro.alpha12_2"
+	},
+	"alpha12_2": {
+		"anim_type": "wait",
+		"duration": 2.47,
+		"next": "@unnecessary_intro.alpha12_3"
+	},
+	"alpha12_3": {
+		"anim_type": "offset",
+		"duration": 1.0,
+		"easing": "in_out_sine",
+		"from": [ "1%c + 0px", "1%x + 15px" ],
+		"to": [ "1%c + 900px", "1%x + 15px" ]
+	},
+	
+	"alpha11": {
+		"anim_type": "wait",
+		"duration": 62.50,
+		"next": "@unnecessary_intro.alpha11_1"
+	},
+	"alpha11_1": {
+		"anim_type": "offset",
+		"duration": 1.0,
+		"easing": "in_out_sine",
+		"from": [ "1%c + -900px", "1%x + 15px" ],
+		"to": [ "1%c + 0px", "1%x + 15px" ],
+		"next": "@unnecessary_intro.alpha11_2"
+	},
+	"alpha11_2": {
+		"anim_type": "wait",
+		"duration": 2.67,
+		"next": "@unnecessary_intro.alpha11_3"
+	},
+	"alpha11_3": {
+		"anim_type": "offset",
+		"duration": 1.0,
+		"easing": "in_out_sine",
+		"from": [ "1%c + 0px", "1%x + 15px" ],
+		"to": [ "1%c + 900px", "1%x + 15px" ]
+	},
+	
+	"alpha10": {
+		"anim_type": "wait",
+		"duration": 57.96,
+		"next": "@unnecessary_intro.alpha10_1"
+	},
+	"alpha10_1": {
+		"anim_type": "offset",
+		"duration": 1.0,
+		"easing": "in_out_sine",
+		"from": [ "1%c + -900px", "1%x + 15px" ],
+		"to": [ "1%c + 0px", "1%x + 15px" ],
+		"next": "@unnecessary_intro.alpha10_2"
+	},
+	"alpha10_2": {
+		"anim_type": "wait",
+		"duration": 2.47,
+		"next": "@unnecessary_intro.alpha10_3"
+	},
+	"alpha10_3": {
+		"anim_type": "offset",
+		"duration": 1.0,
+		"easing": "in_out_sine",
+		"from": [ "1%c + 0px", "1%x + 15px" ],
+		"to": [ "1%c + 900px", "1%x + 15px" ]
+	},
+	
+	"alpha_0": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 0.0,
+		"to": 1.0,
+		"duration": 0,
+		"next": "@unnecessary_intro.alpha_1"
+	},
+	"alpha_1": {
+		"anim_type": "wait",
+		"duration": 95.12,
+		"next": "@unnecessary_intro.alpha_2"
+	},
+	"alpha_2": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 1.0,
+		"to": 0.0,
+		"duration": 1.5
+	},
+	
+	"alpha0": {
+		"anim_type": "wait",
+		"duration": 7,
+		"next": "@unnecessary_intro.alpha0_1"
+	},
+	"alpha0_1": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 0.0,
+		"to": 1.0,
+		"duration": 1.0,
+		"next": "@unnecessary_intro.alpha0_2"
+	},
+	"alpha0_2": {
+		"anim_type": "wait",
+		"duration": 31.19,
+		"next": "@unnecessary_intro.alpha0_3"
+	},
+	"alpha0_3": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 1.0,
+		"to": 0.0,
+		"duration": 1.0
+	},
+	
+	"alpha1": {
+		"anim_type": "wait",
+		"duration": 8.98,
+		"next": "@unnecessary_intro.alpha1_1"
+	},
+	"alpha1_1": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 0.0,
+		"to": 1.0,
+		"duration": 1.0,
+		"next": "@unnecessary_intro.alpha1_2"
+	},
+	"alpha1_2": {
+		"anim_type": "wait",
+		"duration": 1.88,
+		"next": "@unnecessary_intro.alpha1_3"
+	},
+	"alpha1_3": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 1.0,
+		"to": 0.0,
+		"duration": 1.0
+	},
+	
+	"alpha2": {
+		"anim_type": "wait",
+		"duration": 11.65,
+		"next": "@unnecessary_intro.alpha2_1"
+	},
+	"alpha2_1": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 0.0,
+		"to": 1.0,
+		"duration": 1.0,
+		"next": "@unnecessary_intro.alpha2_2"
+	},
+	"alpha2_2": {
+		"anim_type": "wait",
+		"duration": 2.93,
+		"next": "@unnecessary_intro.alpha2_3"
+	},
+	"alpha2_3": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 1.0,
+		"to": 0.0,
+		"duration": 1.0
+	},
+	
+	"alpha3": {
+		"anim_type": "wait",
+		"duration": 15.57,
+		"next": "@unnecessary_intro.alpha3_1"
+	},
+	"alpha3_1": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 0.0,
+		"to": 1.0,
+		"duration": 1.0,
+		"next": "@unnecessary_intro.alpha3_2"
+	},
+	"alpha3_2": {
+		"anim_type": "wait",
+		"duration": 2.83,
+		"next": "@unnecessary_intro.alpha3_3"
+	},
+	"alpha3_3": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 1.0,
+		"to": 0.0,
+		"duration": 1.0
+	},
+	
+	"alpha4": {
+		"anim_type": "wait",
+		"duration": 19.13,
+		"next": "@unnecessary_intro.alpha4_1"
+	},
+	"alpha4_1": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 0.0,
+		"to": 1.0,
+		"duration": 1.0,
+		"next": "@unnecessary_intro.alpha4_2"
+	},
+	"alpha4_2": {
+		"anim_type": "wait",
+		"duration": 3.47,
+		"next": "@unnecessary_intro.alpha4_3"
+	},
+	"alpha4_3": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 1.0,
+		"to": 0.0,
+		"duration": 1.0
+	},
+	
+	"alpha5": {
+		"anim_type": "wait",
+		"duration": 24.67,
+		"next": "@unnecessary_intro.alpha5_1"
+	},
+	"alpha5_1": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 0.0,
+		"to": 1.0,
+		"duration": 1.0,
+		"next": "@unnecessary_intro.alpha5_2"
+	},
+	"alpha5_2": {
+		"anim_type": "wait",
+		"duration": 4.16,
+		"next": "@unnecessary_intro.alpha5_3"
+	},
+	"alpha5_3": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 1.0,
+		"to": 0.0,
+		"duration": 1.0
+	},
+	
+	"alpha6": {
+		"anim_type": "wait",
+		"duration": 30.2,
+		"next": "@unnecessary_intro.alpha6_1"
+	},
+	"alpha6_1": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 0.0,
+		"to": 1.0,
+		"duration": 1.0,
+		"next": "@unnecessary_intro.alpha6_2"
+	},
+	"alpha6_2": {
+		"anim_type": "wait",
+		"duration": 2.79,
+		"next": "@unnecessary_intro.alpha6_3"
+	},
+	"alpha6_3": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 1.0,
+		"to": 0.0,
+		"duration": 1.0
+	},
+	
+	"alpha7": {
+		"anim_type": "wait",
+		"duration": 34.18,
+		"next": "@unnecessary_intro.alpha7_1"
+	},
+	"alpha7_1": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 0.0,
+		"to": 1.0,
+		"duration": 1.0,
+		"next": "@unnecessary_intro.alpha7_2"
+	},
+	"alpha7_2": {
+		"anim_type": "wait",
+		"duration": 2.47,
+		"next": "@unnecessary_intro.alpha7_3"
+	},
+	"alpha7_3": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 1.0,
+		"to": 0.0,
+		"duration": 1.0
+	},
+	
+	"alpha8": {
+		"anim_type": "wait",
+		"duration": 41.31,
+		"next": "@unnecessary_intro.alpha8_1"
+	},
+	"alpha8_1": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 0.0,
+		"to": 1.0,
+		"duration": 1.0,
+		"next": "@unnecessary_intro.alpha8_2"
+	},
+	"alpha8_2": {
+		"anim_type": "wait",
+		"duration": 11,
+		"next": "@unnecessary_intro.alpha8_3"
+	},
+	"alpha8_3": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 1.0,
+		"to": 0.0,
+		"duration": 2.0
+	},
+	
+	"alpha9": {
+		"anim_type": "wait",
+		"duration": 55.74,
+		"next": "@unnecessary_intro.alpha9_1"
+	},
+	"alpha9_1": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 0.0,
+		"to": 1.0,
+		"duration": 1.0,
+		"next": "@unnecessary_intro.alpha9_2"
+	},
+	"alpha9_2": {
+		"anim_type": "wait",
+		"duration": 38.92,
+		"next": "@unnecessary_intro.alpha9_3"
+	},
+	"alpha9_3": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 1.0,
+		"to": 0.0,
+		"duration": 1.0
+	}
+}
