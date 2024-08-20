@@ -19,7 +19,7 @@ export abstract class BaseMessageForm extends MessageFormData {
     private _button1: { buttonText: RawMessage | string, callback: () => void };
     private _button2: { buttonText: RawMessage | string, callback: () => void };
 
-    constructor() {
+    public constructor() {
         super();
         this.initializeButtons();
     }

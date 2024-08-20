@@ -5,7 +5,7 @@ export default class Runnable {
     private id: number | undefined;
     private runningTimer: boolean;
     
-    constructor() {
+    public constructor() {
         this.cancelled = false;
         this.id = undefined;
         this.runningTimer = false;

@@ -19,7 +19,7 @@ export default class CrystallineSkeletonEntity implements MobNameRegistry {
     }
 
     public mobId: string = this.MOB_ID;
-    public displayName: string = "§6Esqueleto Cristalino";
+    public readonly displayName: string = "§6Esqueleto Cristalino";
 
     private onProjectileHitBlock(arg: any) {
         if (arg.source?.typeId !== this.MOB_ID) {

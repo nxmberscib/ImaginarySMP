@@ -8,9 +8,9 @@ import WithLogger from "../util/WithLogger";
 import Imaginary from "../Imaginary";
 
 export default class ChipoteChillonItem implements ItemCustomComponent {
-    public ITEM_ID = "cib:chipote_chillon";
+    public readonly ITEM_ID = "cib:chipote_chillon";
 
-    constructor() {
+    public constructor() {
         world.beforeEvents.itemUse.subscribe(this.onUse.bind(this));
         Imaginary.LOGGER.robust("ChipoteChillon loaded");
     }

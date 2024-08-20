@@ -26,7 +26,7 @@
 //     class Combined {
 //         private __baseInstances: any[];
 
-//         constructor(...args: ConstructorArgs[]) {
+//         public constructor(...args: ConstructorArgs[]) {
 //             let offset = 0;
 //             this.__baseInstances = bases.map((Base) => {
 //                 const paramCount = Base.length;
@@ -130,7 +130,7 @@ export default function Mixin<TBases extends Constructor[]>(...bases: TBases) {
         private __baseInstances: any[];
         private static __combinedInstance: Combined
 
-        constructor(...args: ConstructorArgs[]) {
+        public constructor(...args: ConstructorArgs[]) {
             let offset = 0;
 
             this.__baseInstances = bases.map((Base) => {

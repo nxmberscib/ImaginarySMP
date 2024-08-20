@@ -3,8 +3,8 @@ import { EntityHurtAfterEvent, Player, world } from "@minecraft/server";
 import Imaginary from "nxmbers/src/Imaginary";
 import { MobNameRegistry } from "nxmbers/src/manager/MobNameManager";
 
-export default class HoneySlimeEntity implements MobNameRegistry {
-    public readonly MOB_ID = "cib:honey_slime";
+export default class DissectedAxolotlEntity implements MobNameRegistry {
+    public readonly MOB_ID = "cib:dissected_axolotl";
     public readonly displayName: string = "§6Slime de Miel";
 
     public constructor() {

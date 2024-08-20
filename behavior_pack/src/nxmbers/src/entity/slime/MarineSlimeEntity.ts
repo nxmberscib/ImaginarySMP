@@ -9,10 +9,10 @@ import Imaginary from "nxmbers/src/Imaginary";
 import { MobNameRegistry } from "nxmbers/src/manager/MobNameManager";
 
 export default class MarineSlimeEntity implements MobNameRegistry {
-    public MOB_ID: string = "cib:marine_slime";
-    public displayName: string = "§bSlime Marino";
+    public readonly MOB_ID: string = "cib:marine_slime";
+    public readonly displayName: string = "§bSlime Marino";
 
-    constructor() {
+    public constructor() {
         world.afterEvents.entityDie.subscribe(this.spawnProtocol.bind(this));
         world.afterEvents.entityHurt.subscribe(this.attackEffects.bind(this));
         

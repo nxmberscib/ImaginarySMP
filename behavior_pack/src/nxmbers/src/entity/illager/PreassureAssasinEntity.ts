@@ -5,14 +5,14 @@ import { MobNameRegistry } from "nxmbers/src/manager/MobNameManager";
 export default class PreassureAssasinEntity implements MobNameRegistry {
     public readonly MOB_ID: string = "cib:preassure_assasin";
     
-    constructor() {
+    public constructor() {
         world.afterEvents.entityHurt.subscribe(this.onAttack.bind(this));
         Imaginary.getMobNameManager().addRegistry(this);
         Imaginary.LOGGER.robust(this.MOB_ID + " registered");
     }
 
     public mobId: string = this.MOB_ID;
-    public displayName: string = "§cAsesino de Presión";
+    public readonly displayName: string = "§cAsesino de Presión";
 
     private onAttack(event: EntityHurtAfterEvent) {
         const {

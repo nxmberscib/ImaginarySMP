@@ -5,7 +5,7 @@ import Default from "teseract/api/command/Default";
 
 @CommandAlias("help")
 export default class HelpCommand {
-    constructor() {
+    public constructor() {
         CommandManager.registerCommand(this)
     }
     

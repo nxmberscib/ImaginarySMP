@@ -43,7 +43,7 @@ export default new (class CommandManager {
         }
     }
 
-    constructor() {
+    public constructor() {
         MinecraftServer.world.beforeEvents.chatSend.subscribe((ev) =>
             this.onCommandSent(ev),
         );

@@ -9,7 +9,7 @@ import {
 import Imaginary from "../Imaginary";
 
 export default class DrownedEntity {
-    public MOB_ID: string = "minecraft:drowned";
+    public readonly MOB_ID: string = "minecraft:drowned";
     public TRIDENT_ID: string = "minecraft:thrown_trident";
 
     public constructor() {

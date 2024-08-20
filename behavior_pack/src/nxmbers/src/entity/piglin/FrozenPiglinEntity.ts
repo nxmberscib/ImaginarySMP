@@ -15,14 +15,14 @@ export default class FrozenPiglinEntity implements MobNameRegistry {
         return Imaginary.logger();
     }
 
-    constructor() {
+    public constructor() {
         world.afterEvents.entityHurt.subscribe(this.onAttack.bind(this));
         Imaginary.getMobNameManager().addRegistry(this);
         Imaginary.LOGGER.robust(this.MOB_ID + "registered");
     }
 
     public mobId: string = this.MOB_ID;
-    public displayName: string = "§bPiglin Congelado";
+    public readonly displayName: string = "§bPiglin Congelado";
 
     private async onAttack(event: EntityHurtAfterEvent) {
         try {

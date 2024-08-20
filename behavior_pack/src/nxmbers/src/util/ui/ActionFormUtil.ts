@@ -29,7 +29,7 @@ export abstract class BaseActionForm extends ActionFormData {
         callback: (player: Player) => void;
     }[] = [];
 
-    constructor() {
+    public constructor() {
         super();
     }
 

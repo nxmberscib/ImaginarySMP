@@ -19,9 +19,13 @@ export class Vector3Builder implements Vector3 {
     y: number;
     z: number;
 
-    constructor(vec: Vector3, arg?: never, arg2?: never);
-    constructor(x: number, y: number, z: number);
-    constructor(first: number | Vector3, y?: number, z?: number) {
+    public clone() {
+        return new Vector3Builder(this)
+    }
+
+    public constructor(vec: Vector3, arg?: never, arg2?: never);
+    public constructor(x: number, y: number, z: number);
+    public constructor(first: number | Vector3, y?: number, z?: number) {
         if (typeof first === 'object') {
             this.x = first.x;
             this.y = first.y;
@@ -177,9 +181,9 @@ export class Vector2Builder implements Vector2 {
     x: number;
     y: number;
 
-    constructor(vec: Vector2, arg?: never);
-    constructor(x: number, y: number);
-    constructor(first: number | Vector2, y?: number) {
+    public constructor(vec: Vector2, arg?: never);
+    public constructor(x: number, y: number);
+    public constructor(first: number | Vector2, y?: number) {
         if (typeof first === 'object') {
             this.x = first.x;
             this.y = first.y;

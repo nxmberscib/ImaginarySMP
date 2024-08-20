@@ -10,8 +10,8 @@ import { calculateKnockbackVector } from "nxmbers/src/util/KnockbackFromPoint";
 import TimerUtils from "teseract/api/util/TimerUtils";
 
 export default class JirafitaEntity implements MobNameRegistry {
-    public MOB_ID: string = "cib:jirafita";
-    public displayName: string = "§hJirafita";
+    public readonly MOB_ID: string = "cib:jirafita";
+    public readonly displayName: string = "§hJirafita";
 
     public constructor() {
         world.afterEvents.projectileHitEntity.subscribe(

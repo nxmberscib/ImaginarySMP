@@ -10,9 +10,9 @@ import { calculateKnockbackVector } from "../util/KnockbackFromPoint";
 import TimerUtils from "teseract/api/util/TimerUtils";
 
 export default class SlimeWandItem implements ItemCustomComponent {
-    public ITEM_ID: string = "cib:slime_wand";
+    public readonly ITEM_ID: string = "cib:slime_wand";
 
-    constructor() {
+    public constructor() {
         world.beforeEvents.itemUse.subscribe(this.onUse.bind(this));
         Imaginary.LOGGER.robust("Slime wand item loaded");
     }

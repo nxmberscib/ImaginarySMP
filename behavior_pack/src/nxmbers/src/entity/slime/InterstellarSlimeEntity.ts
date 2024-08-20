@@ -37,10 +37,10 @@ export default class InterstellarSlimeEntity
     extends Runnable
     implements MobNameRegistry
 {
-    public MOB_ID: string = "cib:interstellar_slime";
-    public displayName: string = "§dSlime Interestelar";
+    public readonly MOB_ID: string = "cib:interstellar_slime";
+    public readonly displayName: string = "§dSlime Interestelar";
 
-    constructor() {
+    public constructor() {
         super();
 
         world.beforeEvents.playerInteractWithEntity.subscribe(

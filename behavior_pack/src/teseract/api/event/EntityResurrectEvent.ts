@@ -199,7 +199,7 @@ world.afterEvents.entityHurt.subscribe((arg) => {
 class EntityResurrectEvent {
     cancel: boolean = false;
     damage: number;
-    constructor(data: {
+    public constructor(data: {
         hurtEntity?: Entity;
         damage: any;
         damageSource: EntityDamageSource;

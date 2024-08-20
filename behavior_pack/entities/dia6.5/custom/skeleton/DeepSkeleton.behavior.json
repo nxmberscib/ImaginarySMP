@@ -5,13 +5,7 @@
             "identifier": "cib:deep_skeleton",
             "is_spawnable": true,
             "is_summonable": true,
-            "is_experimental": false,
-            "animations": {
-                "shoot_sensor": "controller.animation.deep_skeleton.shoot_sensor"
-            },
-            "scripts": {
-                "animate": ["shoot_sensor"]
-            }
+            "is_experimental": false
         },
         "component_groups": {
             "minecraft:lightning_immune": {

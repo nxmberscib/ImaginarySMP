@@ -1,6 +1,7 @@
 import {
     BlockTypes,
     EntityDamageCause,
+    EntitySpawnAfterEvent,
     Player,
     ProjectileHitEntityAfterEvent,
     system,
@@ -10,15 +11,27 @@ import Imaginary from "../Imaginary";
 import { MobNameRegistry } from "../manager/MobNameManager";
 
 export default class BreezeEntity implements MobNameRegistry {
-    public MOB_ID: string = "minecraft:breeze";
+    public readonly MOB_ID: string = "minecraft:breeze";
     public CHARGE_ID: string = "minecraft:breeze_wind_charge_projectile";
-    public displayName: string = "Breeze Mágico"; 
-    
+    public readonly displayName: string = "§aBreeze Mágico";
+
     public constructor() {
         world.afterEvents.projectileHitEntity.subscribe(
             this.onWindChargeHit.bind(this),
         );
+        world.afterEvents.entitySpawn.subscribe(this.onSpawned.bind(this));
         Imaginary.LOGGER.robust("Breeze entity loaded");
+    }
+
+    private onSpawned(event: EntitySpawnAfterEvent) {
+        const { entity } = event;
+
+        if (entity.typeId != this.MOB_ID) {
+            return;
+        }
+
+        entity.addEffect("health_boost", 20000000, { amplifier: 7 });
+        entity.getComponent("health").setCurrentValue(58);
     }
 
     private onWindChargeHit(event: ProjectileHitEntityAfterEvent) {
@@ -35,23 +48,6 @@ export default class BreezeEntity implements MobNameRegistry {
                 return;
             }
 
-            // for (let dx = -1; dx <= 1; dx++) {
-            //     for (let dz = -1; dz <= 1; dz++) {
-            //         for (let dy = -1; dy <= 0; dy++) {
-            //             const location = player.location;
-            //             location.x += dx
-            //             location.z += dz
-            //             location.y += dy
-
-            //             const block = player.dimension.getBlock(location)
-            //             if (block?.typeId != "minecraft:air") {
-            //                 continue;
-            //             }
-            //             block.setType(BlockTypes.get("minecraft:web"))
-            //         }
-            //     }
-            // }
-
             const block = player.dimension.getBlock(player.location);
 
             if (block.typeId == "minecraft:air") {
@@ -60,7 +56,7 @@ export default class BreezeEntity implements MobNameRegistry {
 
             player.addEffect("blindness", 20 * 3);
             player.addEffect("poison", 20 * 3);
-            
+
             player.applyDamage(8, {
                 damagingEntity: source,
                 cause: EntityDamageCause.entityAttack,

@@ -11,7 +11,7 @@ import TimerUtils from "teseract/api/util/TimerUtils";
 @CommandAlias("mute")
 @Permission((p) => p.hasTag("admin") || p.isOp())
 export default class MuteCommand extends WithLogger {
-    constructor() {
+    public constructor() {
         super();
         CommandManager.registerCommand(this);
         Imaginary.LOGGER.robust("Mute command loaded");

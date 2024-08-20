@@ -11,7 +11,7 @@ import TimerUtils from "teseract/api/util/TimerUtils";
 @CommandAlias("unmute")
 @Permission((p) => p.hasTag("admin") || p.isOp())
 export default class UnmuteCommand extends WithLogger {
-    constructor() {
+    public constructor() {
         super();
         CommandManager.registerCommand(this);
         Imaginary.LOGGER.robust("Unmute command loaded");

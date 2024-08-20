@@ -11,8 +11,8 @@ import { MobNameRegistry } from "nxmbers/src/manager/MobNameManager";
 
 export default class BreezeSkeletonEntity implements MobNameRegistry {
     public PROJECTILE_ID = "minecraft:breeze_wind_charge_projectile";
-    public MOB_ID = "cib:breeze_skeleton";
-    public displayName: string = "§dEsqueleto Breeze";
+    public readonly MOB_ID = "cib:breeze_skeleton";
+    public readonly displayName: string = "§dEsqueleto Breeze";
 
     public constructor() {
         world.afterEvents.projectileHitEntity.subscribe(

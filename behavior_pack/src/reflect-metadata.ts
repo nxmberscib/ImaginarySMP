@@ -98,7 +98,7 @@ var Reflect;
          *         // static staticProperty;
          *         // property;
          *
-         *         constructor(p) { }
+         *         public constructor(p) { }
          *         static staticMethod(p) { }
          *         method(p) { }
          *     }
@@ -211,7 +211,7 @@ var Reflect;
          *         // static staticProperty;
          *         // property;
          *
-         *         constructor(p) { }
+         *         public constructor(p) { }
          *         static staticMethod(p) { }
          *         method(p) { }
          *     }
@@ -258,7 +258,7 @@ var Reflect;
          *         // static staticProperty;
          *         // property;
          *
-         *         constructor(p) { }
+         *         public constructor(p) { }
          *         static staticMethod(p) { }
          *         method(p) { }
          *     }
@@ -300,7 +300,7 @@ var Reflect;
          *         // static staticProperty;
          *         // property;
          *
-         *         constructor(p) { }
+         *         public constructor(p) { }
          *         static staticMethod(p) { }
          *         method(p) { }
          *     }
@@ -342,7 +342,7 @@ var Reflect;
          *         // static staticProperty;
          *         // property;
          *
-         *         constructor(p) { }
+         *         public constructor(p) { }
          *         static staticMethod(p) { }
          *         method(p) { }
          *     }
@@ -384,7 +384,7 @@ var Reflect;
          *         // static staticProperty;
          *         // property;
          *
-         *         constructor(p) { }
+         *         public constructor(p) { }
          *         static staticMethod(p) { }
          *         method(p) { }
          *     }
@@ -425,7 +425,7 @@ var Reflect;
          *         // static staticProperty;
          *         // property;
          *
-         *         constructor(p) { }
+         *         public constructor(p) { }
          *         static staticMethod(p) { }
          *         method(p) { }
          *     }
@@ -466,7 +466,7 @@ var Reflect;
          *         // static staticProperty;
          *         // property;
          *
-         *         constructor(p) { }
+         *         public constructor(p) { }
          *         static staticMethod(p) { }
          *         method(p) { }
          *     }
@@ -508,7 +508,7 @@ var Reflect;
          *         // static staticProperty;
          *         // property;
          *
-         *         constructor(p) { }
+         *         public constructor(p) { }
          *         static staticMethod(p) { }
          *         method(p) { }
          *     }

@@ -7,7 +7,7 @@ import TimerUtils from "teseract/api/util/TimerUtils";
 import ImaginaryItems from "./ImaginaryItems";
 
 export default class AureumFulminatorItem implements ObtainableItem {
-    public ITEM_ID: string = "cib:aureum_fulminator";
+    public readonly ITEM_ID: string = "cib:aureum_fulminator";
 
     public constructor() {
         Imaginary.getItemManager().getRegistries().registerObtainable(this);

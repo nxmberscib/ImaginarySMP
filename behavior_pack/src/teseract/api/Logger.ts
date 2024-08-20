@@ -6,7 +6,7 @@ export default class Logger {
     #pluginId: string;
     #emitDebugLogs: boolean;
     #emitRobustDebugLogs: boolean;
-    constructor(
+    public constructor(
         pluginId: string = "teseract",
         emitDebugLogs: boolean = false,
         emitRobustDebugLogs: boolean = false,

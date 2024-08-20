@@ -8,7 +8,7 @@ import WithLogger from "../util/WithLogger";
 import { Vector3Builder } from "../util/vector/VectorWrapper";
 
 export default class VexEntity extends WithLogger {
-    public MOB_ID: string = "minecraft:vex";
+    public readonly MOB_ID: string = "minecraft:vex";
 
     public constructor() {
         super();
