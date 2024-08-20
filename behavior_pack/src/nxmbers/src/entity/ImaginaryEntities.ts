@@ -16,6 +16,7 @@ import DeepCreeperEntity from "./creeper/DeepCreeperEntity";
 import DeepSpiderEntity from "./spider/DeepSpiderEntity";
 import { Effect } from "@minecraft/server";
 import DrownedEntity from "./DrownedEntity";
+import DeepSkeletonEntity from "./skeleton/DeepSkeletonEntity";
 
 export default class ImaginaryEntities {
     public static OPOSSUM: OpossumEntity;
@@ -32,6 +33,7 @@ export default class ImaginaryEntities {
     public static DEEP_CREEPER: DeepCreeperEntity;
     public static DEEP_SPIDER: DeepSpiderEntity;
     public static DROWNED: DrownedEntity;
+    public static DEEP_SKELETON: DeepSkeletonEntity;
 
     public static registerEntities() {
         // Player
@@ -58,12 +60,13 @@ export default class ImaginaryEntities {
         this.BREEZE = new BreezeEntity();
         this.VEX = new VexEntity();
 
-        this.DROWNED = new DrownedEntity()
+        this.DROWNED = new DrownedEntity();
 
         this.JIRAFITA = new JirafitaEntity();
 
         this.DEEP_CREEPER = new DeepCreeperEntity();
         this.DEEP_SPIDER = new DeepSpiderEntity();
+        this.DEEP_SKELETON = new DeepSkeletonEntity();
 
         Imaginary.LOGGER.info("Imaginary entities loaded");
     }

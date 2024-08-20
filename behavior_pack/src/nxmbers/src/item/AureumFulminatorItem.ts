@@ -20,7 +20,7 @@ export default class AureumFulminatorItem implements ObtainableItem {
         if (itemStack.typeId != this.ITEM_ID) {
             return;
         }
-        const cooldown = player.getItemCooldown("slime_wand");
+        const cooldown = player.getItemCooldown("aureum_fulminator");
 
         if (cooldown != 0) {
             return;

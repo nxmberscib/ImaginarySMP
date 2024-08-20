@@ -1,0 +1,25 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.deep_skeleton.shoot_sensor": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "shooting": "q.is_charged"
+                        }
+                    ]
+                },
+                "shooting": {
+                    "on_entry": ["/scriptevent cib:sonic_boom deep_skeleton"],
+                    "transitions": [
+                        {
+                            "default": "!q.is_charged"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
