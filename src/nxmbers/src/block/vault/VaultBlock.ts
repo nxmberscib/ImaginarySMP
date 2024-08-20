@@ -5,7 +5,7 @@ export default class VaultBlock {
     private VAULT_BLOCK_ID = "minecraft:vault";
 
     public constructor() {
-        world.beforeEvents.itemUseOn.subscribe(this.onTrialKeyUsed);
+        world.beforeEvents.itemUseOn.subscribe(this.onTrialKeyUsed.bind(this));
     }
 
     private onTrialKeyUsed(event: ItemUseOnBeforeEvent) {

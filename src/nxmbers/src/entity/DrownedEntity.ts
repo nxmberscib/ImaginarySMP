@@ -33,10 +33,6 @@ export default class DrownedEntity {
                 return;
             }
 
-            if (Math.random() < 0.5) {
-                return;
-            }
-
             source.teleport(player.location);
         } catch (error) {
             Imaginary.LOGGER.error(error);

@@ -101,6 +101,22 @@ export default class Logger {
         }
     }
 
+    public critical(message: any, ...data: any[]) {
+            if (message instanceof Error) {
+                return console.warn(
+                    `[${this.getPluginIdentifier()}] [error] [critical]`,
+                    message,
+                    message.stack,
+                );
+            }
+            console.warn(
+                `[${this.getPluginIdentifier()}] [error] [critical]`,
+                message,
+                Color.Reset,
+                ...data,
+            );
+    }
+
     public robust(message: any, ...data: any[]) {
         if (this.#emitRobustDebugLogs) {
             if (message instanceof Error) {

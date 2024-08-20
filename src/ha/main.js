@@ -9,6 +9,7 @@ import './chatRanks';
 import './itemsUsed';
 import './mobsName';
 import './damageEvents';
+import Imaginary from 'nxmbers/src/Imaginary';
 
 let banSystem = true;
 let lastSave = {};
@@ -142,7 +143,7 @@ mc.system.afterEvents.scriptEventReceive.subscribe(async staticEvents => {
 					 * @remarks
 					 * NxmbersCib's BanManager replacement
 					 */
-					Imaginary.getInstance().getBanManager().banPlayer(entity);
+					Imaginary.getBanManager().banPlayer(entity);
 				}, 1000);
 			} break;
 			case 'ha:off_ban': {

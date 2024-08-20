@@ -12,6 +12,10 @@ import WithLogger from "../util/WithLogger";
 import VexEntity from "./VexEntity";
 import Imaginary from "../Imaginary";
 import JirafitaEntity from "./llama/JirafitaEntity";
+import DeepCreeperEntity from "./creeper/DeepCreeperEntity";
+import DeepSpiderEntity from "./spider/DeepSpiderEntity";
+import { Effect } from "@minecraft/server";
+import DrownedEntity from "./DrownedEntity";
 
 export default class ImaginaryEntities {
     public static OPOSSUM: OpossumEntity;
@@ -25,11 +29,13 @@ export default class ImaginaryEntities {
     public static BREEZE: BreezeEntity;
     public static VEX: VexEntity;
     public static JIRAFITA: JirafitaEntity;
+    public static DEEP_CREEPER: DeepCreeperEntity;
+    public static DEEP_SPIDER: DeepSpiderEntity;
+    public static DROWNED: DrownedEntity;
 
     public static registerEntities() {
         // Player
         ImaginaryPlayer.registerPlayerBehaviors();
-
         // Foxes
         this.OPOSSUM = new OpossumEntity();
 
@@ -52,7 +58,12 @@ export default class ImaginaryEntities {
         this.BREEZE = new BreezeEntity();
         this.VEX = new VexEntity();
 
+        this.DROWNED = new DrownedEntity()
+
         this.JIRAFITA = new JirafitaEntity();
+
+        this.DEEP_CREEPER = new DeepCreeperEntity();
+        this.DEEP_SPIDER = new DeepSpiderEntity();
 
         Imaginary.LOGGER.info("Imaginary entities loaded");
     }

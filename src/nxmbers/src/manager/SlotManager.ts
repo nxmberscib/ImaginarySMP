@@ -17,6 +17,18 @@ export default class SlotManager extends Mixin(Runnable, WithLogger) {
         Imaginary.LOGGER.info("Slot manager loaded");
     }
 
+    public lockAllSlots(player: Player) {
+        for (let i = 0; i < 36; i++ ) {
+            this.lockSlot(player, i)
+        }
+    }
+
+    public unlockAllSlots(player: Player) {
+        for (let i = 0; i < 36; i++ ) {
+            this.unlockSlot(player, i)
+        }
+    }
+
     public override *onRunJob() {
         for (const player of world.getAllPlayers()) {
             const inventory = player.getComponent("inventory");

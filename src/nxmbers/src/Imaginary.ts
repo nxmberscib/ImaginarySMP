@@ -11,6 +11,7 @@ import MobNameManager from "./manager/MobNameManager";
 import ItemManager from "./item/manager/ItemManager";
 import DiscordManager from "./discord/DiscordManager";
 import FastTotemManager from "./fast_totem/FastTotemManager";
+import ImaginaryBlocks from "./block/ImaginaryBlocks";
 
 export default class Imaginary {
     #fastTotemManager: FastTotemManager;
@@ -50,6 +51,7 @@ export default class Imaginary {
         ImaginaryCommands.registerCommands();
         ImaginaryItems.registerItems();
         ImaginaryEntities.registerEntities();
+        ImaginaryBlocks.registerBlocks()
 
         Imaginary.LOGGER.info("Imaginary was successfully loaded");
     }
