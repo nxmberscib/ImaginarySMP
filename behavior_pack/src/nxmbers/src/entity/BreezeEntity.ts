@@ -14,7 +14,7 @@ import ImaginaryEntities from "./ImaginaryEntities";
 
 export default class BreezeEntity implements MobNameRegistry {
     public readonly MOB_ID: string = "minecraft:breeze";
-    public CHARGE_ID: string = "minecraft:breeze_wind_charge_projectile";
+    public readonly CHARGE_ID: string = "minecraft:breeze_wind_charge_projectile";
     public readonly displayName: string = "§aBreeze Mágico";
 
     public constructor() {
@@ -23,6 +23,7 @@ export default class BreezeEntity implements MobNameRegistry {
         );
         world.afterEvents.entitySpawn.subscribe(this.onSpawned.bind(this));
         world.afterEvents.entityDie.subscribe(this.onDeath.bind(this));
+        Imaginary.getMobNameManager().addRegistry(this);
         Imaginary.LOGGER.robust("Breeze entity loaded");
     }
 
