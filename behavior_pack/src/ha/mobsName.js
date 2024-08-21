@@ -26,7 +26,7 @@ const entityNames = {
 mc.world.afterEvents.entitySpawn.subscribe(entitySpawned => {
     try {
         let entity = entitySpawned.entity;
-        const entityType = entity.typeId;
+        const entityType = entity?.typeId;
         const nameTag = entityNames[entityType];
         if (typeof nameTag == 'function') {
             const variant = entity.getComponent("minecraft:variant");

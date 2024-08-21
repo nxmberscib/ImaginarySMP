@@ -15,7 +15,7 @@ export default class AureumFulminatorItem implements ObtainableItem {
 
     private onItemUsed(event: ItemUseBeforeEvent) {
         const { itemStack, source: player } = event;
-        if (itemStack.typeId != this.ITEM_ID) {
+        if (itemStack?.typeId != this.ITEM_ID) {
             return;
         }
         const cooldown = player.getItemCooldown("aureum_fulminator");

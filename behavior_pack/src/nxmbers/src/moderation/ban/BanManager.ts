@@ -1,111 +1,229 @@
-import { ScoreboardObjective, world, Player } from "@minecraft/server";
-import Imaginary from "nxmbers/src/Imaginary";
+import { Player, world } from "@minecraft/server";
+import GlobalBanInformation from "./GlobalBanInformation";
+import BanInformation from "./BanInformation";
+import FormatUtils from "teseract/api/util/FormatUtils";
+import TimerUtils from "teseract/api/util/TimerUtils";
 import CommandManager from "teseract/api/command/CommandManager";
-import UnbanCommand from "./command/UnbanCommand";
+import Imaginary from "nxmbers/src/Imaginary";
+import Runnable from "teseract/api/util/Runnable";
 import BanCommand from "./command/BanCommand";
+import UnbanCommand from "./command/UnbanCommand";
 
-export default class BanManager  {
-    public BAN_PROTOCOL_ID = "imaginary:ban_protocol";
-    public BAN_OBJECTIVE_ID = "imaginary:banned";
-    public BAN_OBJECTIVE: ScoreboardObjective;
+const $c = "§c";
+const $f = "§f";
+const $b = "§l";
+const $r = "§r";
+const $7 = "§7";
 
-    /**
-     *
-     * @param player
-     */
-    private formatBanName(player: Player | string) {
-        return player instanceof Player ? `{${player.name}}` : `{${player}}`;
+export default class BanManager extends Runnable {
+    public readonly BAN_INFORMATION: string = "banInfo" + (212244).toString(16);
+
+    private getPlayerWithID(banned: string) {
+        const players = world.getPlayers({ name: banned })?.[0];
+        return players;
     }
 
-    public toggleBanProtocol() {
-        const on = world.getDynamicProperty(this.BAN_PROTOCOL_ID);
-        world.setDynamicProperty(
-            this.BAN_PROTOCOL_ID,
-            !(on === undefined ? false : on),
-        );
+    public readonly BANNED_MESSAGE: string =
+        `${$b}${$c}|||||||||||||${$b} ¡ESTÁS BANEADO!  \n` +
+        `${$b}${$c}|||||${$f}|||${$c}|||||\n` +
+        `${$b}${$c}|||||${$f}|||${$c}|||||` +
+        `${$r}${$7} > Restante: %1%\n` +
+        `${$b}${$c}|||||${$f}|||${$c}|||||\n` +
+        `${$b}${$c}|||||${$f}|||${$c}|||||` +
+        `${$r}${$7} > Razón: %2% \n` +
+        `${$b}${$c}|||||||||||||\n` +
+        `${$b}${$c}|||||${$f}|||${$c}|||||` +
+        `${$r}${$7} > Staff: %3% \n` +
+        `${$b}${$c}|||||||||||||\n`;
+
+    public save(info: GlobalBanInformation) {
+        world.setDynamicProperty(this.BAN_INFORMATION, JSON.stringify(info));
     }
 
-    public isEnabled(): boolean {
-        const on = world.getDynamicProperty(this.BAN_PROTOCOL_ID) as boolean;
-        return on;
+    public savePlayer(information: BanInformation) {
+        const info = this.getBanInformation() ?? {};
+        info[information.bannedId] = information;
+        this.save(info as GlobalBanInformation);
     }
 
-    private setupBanSystem() {
-        const objective = world.scoreboard.getObjective(this.BAN_OBJECTIVE_ID);
-        world.setDynamicProperty(this.BAN_PROTOCOL_ID, true);
-        if (!objective) {
-            this.BAN_OBJECTIVE = world.scoreboard.addObjective(
-                this.BAN_OBJECTIVE_ID,
-            );
-        } else {
-            this.BAN_OBJECTIVE = objective;
+    public getLastTimeChecked() {
+        return this.getBanInformation().lastTimeChecked;
+    }
+
+    public setLastTimeChecked(millis: number) {
+        const info = this.getBanInformation();
+        info.lastTimeChecked = millis;
+        this.save(info as GlobalBanInformation);
+    }
+
+    public getBanInformation(): GlobalBanInformation;
+    public getBanInformation(player?: Player): BanInformation;
+    public getBanInformation(player?: string): BanInformation;
+    public getBanInformation(
+        arg1?: Player | string,
+    ): GlobalBanInformation | BanInformation {
+        let str = world.getDynamicProperty(this.BAN_INFORMATION) as string;
+        if (!str) {
+            str = "{}";
+            world.setDynamicProperty(this.BAN_INFORMATION, "{}");
+        }
+        let banInfo = JSON.parse(str ?? "{}");
+
+        if (!arg1) {
+            return banInfo ?? undefined;
         }
 
-        return this.BAN_OBJECTIVE;
+        return banInfo[arg1 instanceof Player ? arg1.id : arg1] ?? undefined;
     }
 
-    /**
-     *
-     * @param player
-     */
-    public banPlayer(player: Player | string) {
-        this.BAN_OBJECTIVE?.setScore(this.formatBanName(player), 1);
-        if (!(player instanceof Player) || !player.isValid()) {
+    public banPlayer(
+        player: Player,
+        duration: number,
+        staff?: Player,
+        reason?: string,
+    ): void;
+    public banPlayer(
+        player: string,
+        duration: number,
+        staff?: Player,
+        reason?: string,
+    ): void;
+    public banPlayer(
+        player: Player | string,
+        duration: number = Infinity,
+        staff?: Player,
+        reason?: string,
+    ): void {
+        const info = this.getBanInformation() ?? {};
+
+        const banInfo = {
+            shouldEndTimestamp: Date.now() + duration * 1000,
+            startTimestamp: Date.now(),
+            bannedId: player instanceof Player ? player.id : player,
+            staff: !staff
+                ? undefined
+                : {
+                      uuid: staff.id,
+                      displayName: staff.nameTag,
+                      name: staff.name,
+                  },
+            reason: reason ?? "No especificada",
+        };
+
+        info[player instanceof Player ? player.id : player] = banInfo;
+
+        Imaginary.LOGGER.info(
+            "[moderation] Player banned: " +
+                JSON.stringify(
+                    info[player instanceof Player ? player.id : player],
+                ),
+        );
+
+        this.save(info as GlobalBanInformation);
+
+        if (player instanceof Player) {
+            player.runCommand(
+                `kick "${player.name}" "${FormatUtils.placeHolder(
+                    this.BANNED_MESSAGE,
+                    TimerUtils.parseTime(
+                        Math.floor(
+                            (banInfo.shouldEndTimestamp - Date.now()) / 1000,
+                        ),
+                    ),
+                    banInfo.reason,
+                    banInfo.staff?.name ?? "Consola",
+                )}"`,
+            );
+        }
+    }
+
+    public unbanPlayer(player: Player): void;
+    public unbanPlayer(player: string): void;
+    public unbanPlayer(player: Player | string): void {
+        const info = this.getBanInformation();
+
+        if (!info) {
             return;
         }
-        player.removeTag("inCinematic");
-        player.runCommand(`kick "${player.name}"`);
-    }
 
-    /**
-     *
-     */
-    public isBanned(player: Player | string) {
-        const isBanned = this.BAN_OBJECTIVE.getScore(
-            this.formatBanName(player),
+        Imaginary.LOGGER.info(
+            "[moderation] Player unbanned: " +
+                JSON.stringify(
+                    info[player instanceof Player ? player.id : player],
+                ),
         );
 
-        return !isBanned ? false : true;
+        delete info[player instanceof Player ? player.id : player];
+
+        this.save(info as GlobalBanInformation);
     }
 
-    /**
-     * Unbans or pardon a player.
-     * @remarks
-     * The player parameter can be either an string or a player object, being a player object when the target player to be banned is online.
-     */
-    public unbanPlayer(player: Player | string) {
-        this.BAN_OBJECTIVE?.setScore(this.formatBanName(player), 0);
+    public isBanned(player: Player | string) {
+        const banInfo = this.getBanInformation(player as any);
+        if (!banInfo) {
+            return false;
+        }
+        return Date.now() < (banInfo.shouldEndTimestamp ?? Infinity);
     }
 
     public constructor() {
-        this.setupBanSystem();
-        this.startBanProtocol();
-        CommandManager.registerCommand(new UnbanCommand());
+        super();
+
+        world.afterEvents.playerSpawn.subscribe(this.onPlayerSpawn.bind(this));
+
         CommandManager.registerCommand(new BanCommand());
+        CommandManager.registerCommand(new UnbanCommand());
+
+        for (const [banned] of Object.entries(this.getBanInformation() ?? {})) {
+            if (banned == "lastTimeChecked") {
+                continue;
+            }
+
+            const info = this.getBanInformation(banned);
+            Imaginary.LOGGER.debug(info);
+            if (!info) {
+                continue;
+            }
+            info.shouldEndTimestamp += Date.now() - this.getLastTimeChecked();
+
+            this.savePlayer(info);
+        }
+
+        this.setLastTimeChecked(Date.now());
+
+        this.runTimer(20);
+        Imaginary.LOGGER.info("Ban Manager loaded and running");
     }
 
-    private startBanProtocol() {
-        try {
-            world.afterEvents.playerSpawn.subscribe((arg) => {
-                const { player } = arg;
-                
-                if (
-                    !this.BAN_OBJECTIVE.hasParticipant(
-                        this.formatBanName(player),
-                    )
-                ) {
-                    return;
-                }
+    public onPlayerSpawn(event: { player: Player }) {
+        const { player } = event;
 
-                if (!this.isBanned(player) || !this.isEnabled()) {
-                    return;
-                }
-
-                player.removeTag("inCinematic");
-                player.runCommand(`kick "${player.name}"`);
-            });
-        } catch (error) {
-            Imaginary.LOGGER.error(error);
+        if (!this.isBanned(player)) {
+            return;
         }
+
+        player.runCommand(`kick "${player.name}"`);
+    }
+
+    public override *onRunJob(): Generator<void, void, void> {
+        if (!this.getBanInformation()) {
+            return;
+        }
+
+        for (const [banned] of Object.entries(this.getBanInformation())) {
+            if (banned == "lastTimeChecked") {
+                continue;
+            }
+
+            if (this.isBanned(banned)) {
+                continue;
+            }
+
+            this.unbanPlayer(banned);
+
+            yield;
+        }
+
+        this.setLastTimeChecked(Date.now());
     }
 }

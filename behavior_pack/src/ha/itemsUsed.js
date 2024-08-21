@@ -55,7 +55,7 @@ mc.world.afterEvents.itemCompleteUse.subscribe(itemsUsed => {
 	try {
 		let player = itemsUsed.source;
 		let item = itemsUsed.itemStack;
-		const effects = itemEffects[item.typeId];
+		const effects = itemEffects[item?.typeId];
         if (effects) {
             for (const effect of effects) {
                 if (effect.command) {

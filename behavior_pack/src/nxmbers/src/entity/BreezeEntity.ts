@@ -13,14 +13,15 @@ import ImaginaryEntities from "./ImaginaryEntities";
 
 export default class BreezeEntity implements MobNameRegistry {
     public readonly MOB_ID: string = "minecraft:breeze";
-    public readonly CHARGE_ID: string = "minecraft:breeze_wind_charge_projectile";
+    public readonly CHARGE_ID: string =
+        "minecraft:breeze_wind_charge_projectile";
     public readonly displayName: string = "§aBreeze Mágico";
 
     public constructor() {
         world.afterEvents.projectileHitEntity.subscribe(
             this.onWindChargeHit.bind(this),
         );
-        
+
         world.afterEvents.entitySpawn.subscribe(this.onSpawned.bind(this));
         world.afterEvents.entityDie.subscribe(this.onDeath.bind(this));
 
@@ -29,6 +30,9 @@ export default class BreezeEntity implements MobNameRegistry {
     }
 
     private onDeath({ deadEntity: breeze }: EntityDieAfterEvent) {
+        if (breeze?.typeId != this.MOB_ID) {
+            return;
+        }
         breeze.dimension.spawnEntity(
             ImaginaryEntities.DIABLOQUITO.MOB_ID,
             breeze.location,
@@ -38,7 +42,7 @@ export default class BreezeEntity implements MobNameRegistry {
     private onSpawned(event: EntitySpawnAfterEvent) {
         const { entity } = event;
 
-        if (entity.typeId != this.MOB_ID) {
+        if (entity?.typeId != this.MOB_ID) {
             return;
         }
 
@@ -62,7 +66,7 @@ export default class BreezeEntity implements MobNameRegistry {
 
             const block = player.dimension.getBlock(player.location);
 
-            if (block.typeId == "minecraft:air") {
+            if (block?.typeId == "minecraft:air") {
                 block.setType(BlockTypes.get("minecraft:web"));
             }
 

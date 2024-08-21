@@ -16,6 +16,7 @@ import DeepSpiderEntity from "./spider/DeepSpiderEntity";
 import DrownedEntity from "./DrownedEntity";
 import DeepSkeletonEntity from "./skeleton/DeepSkeletonEntity";
 import DiabloquitoEntity from "./DiabloquitoEntity";
+import DryHoglinEntity from "./DryHoglinEntity";
 
 export default class ImaginaryEntities {
     public static OPOSSUM: OpossumEntity;
@@ -25,6 +26,7 @@ export default class ImaginaryEntities {
     public static INTERSTELLAR_SLIME: InterstellarSlimeEntity;
     public static MARINE_SLIME: MarineSlimeEntity;
     public static FROZEN_PIGLIN: FrozenPiglinEntity;
+    public static DRY_HOGLIN: DryHoglinEntity;
     public static PREASSURE_ASSASIN: PreassureAssasinEntity;
     public static DIABLOQUITO: DiabloquitoEntity;
     public static BREEZE: BreezeEntity;
@@ -52,6 +54,7 @@ export default class ImaginaryEntities {
 
         // Piglins
         this.FROZEN_PIGLIN = new FrozenPiglinEntity();
+        this.DRY_HOGLIN = new DryHoglinEntity();
 
         // Illagers
         this.PREASSURE_ASSASIN = new PreassureAssasinEntity();

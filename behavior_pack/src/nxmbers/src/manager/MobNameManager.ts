@@ -29,7 +29,7 @@ export default class MobNameManager {
         if (!event.entity.isValid()) {
             return;
         }
-        const registry = this.registry.get(event.entity.typeId);
+        const registry = this.registry.get(event.entity?.typeId);
 
         if (!registry) {
             return;

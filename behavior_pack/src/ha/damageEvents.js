@@ -20,7 +20,7 @@ mc.world.beforeEvents.entityRemove.subscribe(explotions => {
 		let source = explotions.removedEntity;
 		let dime = source.dimension;
 		let coords = source.location;
-		if (source.typeId == 'minecraft:creeper') {
+		if (source?.typeId == 'minecraft:creeper') {
 			let variant = source.getComponent("minecraft:variant");
 			if (variant.value != 1) return;
 			mc.system.run(() => {
@@ -35,7 +35,7 @@ mc.world.afterEvents.entityDie.subscribe(dieSensor => {
 		let source = dieSensor.damageSource;
 		let damageEntity = source.damagingEntity;
 		let entity = dieSensor.deadEntity;
-		switch (entity.typeId) {
+		switch (entity?.typeId) {
 			case 'minecraft:strider': {
 				damageEntity.runCommand(`function unnecessary_mechanics/strider_muerte`);
 			} break;
@@ -71,7 +71,7 @@ mc.world.afterEvents.entityHurt.subscribe(damageSensor => {
 		let source = damageSensor.damageSource;
 		let damageEntity = source.damagingEntity;
 		let entity = damageSensor.hurtEntity;
-		switch (damagingEntity.typeId) {
+		switch (damagingEntity?.typeId) {
 			case 'minecraft:phantom': {
 				entity.runCommand(`ride @s start_riding @e[type=phantom,c=1,r=4] teleport_rider`);
 				entity.addEffect("poison", 200, { amplifier: 4 });
@@ -85,18 +85,18 @@ mc.world.afterEvents.entityHitEntity.subscribe(hitPlayerSensor => {
 	try {
 		let hurtEntity = hitPlayerSensor.hitEntity;
 		let meleeEntity = hitPlayerSensor.damagingEntity;
-		if (hurtEntity.typeId == 'minecraft:player') {
+		if (hurtEntity?.typeId == 'minecraft:player') {
 			setCooldownShield(meleeEntity, hurtEntity, true);
 		};
 
-		switch (meleeEntity.typeId) {
+		switch (meleeEntity?.typeId) {
 			case 'minecraft:donkey':
 			case 'minecraft:mule':
 			case 'minecraft:horse':
 			case 'minecraft:skeleton_horse':
 			case 'minecraft:zombie_horse':
 			case 'minecraft:camel': {
-				hurtEntity.runCommand(`rider @s start_riding @e[type=${meleeEntity.typeId},c=1,r=3] teleport_rider`);
+				hurtEntity.runCommand(`rider @s start_riding @e[type=${meleeEntity?.typeId},c=1,r=3] teleport_rider`);
 			} break;
 		}
 	} catch { };
@@ -106,7 +106,7 @@ mc.world.afterEvents.entityHitEntity.subscribe(hitSensor => {
 	try {
 		let hurtEntity = hitSensor.hitEntity;
 		let meleeEntity = hitSensor.damagingEntity;
-		switch (meleeEntity.typeId) {
+		switch (meleeEntity?.typeId) {
 			case 'minecraft:enderman': {
 				let dime = hurtEntity.dimension;
 				dime.spawnEntity("minecraft:boat<ha:spawn_from_enderman>", hurtEntity.location);
@@ -293,7 +293,7 @@ mc.world.afterEvents.projectileHitBlock.subscribe(hitBlock => {
 		let projectile = hitBlock.projectile;
 		let block = hitBlock.getBlockHit().block;
 
-		switch (source.typeId) {
+		switch (source?.typeId) {
 			case 'minecraft:allay': {
 				let variant = source.getComponent("minecraft:variant");
 				if (variant.value != 2) return;
@@ -309,12 +309,12 @@ mc.world.afterEvents.projectileHitBlock.subscribe(hitBlock => {
 			} break;
 		};
 
-		switch (projectile.typeId) {
+		switch (projectile?.typeId) {
 			case 'minecraft:arrow': {
-				if (source.typeId == 'ha:furnace_golem') {
+				if (source?.typeId == 'ha:furnace_golem') {
 					projectile.runCommand(`setblock ~~~ ha:fake_iron_block`);
 					projectile.kill();
-				} else if (source.typeId == 'minecraft:warden') {
+				} else if (source?.typeId == 'minecraft:warden') {
 					projectile.runCommand(`setblock ~~~ ha:fake_coal_block`);
 					projectile.kill();
 				};
@@ -346,10 +346,10 @@ mc.world.afterEvents.projectileHitEntity.subscribe(hitProyectSensor => {
 		let entity = hitProyectSensor.getEntityHit().entity;
 		let projectile = hitProyectSensor.projectile;
 
-		switch (source.typeId) {
+		switch (source?.typeId) {
 			case 'minecraft:snow_golem': {
 				entity.addEffect("slowness", 200, { amplifier: 2 });
-				if (!entity.typeId == 'minecraft:player') return;
+				if (!entity?.typeId == 'minecraft:player') return;
 				stopMove(entity, 60);
 			} break;
 			case 'ha:desert_skeleton': {
@@ -388,7 +388,7 @@ mc.world.afterEvents.projectileHitEntity.subscribe(hitProyectSensor => {
 			} break;
 		};
 
-		switch (projectile.typeId) {
+		switch (projectile?.typeId) {
 			case 'minecraft:trident': {
 				entity.dimension.createExplosion(entity.location, 6, { allowUnderwater: true, source: source });
 			} break;
@@ -407,7 +407,7 @@ mc.world.afterEvents.projectileHitEntity.subscribe(hitProyectSensor => {
 			} break;
 		};
 
-		if (entity.typeId == 'minecraft:player') setCooldownShield(undefined, entity, false);
+		if (entity?.typeId == 'minecraft:player') setCooldownShield(undefined, entity, false);
 	} catch { };
 });
 
@@ -440,7 +440,7 @@ function searchTotem(entity) {
 	let armorInv = entity.getComponent("minecraft:equippable");
 	let mainHand = armorInv.getEquipment("Mainhand");
 	let offHand = armorInv.getEquipment("Offhand");
-	return (mainHand && mainHand.typeId == 'minecraft:totem_of_undying') || (offHand && offHand.typeId == 'minecraft:totem_of_undying');
+	return (mainHand && mainHand?.typeId == 'minecraft:totem_of_undying') || (offHand && offHand?.typeId == 'minecraft:totem_of_undying');
 };
 
 function checkHelmet(player, coords, dime, deadEntity) {
@@ -448,7 +448,7 @@ function checkHelmet(player, coords, dime, deadEntity) {
 	let equipArmor = player.getComponent("minecraft:equippable");
 	let itemHead = equipArmor.getEquipment("Head");
 	let itemDrop = new mc.ItemStack("minecraft:golden_apple", 1);
-	if (itemHead && itemHead.typeId == 'ha:easter_helmet') {
+	if (itemHead && itemHead?.typeId == 'ha:easter_helmet') {
 		let chance = (Math.random() * 101);
 		if (chance <= 80) {
 			dime.spawnItem(itemDrop, coords);
@@ -542,7 +542,7 @@ function setCooldownShield(otherEntity, player, isEquip) {
 			};
 		};
 	};
-	if (offHand && offHand.typeId == 'minecraft:shield') {
+	if (offHand && offHand?.typeId == 'minecraft:shield') {
 		if (player.isSneaking) {
 			if (!isEquip) {
 				cooldown.startCooldown(player);

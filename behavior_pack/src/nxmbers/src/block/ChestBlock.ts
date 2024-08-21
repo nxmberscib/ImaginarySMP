@@ -11,7 +11,7 @@ export default class ChestBlock {
     private onPlayerInteractWithBlock(arg: any) {
         const { block, player } = arg;
 
-        if (!block.typeId.includes(this.CHEST_ID_PARTIAL)) {
+        if (!block?.typeId.includes(this.CHEST_ID_PARTIAL)) {
             return;
         }
 

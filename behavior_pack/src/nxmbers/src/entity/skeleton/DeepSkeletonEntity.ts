@@ -19,7 +19,7 @@ export default class DeepSkeletonEntity implements MobNameRegistry {
     }
 
     private async onShoot(event: EntitySpawnAfterEvent) {
-        if (event.entity.typeId != "minecraft:arrow") {
+        if (event.entity?.typeId != "minecraft:arrow") {
             return;
         }
 
@@ -34,10 +34,20 @@ export default class DeepSkeletonEntity implements MobNameRegistry {
 
         event.entity.triggerEvent("from_deep_skeleton");
 
-        await TimerUtils.sleep(40);
+        await TimerUtils.sleep(35);
+
+        if (!owner.isValid()) {
+            return;
+        }
 
         const headLocation = owner.getHeadLocation();
         const direction = owner.getViewDirection();
+
+        await TimerUtils.sleep(5);
+
+        if (!owner.isValid()) {
+            return;
+        }
 
         ShootSonicBoom(owner, headLocation, direction, 20, 10);
     }

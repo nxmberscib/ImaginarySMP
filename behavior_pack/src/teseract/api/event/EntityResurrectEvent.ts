@@ -79,7 +79,7 @@ world.afterEvents.entityHurt.subscribe((arg) => {
 
             const mimicProjectile = damageSource.damagingProjectile
                 ? damageSource.damagingEntity.dimension.spawnEntity(
-                      damageSource.damagingProjectile.typeId,
+                      damageSource.damagingProjectile?.typeId,
                       damageSource.damagingEntity.location,
                   )
                 : undefined;
@@ -157,7 +157,7 @@ world.afterEvents.entityHurt.subscribe((arg) => {
 
             if (!damagerWasValid && damageSource.damagingEntity != undefined) {
                 const damager = player.dimension.spawnEntity(
-                    cachedDamager.typeId,
+                    cachedDamager?.typeId,
                     player.location,
                 );
 
@@ -175,7 +175,7 @@ world.afterEvents.entityHurt.subscribe((arg) => {
             }
 
             for (const effect of player.getEffects()) {
-                player.removeEffect(effect.typeId);
+                player.removeEffect(effect?.typeId);
             }
 
             forcePlayerDeath();

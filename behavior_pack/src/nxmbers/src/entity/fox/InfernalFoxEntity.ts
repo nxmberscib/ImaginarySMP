@@ -30,7 +30,7 @@ export default class InfernalFoxEntity implements MobNameRegistry {
             }
 
             if (
-                player.dimension.getBlock(player.location).typeId ==
+                player.dimension.getBlock(player.location)?.typeId ==
                 "minecraft:twisting_vines"
             ) {
                 const effectDuration = TimerUtils.fromSecondsToTicks(4);

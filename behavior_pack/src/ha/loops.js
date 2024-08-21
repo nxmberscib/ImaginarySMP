@@ -91,7 +91,7 @@ mc.world.afterEvents.itemCompleteUse.subscribe(usedCleanItems => {
 	try {
 		let player = usedCleanItems.source;
 		let item = usedCleanItems.itemStack;
-		switch (item.typeId) {
+		switch (item?.typeId) {
 			case 'minecraft:potion': {
 				if (player.hasTag("inCramp")) {
 					player.runCommand(`effect @s slowness 0 0`);
@@ -113,7 +113,7 @@ function destroyTotem(player) {
 	let equipArmor = player.getComponent("minecraft:equippable");
 	let offItem = equipArmor.getEquipment("Offhand");
 	if (offItem) {
-		if (offItem.typeId == 'minecraft:totem') return;
+		if (offItem?.typeId == 'minecraft:totem') return;
 		player.runCommand(`damage @s 999 sonic_boom`);
 	};
 };
@@ -131,7 +131,7 @@ function dropEnder(player) {
 	
 	for (let i = 0; i < inv.size; i++) {
 		let item = inv.getItem(i);
-		if (item && item.typeId == 'minecraft:ender_pearl') {
+		if (item && item?.typeId == 'minecraft:ender_pearl') {
 			dime.spawnItem(item, newCoords);
 			inv.setItem(i, null);
 		};
@@ -142,7 +142,7 @@ function searchTrident(player) {
 	let inv = player.getComponent("minecraft:inventory").container;
 	for (let i = 0; i < inv.size; i++) {
 		let item = inv.getItem(i);
-		if (item && item.typeId == 'minecraft:trident') {
+		if (item && item?.typeId == 'minecraft:trident') {
 			return true;
 		};
 	};

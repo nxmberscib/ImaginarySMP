@@ -81,7 +81,7 @@ export default class InterstellarSlimeEntity
     }
 
     private onDied(event: EntityDieAfterEvent) {
-        if (event.deadEntity.typeId != this.MOB_ID) {
+        if (event.deadEntity?.typeId != this.MOB_ID) {
             return;
         }
         if (Math.random() > 0.3) {

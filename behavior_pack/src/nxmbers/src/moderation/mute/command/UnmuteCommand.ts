@@ -22,12 +22,18 @@ export default class UnmuteCommand extends WithLogger {
         ) as number;
 
         if (remainingMute <= 0 && remainingMute != -1) {
-            player.sendMessage(`§7${target.name} no está silenciado.`);
+            player.sendMessage({
+                translate: "command.mute.not_muted",
+                with: [target.name],
+            });
             return;
         }
 
         Imaginary.getMuteManager().unmutePlayer(target);
-
-        player.sendMessage(`§7${target.name} ya no está silenciado.`);
+        
+        player.sendMessage({
+            translate: "command.mute.success",
+            with: [target.name],
+        });
     }
 }

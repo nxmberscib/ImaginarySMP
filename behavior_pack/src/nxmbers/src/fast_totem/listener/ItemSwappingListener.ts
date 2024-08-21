@@ -11,14 +11,14 @@ export default class ItemSwappingListener {
     private async generalSwapping(event: ItemUseBeforeEvent) {
         const { itemStack, source: player } = event;
 
-        if (!Imaginary.getFastTotemManager().SWAPPABLE_ITEMS.includes(itemStack.typeId)) {
+        if (!Imaginary.getFastTotemManager().SWAPPABLE_ITEMS.includes(itemStack?.typeId)) {
             return;
         }
         
         if (
             !Imaginary.getFastTotemManager().isSwappableEnabled(
                 player,
-                itemStack.typeId,
+                itemStack?.typeId,
             )
         ) {
             return;

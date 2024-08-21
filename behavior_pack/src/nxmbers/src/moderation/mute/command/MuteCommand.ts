@@ -17,12 +17,11 @@ export default class MuteCommand {
 
     @Default
     public onMute(player: Player, target: Player, @Optional duration: string) {
-        // target.setDynamicProperty("imaginary:muted_by", player.name);
-
         if (!duration) {
-            player.sendMessage(
-                `§7${target.name} ha silenciado permanentemente.`,
-            );
+            player.sendMessage({
+                translate: "command.mute.success",
+                with: [target.name],
+            });
 
             Imaginary.getMuteManager().mutePlayer(
                 target,
@@ -33,11 +32,10 @@ export default class MuteCommand {
         } else {
             const parsedDuration = TimerUtils.dateToSeconds(duration);
 
-            player.sendMessage(
-                `§7${target.name} ha sido silenciado por ${TimerUtils.parseDate(
-                    parsedDuration,
-                )}.`,
-            );
+            player.sendMessage({
+                translate: "command.mute.success_duration",
+                with: [target.name, TimerUtils.parseDate(parsedDuration)],
+            });
 
             Imaginary.getMuteManager().mutePlayer(target, parsedDuration);
         }
@@ -50,13 +48,11 @@ export default class MuteCommand {
         duration: string,
         reason: string,
     ) {
-        // target.setDynamicProperty("imaginary:muted_by", player.name);
-        // target.setDynamicProperty("imaginary:muted_reason", reason);
-
         if (!duration) {
-            player.sendMessage(
-                `§7${target.name} ha sido silenciado permanentemente.`,
-            );
+            player.sendMessage({
+                translate: "command.mute.success",
+                with: [target.name],
+            });
 
             Imaginary.getMuteManager().mutePlayer(
                 target,
@@ -74,11 +70,14 @@ export default class MuteCommand {
                 reason,
             );
 
-            player.sendMessage(
-                `§7${target.name} ha sido silenciado por ${TimerUtils.parseDate(
-                    parsedDuration,
-                )}.`,
-            );
+            player.sendMessage({
+                translate: "command.mute.success_duration",
+                with: [
+                    target.name,
+                    TimerUtils.parseDate(parsedDuration),
+                    reason,
+                ],
+            });
         }
     }
 }

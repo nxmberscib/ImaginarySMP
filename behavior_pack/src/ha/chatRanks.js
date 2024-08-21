@@ -36,7 +36,7 @@ mc.world.afterEvents.playerSpawn.subscribe(playerSpawned => {
 mc.world.afterEvents.entityHealthChanged.subscribe(healthSensor => {
 	try {
 		let entity = healthSensor.entity;
-		if (entity.typeId == 'minecraft:player') {
+		if (entity?.typeId == 'minecraft:player') {
 			checkRank(entity)
 		};
 	} catch { };

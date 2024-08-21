@@ -61,23 +61,23 @@ let over = mc.world.getDimension("minecraft:overworld");
 // 	try {
 // 		const player = itemUsed.source;
 // 		const item = itemUsed.itemStack;
-// 		if (item.typeId == 'minecraft:totem_of_undying' || item.typeId == 'minecraft:shield') {
+// 		if (item?.typeId == 'minecraft:totem_of_undying' || item?.typeId == 'minecraft:shield') {
 // 			const armorSlots = player.getComponent("minecraft:equippable");
 // 			let itemOffHand = armorSlots.getEquipment("Offhand");
 // 			let itemMainHand = armorSlots.getEquipment("Mainhand");
 // 			const air = new mc.ItemStack("minecraft:air");
 // 			if (itemOffHand) {
-// 				if (itemOffHand.typeId == 'ha:barrier_fake') return;
+// 				if (itemOffHand?.typeId == 'ha:barrier_fake') return;
 
 // 				armorSlots.setEquipment("Offhand", itemMainHand);
 // 				armorSlots.setEquipment("Mainhand", itemOffHand);
 // 				player.playSound("armor.equip_generic");
-// 				if (item.typeId == "minecraft:totem_of_undying") FastTotemHandicap(player)
+// 				if (item?.typeId == "minecraft:totem_of_undying") FastTotemHandicap(player)
 // 			} else {
 // 				armorSlots.setEquipment("Offhand", itemMainHand);
 // 				armorSlots.setEquipment("Mainhand", air);
 // 				player.playSound("armor.equip_generic");
-// 				if (item.typeId == "minecraft:totem_of_undying") FastTotemHandicap(player)
+// 				if (item?.typeId == "minecraft:totem_of_undying") FastTotemHandicap(player)
 // 			};
 // 		};
 // 	} catch (e) { console.error(e, e.stack) };
@@ -179,7 +179,7 @@ mc.system.afterEvents.scriptEventReceive.subscribe(async staticEvents => {
 				};
 				for (let i = 0; i < inv.size; i++) {
 					let item = inv.getItem(i);
-					if (item && item.typeId == 'ha:limb_amulet_one') {
+					if (item && item?.typeId == 'ha:limb_amulet_one') {
 						inv.setItem(i, newItem);
 						break;
 					};
@@ -208,7 +208,7 @@ mc.system.afterEvents.scriptEventReceive.subscribe(async staticEvents => {
 					} else {
 						for (let i = 0; i < inv.size; i++) {
 							let item = inv.getItem(i);
-							if (item && item.typeId == 'ha:limb_amulet_two') {
+							if (item && item?.typeId == 'ha:limb_amulet_two') {
 								inv.setItem(i, recoveryItem);
 								entity.playSound("random.break");
 								break;
@@ -288,7 +288,7 @@ function blockOffhand(player, repeatMode = false) {
 		let blockItem = new mc.ItemStack("ha:barrier_fake");
 		blockItem.lockMode = mc.ItemLockMode.slot;
 		if (offItem) {
-			if (offItem.typeId == 'minecraft:barrier') return;
+			if (offItem?.typeId == 'minecraft:barrier') return;
 			dime.spawnItem(offItem, player.location);
 			equipArmor.setEquipment("Offhand", blockItem);
 		} else {
@@ -302,7 +302,7 @@ function blockOffhand(player, repeatMode = false) {
 		let blockItem = new mc.ItemStack("ha:barrier_fake");
 		blockItem.lockMode = mc.ItemLockMode.slot;
 		if (offItem) {
-			if (offItem.typeId == 'minecraft:barrier') return;
+			if (offItem?.typeId == 'minecraft:barrier') return;
 			dime.spawnItem(offItem, player.location);
 			equipArmor.setEquipment("Offhand", blockItem);
 		} else {

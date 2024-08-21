@@ -9,7 +9,7 @@
             {
                 "minecraft:herd": {
                     "min_size": 1,
-                    "max_size": 3
+                    "max_size": 1
                 },
                 "minecraft:weight": {
                     "default": 50
