@@ -6,6 +6,7 @@ export default class DiabloquitoEntity implements MobNameRegistry {
     public displayName: string = "§5Diabloquito";
 
     public constructor() {
+        Imaginary.getMobNameManager().addRegistry(this);
         Imaginary.LOGGER.robust("Diabloquito entity loaded");
     }
 }
