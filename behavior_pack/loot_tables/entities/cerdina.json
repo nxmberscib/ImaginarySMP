@@ -1,0 +1,19 @@
+
+{
+	"pools": [
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "empty",
+					"weight": 80
+				},
+				{
+					"type": "item",
+					"name": "ha:sword_of_the_imagination",
+					"weight": 20
+				}
+			]
+		}
+	]
+}

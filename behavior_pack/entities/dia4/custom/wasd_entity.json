@@ -1,0 +1,159 @@
+
+{
+	"format_version": "1.16.100",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "ha:water_entity_two",
+			"is_summonable": true,
+			"is_spawnable": false,
+			"is_experimental": false
+		},
+		"component_groups": {
+			"check_riders": {
+				"minecraft:timer": {
+					"time": [
+						2.0,
+						2.0
+					],
+					"looping": true,
+					"time_down_event": {
+						"event": "ha:despawn",
+						"target": "self"
+					}
+				}
+			},
+			"despawn": {
+				"minecraft:instant_despawn": {
+					"remove_child_entities": true
+				}
+			}
+		},
+		"components": {
+			"minecraft:is_stackable": {},
+			"minecraft:collision_box": {
+				"width": 0.5,
+				"height": 0.5
+			},
+			"minecraft:type_family": {
+				"family": [
+					"waterentity",
+					"inanimate",
+					"mob"
+				]
+			},
+			"minecraft:health": {
+				"value": 2,
+				"max": 2,
+				"min": 2
+			},
+			"minecraft:damage_sensor": {
+				"triggers": [
+					{
+						"cause": "all",
+						"deals_damage": false
+					}
+				]
+			},
+			"minecraft:persistent": {},
+			"minecraft:tick_world": {
+				"radius": 4,
+				"never_despawn": true
+			},
+			"minecraft:physics": {
+				"has_gravity": false
+			},
+			"minecraft:pushable": {
+				"is_pushable": false,
+				"is_pushable_by_piston": false
+			},
+			"minecraft:conditional_bandwidth_optimization": {
+				"default_values": {
+					"max_optimized_distance": 60,
+					"max_dropped_ticks": 20,
+					"use_motion_prediction_hints": true
+				},
+				"conditional_values": [
+					{
+						"max_optimized_distance": 0,
+						"max_dropped_ticks": 0,
+						"use_motion_prediction_hints": true,
+						"conditional_values": [
+							{
+								"test": "is_moving",
+								"subject": "self",
+								"operator": "==",
+								"value": true
+							}
+						]
+					}
+				]
+			},
+			"minecraft:rideable": {
+				"seat_count": 2,
+				"passenger_max_width": 1.375,
+				"interact_text": "action.interact.ride.boat",
+				"pull_in_entities": true,
+				"seats": [
+					{
+						"position": [
+							0,
+							-0.2,
+							0
+						],
+						"min_rider_count": 0,
+						"max_rider_count": 1,
+						"rotate_rider_by": -90,
+						"lock_rider_rotation": 90
+					},
+					{
+						"position": [
+							0.2,
+							-0.2,
+							0
+						],
+						"min_rider_count": 2,
+						"max_rider_count": 2,
+						"rotate_rider_by": "query.has_any_family('blaze', 'creeper', 'enderman', 'illager', 'magmacube', 'piglin', 'player', 'skeleton', 'slime', 'villager', 'wandering_trader', 'witch', 'zombie', 'zombie_pigman') ? -90 : 0",
+						"lock_rider_rotation": 90
+					},
+					{
+						"position": [
+							-0.6,
+							-0.2,
+							0
+						],
+						"min_rider_count": 2,
+						"max_rider_count": 2,
+						"rotate_rider_by": "query.has_any_family('blaze', 'creeper', 'enderman', 'illager', 'magmacube', 'piglin', 'player', 'skeleton', 'slime', 'villager', 'wandering_trader', 'witch', 'zombie', 'zombie_pigman') ? -90 : 0",
+						"lock_rider_rotation": 90
+					}
+				]
+			}
+		},
+		"events": {
+			"minecraft:entity_spawned": {
+				"add": {
+					"component_groups": [
+						"check_riders"
+					]
+				}
+			},
+			"ha:despawn": {
+				"sequence": [
+					{
+						"filters": {
+							"test": "rider_count",
+							"subject": "self",
+							"value": 0
+						},
+						"add": {
+							"component_groups": [
+								"despawn"
+							]
+						}
+					}
+				]
+			}
+		}
+	}
+}

@@ -1,0 +1,19 @@
+
+{
+	"pools": [
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "empty",
+					"weight": 20
+				},
+				{
+					"type": "item",
+					"name": "ha:regeneration_helmet",
+					"weight": 80
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,59 @@
+
+{
+	"format_version": "1.10.0",
+	"animations": {
+		"animation.hand_canon.1st_person": {
+			"loop": true,
+			"bones": {
+				"center": {
+					"rotation": [-5, 180, -5],
+					"position": [2.5, 21, 8],
+					"scale": 1.5
+				}
+			}
+		},
+		"animation.hand_canon.3st_person": {
+			"loop": true,
+			"bones": {
+				"center": {
+					"rotation": [0, 0.5, 0],
+					"position": [-0.3, 13.9, -8.3],
+					"scale": 2.4
+				}
+			}
+		},
+		"animation.hand_canon.3st_person_sneaking": {
+			"loop": true,
+			"bones": {
+				"center": {
+					"rotation": [0, 0.5, 0],
+					"position": [-0.3, 13.9, -8.3],
+					"scale": 2.4
+				}
+			}
+		},
+		"animation.player.hand_canon": {
+			"loop": true,
+			"bones": {
+				"leftArm": {
+					"rotation": [-45, 0, 12.5]
+				},
+				"rightArm": {
+					"rotation": [-45, 0, -10]
+				}
+			}
+		},
+		"animation.hand_canon.bob": {
+			"loop": true,
+			"bones": {
+				"center": {
+					"rotation": [
+						"!c.is_first_person ? 0 + (math.sin(q.life_time * 90.0 * 3.5) * 0.1 - math.sin(q.life_time * 90.0) * -2.0) : 0",
+						0,
+						"c.is_first_person ? 0 + (math.sin(q.life_time * 90.0 * 3.5) * 0.1 - math.sin(q.life_time * 90.0) * -2.0) : 0"
+					]
+				}
+			}
+		}
+	}
+}

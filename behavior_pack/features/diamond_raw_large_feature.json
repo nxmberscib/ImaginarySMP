@@ -1,0 +1,29 @@
+
+{
+	"format_version": "1.13.0",
+	"minecraft:ore_feature": {
+		"description": {
+			"identifier": "ha:diamond_raw_large_feature"
+		},
+		"count": 12,
+		"discard_chance_on_air_exposure": 0.7,
+		"replace_rules": [
+			{
+				"places_block": "ha:raw_diamond_block",
+				"may_replace": [
+					{
+						"name": "minecraft:stone"
+					}
+				]
+			},
+			{
+				"places_block": "ha:raw_diamond_block",
+				"may_replace": [
+					{
+						"name": "minecraft:deepslate"
+					}
+				]
+			}
+		]
+	}
+}

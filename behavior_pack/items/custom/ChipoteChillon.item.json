@@ -1,0 +1,24 @@
+{
+	"format_version": "1.20.50",
+	"minecraft:item": {
+		"description": {
+			"identifier": "cib:chipote_chillon",
+			"menu_category": {
+				"category": "equipment",
+				"group": "itemGroup.name.sword"
+			}
+		},
+		"components": {
+			"minecraft:max_stack_size": 1,
+			"minecraft:icon": {
+				"texture": "chipote_chillon"
+			},
+			"minecraft:damage": 10,
+			"minecraft:can_destroy_in_creative": false,
+			"minecraft:cooldown": {
+				"category": "chipote",
+				"duration": 8
+			}
+		}
+	}
+}

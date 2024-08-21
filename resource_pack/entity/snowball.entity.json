@@ -1,0 +1,31 @@
+
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "minecraft:snowball",
+			"materials": {
+				"default": "snowball"
+			},
+			"textures": {
+				"default": "textures/items/snowball",
+				"star": "textures/entity/star",
+				"magma": "textures/items/magma_cream"
+			},
+			"geometry": {
+				"default": "geometry.item_sprite"
+			},
+			"render_controllers": [
+				"controller.render.snowball_entity"
+			],
+			"animations": {
+				"flying": "animation.actor.billboard"
+			},
+			"scripts": {
+				"animate": [
+					"flying"
+				]
+			}
+		}
+	}
+}

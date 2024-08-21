@@ -1,0 +1,54 @@
+
+{
+	"format_version": "1.20.10",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "ha:explosive_cat"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"pattern": [
+			"WLW",
+			"LTL",
+			"SRS"
+		],
+		"key": {
+			"W": {
+				"item": "minecraft:web"
+			},
+			"L": {
+				"item": "minecraft:white_wool"
+			},
+			"T": {
+				"item": "minecraft:tnt"
+			},
+			"S": {
+				"item": "minecraft:string"
+			},
+			"R": {
+				"item": "minecraft:red_dye"
+			}
+		},
+		"unlock": [
+			{
+				"item": "minecraft:web"
+			},
+			{
+				"item": "minecraft:white_wool"
+			},
+			{
+				"item": "minecraft:tnt"
+			},
+			{
+				"item": "minecraft:string"
+			},
+			{
+				"item": "minecraft:red_dye"
+			}
+		],
+		"result": {
+			"item": "ha:explosive_cat"
+		}
+	}
+}

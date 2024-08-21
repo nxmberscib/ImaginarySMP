@@ -1,0 +1,22 @@
+
+{
+	"format_version": "1.17.10",
+	"minecraft:block": {
+		"description": {
+			"identifier": "ha:fake_coal_block",
+			"menu_category": {
+				"category": "construction"
+			}
+		},
+		"components": {
+			"minecraft:breathability": "solid",
+			"minecraft:collision_box": true,
+			"minecraft:destructible_by_explosion": false,
+			"minecraft:destructible_by_mining": false,
+			"minecraft:light_dampening": 15,
+			"minecraft:light_emission": 0,
+			"minecraft:selection_box": true,
+			"minecraft:unit_cube": {}
+		}
+	}
+}

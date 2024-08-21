@@ -1,0 +1,27 @@
+
+{
+	"format_version": "1.10.0",
+	"minecraft:item": {
+		"description": {
+			"identifier": "minecraft:shield"
+		},
+		"components": {
+			"minecraft:max_stack_size": 1,
+			"minecraft:allow_off_hand": true,
+			"minecraft:durability": {
+				"max_damage": 9999,
+				"damage_chance": {
+					"min": 9999,
+					"max": 9999
+				},
+				"repair_items": [
+					"minecraft:planks",
+					"minecraft:shield"
+				]
+			},
+			"minecraft:wearable": {
+				"slot": "slot.weapon.offhand"
+			}
+		}
+	}
+}

@@ -1,0 +1,59 @@
+
+{
+	"format_version": "1.20.50",
+	"minecraft:item": {
+		"description": {
+			"identifier": "ha:crowbar",
+			"menu_category": {
+				"category": "equipment"
+			}
+		},
+		"components": {
+			"minecraft:use_modifiers": {
+				"use_duration": 9999999,
+				"movement_modifier": 0.35
+			},
+			"minecraft:tags": {
+                "tags": [
+                    "ha:crowbar"
+                ]
+            },
+			"minecraft:max_stack_size": 1,
+			"minecraft:hand_equipped": true,
+			"minecraft:stacked_by_data": true,
+			"minecraft:can_destroy_in_creative": false,
+			"minecraft:enchantable": {
+				"slot": "all",
+				"value": 20
+			},
+			"minecraft:damage": 3,
+			"minecraft:should_despawn": false,
+			"minecraft:projectile": {
+				"projectile_entity": "ha:crowbar",
+				"minimum_critical_power": 1
+			},
+			"minecraft:durability": {
+				"max_durability": 250
+			},
+			"minecraft:repairable": {
+				"repair_items": [
+					{
+						"items": [
+							"ha:crowbar"
+						],
+						"repair_amount": "query.max_durability"
+					}
+				]
+			},
+			"minecraft:throwable": {
+				"do_swing_animation": true,
+				"min_draw_duration": 0.5,
+				"max_draw_duration": 1,
+				"scale_power_by_draw_duration": true
+			},
+			"minecraft:icon": {
+				"texture": "crowbar"
+			}
+		}
+	}
+}

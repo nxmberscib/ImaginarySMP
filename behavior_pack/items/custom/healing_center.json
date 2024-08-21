@@ -1,0 +1,40 @@
+
+{
+	"format_version": "1.16.100",
+	"minecraft:item": {
+		"description": {
+			"identifier": "ha:healing_center",
+			"category": "equipment"
+		},
+		"components": {
+			"minecraft:use_duration": 0.1,
+			"minecraft:max_stack_size": 1,
+			"minecraft:foil": true,
+			"minecraft:hand_equipped": true,
+			"minecraft:stacked_by_data": true,
+			"minecraft:can_destroy_in_creative": false,
+			"minecraft:on_use": {
+				"on_use": {
+					"event": "ha:effect"
+				}
+			},
+			"minecraft:icon": {
+				"texture": "healing_center"
+			},
+			"minecraft:render_offsets": "stick",
+			"minecraft:cooldown": {
+				"category": "regene",
+				"duration": 10
+			}
+		},
+		"events": {
+			"ha:effect": {
+				"run_command": {
+					"command": [
+						"execute @a[r=4] ~~~ function items/healing"
+					]
+				}
+			}
+		}
+	}
+}

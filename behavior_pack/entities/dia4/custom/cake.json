@@ -1,0 +1,82 @@
+
+{
+	"format_version": "1.16.100",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "ha:cake",
+			"runtime_identifier": "minecraft:shulker",
+			"is_summonable": true,
+			"is_spawnable": false,
+			"is_experimental": false
+		},
+		"component_groups": {
+			"explode": {
+				"minecraft:explode": {
+					"power": 6,
+					"fuse_lit": true,
+					"fuse_length": 0,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": true,
+					"fire_affected_by_griefing": true
+				}
+			}
+		},
+		"components": {
+			"minecraft:type_family": {
+				"family": [
+					"blockmob",
+					"inanimate",
+					"mob"
+				]
+			},
+			"minecraft:collision_box": {
+				"height": 0.5,
+				"width": 0.5
+			},
+			"minecraft:pushable": {
+				"is_pushable": false,
+				"is_pushable_by_piston": false
+			},
+			"minecraft:physics": {},
+			"minecraft:conditional_bandwidth_optimization": {},
+			"minecraft:knockback_resistance": {
+				"value": 100
+			},
+			"minecraft:health": {
+				"max": 2,
+				"value": 2,
+				"min": 2
+			},
+			"minecraft:damage_sensor": {
+				"triggers": [
+					{
+						"cause": "all",
+						"deals_damage": false
+					}
+				]
+			},
+			"minecraft:persistent": {},
+			"minecraft:timer": {
+				"time": [
+					1.1,
+					1.1
+				],
+				"looping": false,
+				"time_down_event": {
+					"event": "ha:explode",
+					"target": "self"
+				}
+			}
+		},
+		"events": {
+			"minecraft:entity_spawned": {},
+			"ha:explode": {
+				"add": {
+					"component_groups": [
+						"explode"
+					]
+				}
+			}
+		}
+	}
+}

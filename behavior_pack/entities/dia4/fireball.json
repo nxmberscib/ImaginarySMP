@@ -1,0 +1,193 @@
+
+{
+	"format_version": "1.12.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "minecraft:fireball",
+			"is_spawnable": false,
+			"is_summonable": true,
+			"is_experimental": false
+		},
+		"component_groups": {
+			"ha:mechanic_explode": {
+				"minecraft:explode": {
+					"fuse_length": 0,
+					"fuse_lit": true,
+					"power": 3,
+					"causes_fire": true,
+					"fire_affected_by_griefing": true,
+					"destroy_affected_by_griefing": true
+				}
+			},
+			"ha:fire_mechanic": {
+				"minecraft:projectile": {
+					"on_hit": {
+						"impact_damage": {
+							"damage": 6,
+							"knockback": false,
+							"semi_random_diff_damage": false
+						},
+						"definition_event": {
+							"affect_projectile": true,
+							"event_trigger": {
+								"event": "ha:explode_mechanic",
+								"target": "self"
+							}
+						}
+					},
+					"power": 1.6,
+					"gravity": 0,
+					"inertia": 1,
+					"liquid_inertia": 1,
+					"uncertainty_base": 0,
+					"uncertainty_multiplier": 0,
+					"anchor": 2,
+					"offset": [
+						0,
+						-1.5,
+						0
+					],
+					"reflect_on_hurt": true,
+					"catch_fire": true
+				}
+			},
+			"ha:fire_explode": {
+				"minecraft:explode": {
+					"fuse_length": 0,
+					"fuse_lit": true,
+					"power": 6,
+					"causes_fire": true,
+					"fire_affected_by_griefing": true,
+					"destroy_affected_by_griefing": true
+				}
+			},
+			"ha:fire_spawn": {
+				"minecraft:projectile": {
+					"on_hit": {
+						"impact_damage": {
+							"damage": 6,
+							"knockback": false,
+							"semi_random_diff_damage": false
+						},
+						"definition_event": {
+							"affect_projectile": true,
+							"event_trigger": {
+								"event": "ha:fire_explode",
+								"target": "self"
+							}
+						}
+					},
+					"power": 1.6,
+					"gravity": 0,
+					"inertia": 1,
+					"liquid_inertia": 1,
+					"uncertainty_base": 0,
+					"uncertainty_multiplier": 0,
+					"anchor": 2,
+					"offset": [
+						0,
+						-1.5,
+						0
+					],
+					"reflect_on_hurt": true,
+					"catch_fire": true
+				}
+			},
+			"minecraft:exploding": {
+				"minecraft:explode": {
+					"fuse_length": 0,
+					"fuse_lit": true,
+					"power": 1,
+					"causes_fire": true,
+					"fire_affected_by_griefing": true,
+					"destroy_affected_by_griefing": true
+				}
+			}
+		},
+		"components": {
+			"minecraft:collision_box": {
+				"width": 1,
+				"height": 1
+			},
+			"minecraft:projectile": {
+				"on_hit": {
+					"impact_damage": {
+						"damage": 6,
+						"knockback": false,
+						"semi_random_diff_damage": false
+					},
+					"definition_event": {
+						"affect_projectile": true,
+						"event_trigger": {
+							"event": "minecraft:explode",
+							"target": "self"
+						}
+					}
+				},
+				"power": 1.6,
+				"gravity": 0,
+				"inertia": 1,
+				"liquid_inertia": 1,
+				"uncertainty_base": 0,
+				"uncertainty_multiplier": 0,
+				"anchor": 2,
+				"offset": [
+					0,
+					-1.5,
+					0
+				],
+				"reflect_on_hurt": true,
+				"catch_fire": true
+			},
+			"minecraft:physics": {},
+			"minecraft:pushable": {
+				"is_pushable": true,
+				"is_pushable_by_piston": true
+			},
+			"minecraft:conditional_bandwidth_optimization": {
+				"default_values": {
+					"max_optimized_distance": 80,
+					"max_dropped_ticks": 7,
+					"use_motion_prediction_hints": true
+				}
+			}
+		},
+		"events": {
+			"minecraft:explode": {
+				"add": {
+					"component_groups": [
+						"minecraft:exploding"
+					]
+				}
+			},
+			"ha:spawn_fire_hole": {
+				"add": {
+					"component_groups": [
+						"ha:fire_spawn"
+					]
+				}
+			},
+			"ha:fire_explode": {
+				"add": {
+					"component_groups": [
+						"ha:fire_explode"
+					]
+				}
+			},
+			"ha:fireball_mechanic": {
+				"add": {
+					"component_groups": [
+						"ha:fire_mechanic"
+					]
+				}
+			},
+			"ha:explode_mechanic": {
+				"add": {
+					"component_groups": [
+						"ha:mechanic_explode"
+					]
+				}
+			}
+		}
+	}
+}

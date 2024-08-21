@@ -1,0 +1,84 @@
+
+{
+	"format_version": "1.16.100",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "ha:really",
+			"is_summonable": true,
+			"is_spawnable": false,
+			"is_experimental": false,
+			"animations": {
+				"spawn": "animation.spawn_fire"
+			},
+			"scripts": {
+				"animate": [
+					"spawn"
+				]
+			}
+		},
+		"component_groups": {
+			"despawn": {
+				"minecraft:instant_despawn": {}
+			}
+		},
+		"components": {
+			"minecraft:type_family": {
+				"family": [
+					"firehole",
+					"inanimate",
+					"mob"
+				]
+			},
+			"minecraft:collision_box": {
+				"width": 0.2,
+				"height": 0.2
+			},
+			"minecraft:health": {
+				"value": 2,
+				"max": 2,
+				"min": 2
+			},
+			"minecraft:damage_sensor": {
+				"triggers": [
+					{
+						"cause": "all",
+						"deals_damage": false
+					}
+				]
+			},
+			"minecraft:knockback_resistance": {
+				"value": 100
+			},
+			"minecraft:persistent": {},
+			"minecraft:tick_world": {
+				"radius": 4,
+				"never_despawn": true
+			},
+			"minecraft:physics": {
+				"has_gravity": false,
+				"has_collision": false
+			},
+			"minecraft:pushable": {
+				"is_pushable": false,
+				"is_pushable_by_piston": false
+			},
+			"minecraft:conditional_bandwidth_optimization": {}
+		},
+		"events": {
+			"minecraft:entity_spawned": {
+				"queue_command": {
+					"command": [
+						"playsound ui.firehole @a ~~~"
+					]
+				}
+			},
+			"ha:despawn": {
+				"add": {
+					"component_groups": [
+						"despawn"
+					]
+				}
+			}
+		}
+	}
+}

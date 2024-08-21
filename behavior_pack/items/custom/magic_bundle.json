@@ -1,0 +1,92 @@
+
+{
+	"format_version": "1.16.100",
+	"minecraft:item": {
+		"description": {
+			"identifier": "ha:magic_bundle",
+			"category": "equipment"
+		},
+		"components": {
+			"minecraft:max_stack_size": 1,
+			"minecraft:use_duration": 0.1,
+			"minecraft:stacked_by_data": true,
+			"minecraft:foil": true,
+			"minecraft:can_destroy_in_creative": false,
+			"minecraft:durability": {
+				"max_durability": 0
+			},
+			"minecraft:on_use": {
+				"on_use": {
+					"event": "ha:used"
+				}
+			},
+			"minecraft:icon": {
+				"texture": "bundle"
+			},
+			"minecraft:render_offsets": "miscellaneous"
+		},
+		"events": {
+			"ha:used": {
+				"sequence": [
+					{
+						"damage": {
+							"type": "durability",
+							"amount": 1
+						}
+					},
+					{
+						"run_command": {
+							"command": [
+								"playsound armor.equip_generic @s"
+							]
+						}
+					},
+					{
+						"randomize": [
+							{
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"structure load libro_1 ~~1~"
+									]
+								}
+							},
+							{
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"structure load libro_2 ~~1~"
+									]
+								}
+							},
+							{
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"structure load libro_3 ~~1~"
+									]
+								}
+							},
+							{
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"structure load libro_4 ~~1~"
+									]
+								}
+							},
+							{
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"structure load libro_5 ~~1~"
+									]
+								}
+							}
+						]
+					}
+				]
+			}
+		}
+	}
+}

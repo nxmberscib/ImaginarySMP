@@ -1,0 +1,39 @@
+{
+	"format_version": "1.10.0",
+	"render_controllers": {
+		"controller.render.arrow": {
+			"arrays": {
+				"textures": {
+					"Array.skins": [
+						"Texture.default",
+						"Texture.iron_cube",
+						"Texture.coal_cube",
+						"Texture.laser_red",
+						"Texture.laser_green",
+						"Texture.laser_blue"
+					]
+				},
+				"geometries": {
+					"Array.geos": [
+						"Geometry.default",
+						"Geometry.cube",
+						"Geometry.cube",
+						"Geometry.laser",
+						"Geometry.laser",
+						"Geometry.laser"
+					]
+				}
+			},
+			"geometry": "Array.geos[q.variant]",
+			"materials": [
+				{
+					"*": "Material.default"
+				}
+			],
+			"textures": [
+				"Array.skins[q.variant]"
+			],
+			"filter_lighting": true
+		}
+	}
+}
