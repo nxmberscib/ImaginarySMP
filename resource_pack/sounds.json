@@ -1,6 +1,16 @@
 {
     "entity_sounds": {
         "entities": {
+            "cib:diabloquito": {
+                "events": {
+                    "ambient": "mob.vex.ambient",
+                    "charge": "mob.vex.charge",
+                    "death": "mob.vex.death",
+                    "hurt": "mob.vex.hurt"
+                },
+                "pitch": [0.8, 1.2],
+                "volume": 1.0
+            },
             "cib:deep_creeper": {
                 "events": {
                     "death": "mob.creeper.death",
@@ -14,6 +24,50 @@
                 "pitch": [0.8, 1.2],
                 "volume": 1
             },
+            "cib:dissected_axolotl": {
+				"events": {
+					"ambient": "mob.axolotl.idle",
+					"ambient.in.water": "mob.axolotl.idle_water",
+					"attack": "mob.axolotl.attack",
+					"death": "mob.axolotl.death",
+					"hurt": "mob.axolotl.hurt",
+					"splash": "mob.axolotl.splash",
+					"swim": "mob.axolotl.swim"
+				},
+				"pitch": [0.8, 1.2],
+				"volume": 1
+			},
+			"cib:deep_spider": {
+				"events": {
+					"ambient": "mob.spider.say",
+					"death": "mob.spider.death",
+					"hurt": "mob.spider.say",
+					"step": {
+						"pitch": [0.9, 1.1],
+						"sound": "mob.spider.step",
+						"volume": 0.35
+					}
+				},
+				"pitch": [0.8, 1.2],
+				"volume": 1
+			},
+			"cib:deep_skeleton": {
+				"events": {
+					"ambient": "mob.skeleton.say",
+					"death": "mob.skeleton.death",
+					"hurt": {
+						"sound": "mob.skeleton.hurt",
+						"volume": 0.7
+					},
+					"step": {
+						"pitch": 1,
+						"sound": "mob.skeleton.step",
+						"volume": 1
+					}
+				},
+				"pitch": [0.8, 1.2],
+				"volume": 1
+			},
             "cib:jirafita": {
                 "events": {
                     "add.chest": {
@@ -208,7 +262,7 @@
                     "warn": "mob.mechanical_ghast.charge"
                 },
                 "pitch": [0.8, 1.2],
-                "volume": 5.0
+                "volume": 5
             },
             "ha:plasma_fox": {
                 "events": {
@@ -227,7 +281,7 @@
                     "spit": "mob.fox.spit"
                 },
                 "pitch": [0.8, 1.2],
-                "volume": 1.0
+                "volume": 1
             },
             "ha:sonic_vindicator": {
                 "events": {
@@ -235,14 +289,14 @@
                     "ambient.in.raid": {
                         "pitch": [0.8, 1.2],
                         "sound": "mob.vindicator.idle",
-                        "volume": 3.0
+                        "volume": 3
                     },
                     "celebrate": "mob.vindicator.celebrate",
                     "death": "mob.vindicator.death",
                     "hurt": "mob.vindicator.hurt"
                 },
                 "pitch": [0.8, 1.2],
-                "volume": 1.0
+                "volume": 1
             },
             "ha:skeleton_defender": {
                 "events": {
@@ -253,13 +307,13 @@
                         "volume": 0.7
                     },
                     "step": {
-                        "pitch": 1.0,
+                        "pitch": 1,
                         "sound": "mob.skeleton.step",
-                        "volume": 1.0
+                        "volume": 1
                     }
                 },
                 "pitch": [0.8, 1.2],
-                "volume": 1.0
+                "volume": 1
             },
             "ha:cerdina": {
                 "events": {
@@ -278,7 +332,7 @@
                     }
                 },
                 "pitch": [0.8, 1.2],
-                "volume": 1.0
+                "volume": 1
             },
             "ha:galactic_piglin": {
                 "events": {
@@ -292,7 +346,7 @@
                     }
                 },
                 "pitch": [0.8, 1.2],
-                "volume": 1.0
+                "volume": 1
             },
             "ha:twofaced_genius": {
                 "events": {
@@ -308,7 +362,7 @@
                     "reappeared": "mob.wanderingtrader.reappeared"
                 },
                 "pitch": [0.8, 1.2],
-                "volume": 1.0
+                "volume": 1
             },
             "ha:camera_skeleton": {
                 "events": {
@@ -319,13 +373,13 @@
                         "volume": 0.7
                     },
                     "step": {
-                        "pitch": 1.0,
+                        "pitch": 1,
                         "sound": "mob.skeleton.step",
-                        "volume": 1.0
+                        "volume": 1
                     }
                 },
                 "pitch": [0.8, 1.2],
-                "volume": 1.0
+                "volume": 1
             },
             "ha:ender_axolotl": {
                 "events": {
@@ -339,7 +393,7 @@
                     "swim": "mob.axolotl.swim"
                 },
                 "pitch": [0.8, 1.2],
-                "volume": 1.0
+                "volume": 1
             },
             "ha:walter_npc": {
                 "events": {
@@ -352,7 +406,7 @@
                     "hurt": "mob.villager.hit"
                 },
                 "pitch": [0.8, 1.2],
-                "volume": 1.0
+                "volume": 1
             },
             "ha:desert_skeleton": {
                 "events": {
@@ -363,13 +417,13 @@
                         "volume": 0.7
                     },
                     "step": {
-                        "pitch": 1.0,
+                        "pitch": 1,
                         "sound": "mob.skeleton.step",
-                        "volume": 1.0
+                        "volume": 1
                     }
                 },
                 "pitch": [0.8, 1.2],
-                "volume": 1.0
+                "volume": 1
             },
             "ha:christmas_skeleton": {
                 "events": {
@@ -380,13 +434,13 @@
                         "volume": 0.7
                     },
                     "step": {
-                        "pitch": 1.0,
+                        "pitch": 1,
                         "sound": "mob.skeleton.step",
-                        "volume": 1.0
+                        "volume": 1
                     }
                 },
                 "pitch": [0.8, 1.2],
-                "volume": 1.0
+                "volume": 1
             },
             "ha:imagination_blaze": {
                 "events": {
@@ -396,7 +450,7 @@
                     "shoot": "mob.blaze.shoot"
                 },
                 "pitch": [0.8, 1.2],
-                "volume": 1.0
+                "volume": 1
             },
             "ha:magic_piglin": {
                 "events": {
@@ -418,7 +472,7 @@
                     "prepare.wololo": "mob.evocation_illager.prepare_wololo"
                 },
                 "pitch": [0.8, 1.2],
-                "volume": 1.0
+                "volume": 1
             },
             "ha:blood_slime": {
                 "events": {
@@ -439,7 +493,7 @@
                     }
                 },
                 "pitch": [0.8, 1.2],
-                "volume": 1.0
+                "volume": 1
             },
             "ha:furnace_golem": {
                 "events": {
@@ -449,18 +503,18 @@
                     "irongolem.crack": "mob.irongolem.crack",
                     "irongolem.repair": "mob.irongolem.repair",
                     "step": {
-                        "pitch": 1.0,
+                        "pitch": 1,
                         "sound": "mob.irongolem.walk",
-                        "volume": 1.0
+                        "volume": 1
                     },
                     "throw": {
-                        "pitch": 1.0,
+                        "pitch": 1,
                         "sound": "mob.irongolem.throw",
-                        "volume": 1.0
+                        "volume": 1
                     }
                 },
-                "pitch": [0.8, 1.0],
-                "volume": 1.0
+                "pitch": [0.8, 1],
+                "volume": 1
             }
         }
     }

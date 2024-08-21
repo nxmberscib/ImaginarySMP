@@ -231,16 +231,26 @@ chat_rank.vip=§a§l[VIP]§r
 
 chat.feedback.item.aureum_fulminator=§e%1 ha obtenido un Fulminador Aureo
 
-entity.cib:entity.crystalline_skeleton.name=§6Crystalline Skeleton
+entity.cib:entity.crystalline_skeleton.name=§6Esqueleto Cristalino
+entity.cib:breeze_skeleton.name=§dEsqueleto de Aire
 entity.cib:honey_slime.name=§eHoney Slime
-entity.cib:marine_slime.name=§bMarine Slime
-entity.cib:interstelar_slime.name=§5Interstellar Slime
+entity.cib:marine_slime.name=§bSlime Marino
+entity.cib:interstelar_slime.name=§5Slime Interestelar
+entity.cib:opossum.name=§7Sarigueya
+entity.cib:preassure_assasin.name=§cAsesino de Presión
+entity.cib:frozen_piglin.name=§bPiglin Congelado
+entity.breeze.name=§aBreeze Mágico
+entity.cib:diabloquito.name=§5Diabloquito
 
 item.spawn_egg.entity.cib:crystalline_skeleton.name=Generador de Esqueleto Cristalino
+item.spawn_egg.entity.cib:breeze_skeleton.name=Generador de Esqueleto Cristalino
 item.spawn_egg.entity.cib:honey_slime.name=Generador de Slime de Miel
 item.spawn_egg.entity.cib:marine_slime.name=Generador de Slime Marino
 item.spawn_egg.entity.cib:interstellar_slime.name=Generador de Slime Interestelar
-item.spawn_egg.entity.cib:entity.preassure_assasin.name=Generador de Asesino de Presion
+item.spawn_egg.entity.cib:opossum.name=Generador de Sarigueya
+item.spawn_egg.entity.cib:preassure_assasin.name=Generador de Asesino de Presión
+item.spawn_egg.entity.cib:frozen_piglin.name=Generador de Piglin Congelado
+item.spawn_egg.entity.cib:diabloquito.name=Generador de Diabloquito
 
 item.cib:aureum_fulminator.name=§6Fulminador Aureo
 item.cib:chipote_chillon.name=§cChipote Chillon

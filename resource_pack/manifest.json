@@ -1,8 +1,7 @@
-
 {
 	"format_version": 2,
 	"metadata": {
-		"authors": [ "HaJuegosCat!", "Difox", "NxmbersCib", "ZimbawePlus" ],
+		"authors": ["HaJuegosCat!", "Difox", "NxmbersCib", "ZimbawePlus"],
 		"product_type": "addon",
 		"url": "https://discord.gg/WH9KpNWXUz"
 	},
@@ -11,13 +10,13 @@
 		"description": "pack.description",
 		"uuid": "a12af42c-81ee-4795-b524-fc1e99bca42a",
 		"version": "1.0.1-alpha",
-		"min_engine_version": [ 1, 20, 80 ]
+		"min_engine_version": [1, 20, 80]
 	},
 	"modules": [
 		{
 			"type": "resources",
 			"uuid": "7392ec54-a8aa-47b9-b904-c7f4a0446743",
-			"version": [ 1, 0, 0 ]
+			"version": [1, 0, 0]
 		}
 	]
 }

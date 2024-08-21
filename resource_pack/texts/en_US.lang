@@ -242,6 +242,7 @@ entity.cib:opossum.name=§7Opossum
 entity.cib:preassure_assasin.name=§cPreassure Assasin
 entity.cib:frozen_piglin.name=§bFrozen Piglin
 entity.breeze.name=§aMagical Breeze
+entity.cib:diabloquito.name=§5Diabloquito
 
 item.spawn_egg.entity.cib:crystalline_skeleton.name=Crystalline Skeleton Spawn Egg
 item.spawn_egg.entity.cib:breeze_skeleton.name=Breeze Skeleton Spawn Egg
@@ -251,6 +252,7 @@ item.spawn_egg.entity.cib:interstellar_slime.name=Interstellar Slime Spawn Egg
 item.spawn_egg.entity.cib:opossum.name=Opossum Spawn Egg
 item.spawn_egg.entity.cib:preassure_assasin.name=Preassure Assasin Spawn Egg
 item.spawn_egg.entity.cib:frozen_piglin.name=Frozen Piglin Spawn Egg
+item.spawn_egg.entity.cib:diabloquito.name=Diabloquito Spawn Egg
 
 item.cib:aureum_fulminator=§6Aureum Fulminator
 item.cib:chipote_chillon=§cChipote Chillon
