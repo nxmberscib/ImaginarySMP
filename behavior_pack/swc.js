@@ -45,5 +45,5 @@ Promise.all(
         console.log(`Bundling finished in ${Date.now() - initialMS} milliseconds!`);
     })
     .catch((error) => {
-        logger.error(error);
+        console.error(error)
     });
