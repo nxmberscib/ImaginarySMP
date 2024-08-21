@@ -23,12 +23,12 @@ export default class Imaginary {
     private static discordManager: DiscordManager;
 
     private static instance: Imaginary;
-    public static LOGGER: Logger = new Logger("imaginary", true);
+    public static readonly LOGGER: Logger = new Logger("imaginary", true);
 
     public static logger() {
         return this.logger;
     }
-    
+
     public onInitialized() {
         EntityResurrectEventSignal.initialize();
         this.initializeGamerules();
@@ -46,7 +46,7 @@ export default class Imaginary {
         ImaginaryCommands.registerCommands();
         ImaginaryItems.registerItems();
         ImaginaryEntities.registerEntities();
-        ImaginaryBlocks.registerBlocks()
+        ImaginaryBlocks.registerBlocks();
 
         Imaginary.LOGGER.info("Imaginary was successfully loaded");
     }
