@@ -1,6 +1,5 @@
-import { ChatSendBeforeEvent, Player, system, world } from "@minecraft/server";
+import { Player } from "@minecraft/server";
 import Imaginary from "nxmbers/src/Imaginary";
-import WithLogger from "nxmbers/src/util/WithLogger";
 import CommandAlias from "teseract/api/command/CommandAlias";
 import CommandManager from "teseract/api/command/CommandManager";
 import Default from "teseract/api/command/Default";
@@ -10,9 +9,8 @@ import TimerUtils from "teseract/api/util/TimerUtils";
 
 @CommandAlias("mute")
 @Permission((p) => p.hasTag("admin") || p.isOp())
-export default class MuteCommand extends WithLogger {
+export default class MuteCommand {
     public constructor() {
-        super();
         CommandManager.registerCommand(this);
         Imaginary.LOGGER.robust("Mute command loaded");
     }

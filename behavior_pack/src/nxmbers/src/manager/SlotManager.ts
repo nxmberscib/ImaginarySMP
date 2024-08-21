@@ -1,16 +1,9 @@
-import {
-    ItemLockMode,
-    ItemStack,
-    Player,
-    system,
-    world,
-} from "@minecraft/server";
-import WithLogger from "../util/WithLogger";
+import { ItemLockMode, ItemStack, world, Player } from "@minecraft/server";
 import Mixin from "teseract/api/util/Mixin";
 import Runnable from "teseract/api/util/Runnable";
 import Imaginary from "../Imaginary";
 
-export default class SlotManager extends Mixin(Runnable, WithLogger) {
+export default class SlotManager extends Runnable {
     public constructor() {
         super();
         this.runTimer(5);
@@ -18,14 +11,14 @@ export default class SlotManager extends Mixin(Runnable, WithLogger) {
     }
 
     public lockAllSlots(player: Player) {
-        for (let i = 0; i < 36; i++ ) {
-            this.lockSlot(player, i)
+        for (let i = 0; i < 36; i++) {
+            this.lockSlot(player, i);
         }
     }
 
     public unlockAllSlots(player: Player) {
-        for (let i = 0; i < 36; i++ ) {
-            this.unlockSlot(player, i)
+        for (let i = 0; i < 36; i++) {
+            this.unlockSlot(player, i);
         }
     }
 

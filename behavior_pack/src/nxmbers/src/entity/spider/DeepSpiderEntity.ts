@@ -1,7 +1,6 @@
 import {
     world,
     EntityHurtAfterEvent,
-    BlockVolumeBase,
     BlockVolume,
 } from "@minecraft/server";
 import Imaginary from "nxmbers/src/Imaginary";

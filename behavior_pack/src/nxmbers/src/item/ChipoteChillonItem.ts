@@ -4,7 +4,6 @@ import {
     world,
 } from "@minecraft/server";
 import { Vector3Builder } from "../util/vector/VectorWrapper";
-import WithLogger from "../util/WithLogger";
 import Imaginary from "../Imaginary";
 
 export default class ChipoteChillonItem implements ItemCustomComponent {

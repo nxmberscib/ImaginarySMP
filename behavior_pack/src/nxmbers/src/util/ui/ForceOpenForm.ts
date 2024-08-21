@@ -8,9 +8,7 @@ import {
     ModalFormData,
     ModalFormResponse,
 } from "@minecraft/server-ui";
-import Imaginary from "nxmbers/src/Imaginary";
 
-// Mapa de tipos de formulario a sus respuestas correspondientes
 type ResponseMap = {
     ActionFormData: ActionFormResponse;
     MessageFormData: MessageFormResponse;

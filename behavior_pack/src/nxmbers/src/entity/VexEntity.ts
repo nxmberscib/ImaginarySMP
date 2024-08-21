@@ -1,6 +1,5 @@
 import {
     EntityHurtAfterEvent,
-    HudElement,
     Player,
     world,
 } from "@minecraft/server";

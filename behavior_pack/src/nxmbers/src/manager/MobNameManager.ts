@@ -1,6 +1,5 @@
 import { EntitySpawnAfterEvent, world } from "@minecraft/server";
 import Imaginary from "../Imaginary";
-import WithLogger from "../util/WithLogger";
 
 export interface MobNameRegistry {
     mobId?: string;
@@ -8,11 +7,10 @@ export interface MobNameRegistry {
     displayName: string;
 }
 
-export default class MobNameManager extends WithLogger {
+export default class MobNameManager {
     private registry: Map<string, MobNameRegistry>;
 
     public constructor() {
-        super();
         world.afterEvents.entitySpawn.subscribe(this.onMobSpawned.bind(this));
         this.registry = new Map();
         Imaginary.LOGGER.info("Mob name manager loaded");

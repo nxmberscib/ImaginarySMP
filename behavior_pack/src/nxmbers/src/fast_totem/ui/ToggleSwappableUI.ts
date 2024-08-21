@@ -1,4 +1,4 @@
-import { Player, RawMessage } from "@minecraft/server";
+import { Player } from "@minecraft/server";
 import Imaginary from "nxmbers/src/Imaginary";
 import { BaseMessageForm, Button1, Button2 } from "nxmbers/src/util/ui/MessageFormUtil";
 

@@ -5,12 +5,9 @@ import FormatUtils from "teseract/api/util/FormatUtils";
 import TimerUtils from "teseract/api/util/TimerUtils";
 import CommandManager from "teseract/api/command/CommandManager";
 import Imaginary from "nxmbers/src/Imaginary";
-import Logger from "teseract/api/Logger";
 import Runnable from "teseract/api/util/Runnable";
 import MuteCommand from "./command/MuteCommand";
 import UnmuteCommand from "./command/UnmuteCommand";
-import Mixin from "teseract/api/util/Mixin";
-import WithLogger from "nxmbers/src/util/WithLogger";
 
 const $c = "§c";
 const $f = "§f";
@@ -18,7 +15,7 @@ const $b = "§l";
 const $r = "§r";
 const $7 = "§7";
 
-export default class Moderation extends Mixin(Runnable, WithLogger) {
+export default class Moderation extends Runnable {
     public readonly MUTE_INFORMATION: string =
         "muteInfo" + (212244).toString(16);
 

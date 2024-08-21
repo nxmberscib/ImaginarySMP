@@ -1,7 +1,6 @@
 import { Player, RawMessage } from "@minecraft/server";
 import { MessageFormData } from "@minecraft/server-ui";
 import ForceOpenForm from "./ForceOpenForm";
-import Imaginary from "nxmbers/src/Imaginary";
 
 export function Button1(buttonText: RawMessage | string) {
     return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {

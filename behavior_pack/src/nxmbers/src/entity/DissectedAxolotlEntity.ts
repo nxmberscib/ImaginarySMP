@@ -1,4 +1,3 @@
-// @ts-check
 import { EntityHurtAfterEvent, Player, world } from "@minecraft/server";
 import Imaginary from "nxmbers/src/Imaginary";
 import { MobNameRegistry } from "nxmbers/src/manager/MobNameManager";

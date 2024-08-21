@@ -1,8 +1,6 @@
 import { ItemUseBeforeEvent, Player, world } from "@minecraft/server";
 import ObtainableItem from "./manager/interface/ObtainableItem";
 import Imaginary from "../Imaginary";
-import ShootSonicBoom from "../util/entity/ShootSonicBoom";
-import { Vector2Builder, Vector3Builder } from "../util/vector/VectorWrapper";
 import TimerUtils from "teseract/api/util/TimerUtils";
 import ImaginaryItems from "./ImaginaryItems";
 

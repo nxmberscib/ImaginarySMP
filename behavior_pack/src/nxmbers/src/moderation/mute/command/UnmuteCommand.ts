@@ -1,12 +1,10 @@
-import { world, system, ChatSendBeforeEvent, Player } from "@minecraft/server";
+import { Player } from "@minecraft/server";
 import Imaginary from "nxmbers/src/Imaginary";
 import WithLogger from "nxmbers/src/util/WithLogger";
 import CommandAlias from "teseract/api/command/CommandAlias";
 import CommandManager from "teseract/api/command/CommandManager";
 import Default from "teseract/api/command/Default";
-import Optional from "teseract/api/command/Optional";
 import Permission from "teseract/api/command/Permission";
-import TimerUtils from "teseract/api/util/TimerUtils";
 
 @CommandAlias("unmute")
 @Permission((p) => p.hasTag("admin") || p.isOp())

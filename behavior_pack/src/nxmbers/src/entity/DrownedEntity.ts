@@ -1,9 +1,6 @@
 import {
-    BlockTypes,
-    EntityDamageCause,
     Player,
     ProjectileHitEntityAfterEvent,
-    system,
     world,
 } from "@minecraft/server";
 import Imaginary from "../Imaginary";

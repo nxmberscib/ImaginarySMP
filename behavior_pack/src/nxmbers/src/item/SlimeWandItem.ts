@@ -3,8 +3,6 @@ import {
     ItemCustomComponent,
     world,
 } from "@minecraft/server";
-import WithLogger from "../util/WithLogger";
-import { Vector3Builder } from "../util/vector/VectorWrapper";
 import Imaginary from "../Imaginary";
 import { calculateKnockbackVector } from "../util/KnockbackFromPoint";
 import TimerUtils from "teseract/api/util/TimerUtils";

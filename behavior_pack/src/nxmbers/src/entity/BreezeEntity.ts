@@ -5,7 +5,6 @@ import {
     EntitySpawnAfterEvent,
     Player,
     ProjectileHitEntityAfterEvent,
-    system,
     world,
 } from "@minecraft/server";
 import Imaginary from "../Imaginary";
@@ -21,8 +20,10 @@ export default class BreezeEntity implements MobNameRegistry {
         world.afterEvents.projectileHitEntity.subscribe(
             this.onWindChargeHit.bind(this),
         );
+        
         world.afterEvents.entitySpawn.subscribe(this.onSpawned.bind(this));
         world.afterEvents.entityDie.subscribe(this.onDeath.bind(this));
+
         Imaginary.getMobNameManager().addRegistry(this);
         Imaginary.LOGGER.robust("Breeze entity loaded");
     }

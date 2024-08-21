@@ -1,13 +1,10 @@
-// @ts-check
-
 import { ScoreboardObjective, world, Player } from "@minecraft/server";
 import Imaginary from "nxmbers/src/Imaginary";
 import CommandManager from "teseract/api/command/CommandManager";
 import UnbanCommand from "./command/UnbanCommand";
 import BanCommand from "./command/BanCommand";
-import WithLogger from "nxmbers/src/util/WithLogger";
 
-export default class BanManager extends WithLogger {
+export default class BanManager  {
     public BAN_PROTOCOL_ID = "imaginary:ban_protocol";
     public BAN_OBJECTIVE_ID = "imaginary:banned";
     public BAN_OBJECTIVE: ScoreboardObjective;
@@ -81,7 +78,6 @@ export default class BanManager extends WithLogger {
     }
 
     public constructor() {
-        super()
         this.setupBanSystem();
         this.startBanProtocol();
         CommandManager.registerCommand(new UnbanCommand());
