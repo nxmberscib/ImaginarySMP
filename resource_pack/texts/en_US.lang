@@ -8,9 +8,9 @@ pack.description=Textures required for the add-on.
 
 ## UI texts
 disconnect.kicked=§d§lIt's not what it seems, stop playing with the stars...
-disconnect.kicked.reason=§d§lIt's not what it seems, stop playing with the stars...
+disconnect.kicked.reason=§d§lIt's not what it seems, stop playing with the stars... %1
 disconnect.removed=§d§lIt's not what it seems, stop playing with the stars...
-disconnect.removed.reason=§d§lIt's not what it seems, stop playing with the stars...
+disconnect.removed.reason=§d§lIt's not what it seems, stop playing with the stars... %1
 
 ui.subtitle_death=§s%1 has died
 ui.unnecesaary_title1=Just imagine a new world waiting for you on the other side of death...
@@ -243,6 +243,7 @@ entity.cib:preassure_assasin.name=§cPreassure Assasin
 entity.cib:frozen_piglin.name=§bFrozen Piglin
 entity.breeze.name=§aMagical Breeze
 entity.cib:diabloquito.name=§5Diabloquito
+entity.cib:dry_hoglin.name=§fHoglin Seco
 
 item.spawn_egg.entity.cib:crystalline_skeleton.name=Crystalline Skeleton Spawn Egg
 item.spawn_egg.entity.cib:breeze_skeleton.name=Breeze Skeleton Spawn Egg
@@ -253,10 +254,14 @@ item.spawn_egg.entity.cib:opossum.name=Opossum Spawn Egg
 item.spawn_egg.entity.cib:preassure_assasin.name=Preassure Assasin Spawn Egg
 item.spawn_egg.entity.cib:frozen_piglin.name=Frozen Piglin Spawn Egg
 item.spawn_egg.entity.cib:diabloquito.name=Diabloquito Spawn Egg
+item.spawn_egg.entity.cib:dry_hoglin.name=Dry Hoglin Spawn Egg
 
 item.cib:aureum_fulminator=§6Aureum Fulminator
 item.cib:chipote_chillon=§cChipote Chillon
 item.cib:slime_wand=§aSlime Wand
+item.cib:priest_dry_key=Priest Dry Key
+item.cib:hoglin_dry_key=Hoglin Dry Key
+item.cib:spontaneous_key=Spontaneous Key
 
 ## Command translations
 
@@ -266,7 +271,15 @@ command.unban.not_banned=Player '%1' is not currently banned.
 command.ban.success=Player '%1' was successfully banned.
 command.ban.success_reason=Player '%1' was successfully banned with reason '%2'.
 command.ban.success_reason.duration=Player '%1' was successfully banned for %2 with reason '%3'.
-command.ban.success_duration=Player '%1' was successfully banned by %2.
+command.ban.success_duration=Player '%1' was successfully banned for %2.
+
+command.unmute.success=Player '%1' was successfully unmute.
+command.unmute.not_muted=Player '%1' is not currently muted.
+
+command.mute.success=Player '%1' was successfully banned.
+command.mute.success_reason=Player '%1' was successfully muted with reason '%2'.
+command.mute.success_reason.duration=Player '%1' was successfully muted for %2 with reason '%3'.
+command.mute.success_duration=Player '%1' was successfully muted for %2.
 
 ## UI Translations
 ui.config_menu.close_chat=§aClose the chat for entering the config menu

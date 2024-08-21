@@ -1,4 +1,18 @@
 {
+    "mob.dry_hoglin.special_attack": {
+        "__use_legacy_max_distance": "true",
+        "category": "hostile",
+        "max_distance": null,
+        "min_distance": null,
+        "sounds": [
+            {
+                "load_on_low_memory": true,
+                "name": "sounds/mob/dry_hoglin/special_attack",
+                "volume": 1.5,
+                "stream": true
+            }
+        ]
+    },
     "items.obtained.aureum_fulminator_obtained": {
         "category": "ui",
         "max_distance": null,
