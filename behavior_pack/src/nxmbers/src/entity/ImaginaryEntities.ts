@@ -17,6 +17,7 @@ import DeepSpiderEntity from "./spider/DeepSpiderEntity";
 import { Effect } from "@minecraft/server";
 import DrownedEntity from "./DrownedEntity";
 import DeepSkeletonEntity from "./skeleton/DeepSkeletonEntity";
+import DiabloquitoEntity from "./DiabloquitoEntity";
 
 export default class ImaginaryEntities {
     public static OPOSSUM: OpossumEntity;
@@ -27,6 +28,7 @@ export default class ImaginaryEntities {
     public static MARINE_SLIME: MarineSlimeEntity;
     public static FROZEN_PIGLIN: FrozenPiglinEntity;
     public static PREASSURE_ASSASIN: PreassureAssasinEntity;
+    public static DIABLOQUITO: DiabloquitoEntity;
     public static BREEZE: BreezeEntity;
     public static VEX: VexEntity;
     public static JIRAFITA: JirafitaEntity;
@@ -55,6 +57,8 @@ export default class ImaginaryEntities {
 
         // Illagers
         this.PREASSURE_ASSASIN = new PreassureAssasinEntity();
+
+        this.DIABLOQUITO = new DiabloquitoEntity();
 
         // Vanilla entities
         this.BREEZE = new BreezeEntity();

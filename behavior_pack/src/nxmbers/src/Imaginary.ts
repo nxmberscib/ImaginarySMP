@@ -22,8 +22,7 @@ export default class Imaginary {
     private static mobNameManager: MobNameManager;
     private static discordManager: DiscordManager;
 
-    static instance: Imaginary;
-    public LOGGER: Logger = new Logger("imaginary", true);
+    private static instance: Imaginary;
     public static LOGGER: Logger = new Logger("imaginary", true);
 
     public static logger() {

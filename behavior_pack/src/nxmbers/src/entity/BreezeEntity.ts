@@ -1,6 +1,7 @@
 import {
     BlockTypes,
     EntityDamageCause,
+    EntityDieAfterEvent,
     EntitySpawnAfterEvent,
     Player,
     ProjectileHitEntityAfterEvent,
@@ -9,6 +10,7 @@ import {
 } from "@minecraft/server";
 import Imaginary from "../Imaginary";
 import { MobNameRegistry } from "../manager/MobNameManager";
+import ImaginaryEntities from "./ImaginaryEntities";
 
 export default class BreezeEntity implements MobNameRegistry {
     public readonly MOB_ID: string = "minecraft:breeze";
@@ -20,7 +22,15 @@ export default class BreezeEntity implements MobNameRegistry {
             this.onWindChargeHit.bind(this),
         );
         world.afterEvents.entitySpawn.subscribe(this.onSpawned.bind(this));
+        world.afterEvents.entityDie.subscribe(this.onDeath.bind(this));
         Imaginary.LOGGER.robust("Breeze entity loaded");
+    }
+
+    private onDeath({ deadEntity: breeze }: EntityDieAfterEvent) {
+        breeze.dimension.spawnEntity(
+            ImaginaryEntities.DIABLOQUITO.MOB_ID,
+            breeze.location,
+        );
     }
 
     private onSpawned(event: EntitySpawnAfterEvent) {

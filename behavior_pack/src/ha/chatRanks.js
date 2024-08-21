@@ -1,5 +1,4 @@
-/* Creado o Editado por: HaJuegosCat! y DiFox!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
-/* Created or Edited by: HaJuegosCat!y DiFox!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
+
 
 import * as mc from '@minecraft/server';
 import Imaginary from 'nxmbers/src/Imaginary';
@@ -68,5 +67,3 @@ function checkRank(player) {
 	let actualRank = tags.includes("owner") ? preRanks.owner.nameRank : tags.includes("admin") ? preRanks.admin.nameRank : tags.includes("vip") ? preRanks.vip.nameRank : preRanks.default.nameRank;
 	player.nameTag = `${actualRank} ${player.name}\n§c${Math.round(health.currentValue)}/${Math.round(health.defaultValue)}`;
 };
-/* Creado o Editado por: HaJuegosCat! y DiFox!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
-/* Created or Edited by: HaJuegosCat!y DiFox!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
