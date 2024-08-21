@@ -3,6 +3,12 @@
     "resource_pack_name": "vanilla",
     "texture_name": "atlas.items",
     "texture_data": {
+        "spontaneous_key": {
+            "textures": "textures/items/key/spontaneous_key"
+        },
+        "dry_key": {
+            "textures": ["textures/items/key/dry_key"]
+        },
         "slime_wand": {
             "textures": ["textures/items/slime_wand"]
         },
