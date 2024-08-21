@@ -8,6 +8,35 @@
             "is_experimental": false
         },
         "component_groups": {
+            "from_dry_hoglin": {
+                "minecraft:projectile": {
+                    "on_hit": {
+                        "impact_damage": {
+                            "damage": [1, 5],
+                            "knockback": true,
+                            "semi_random_diff_damage": false,
+                            "destroy_on_hit": false
+                        },
+                        "stick_in_ground": {
+                            "shake_time": 0.35
+                        },
+                        "definition_event": {
+                            "event_trigger": "despawn"
+                        },
+                        "arrow_effect": {
+                            "apply_effect_to_blocking_targets": false
+                        }
+                    },
+                    "hit_sound": "bow.hit",
+                    "power": 1.6,
+                    "gravity": 0.05,
+                    "uncertainty_base": 16,
+                    "uncertainty_multiplier": 4,
+                    "anchor": 1,
+                    "should_bounce": true,
+                    "offset": [0, -0.1, 0]
+                }
+            },
             "ha:arrow_laser_three": {
                 "minecraft:variant": {
                     "value": 5
@@ -327,6 +356,16 @@
             }
         },
         "events": {
+            "from_dry_hoglin": {
+                "add": {
+                    "component_groups": ["from_dry_hoglin"]
+                }
+            },
+            "despawn": {
+                "add": {
+                    "component_groups": ["despawn"]
+                }
+            },
             "from_deep_skeleton": {
                 "add": {
                     "component_groups": ["despawn"]
