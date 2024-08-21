@@ -8,6 +8,7 @@ import { MobNameRegistry } from "nxmbers/src/manager/MobNameManager";
 export default class InfernalFoxEntity implements MobNameRegistry {
     public readonly MOB_ID: string = "cib:infernal_fox";
     public readonly displayName: string = "§cZorro Infernal";
+
     public constructor() {
         world.afterEvents.entityHurt.subscribe(this.onAttack.bind(this));
         Imaginary.getMobNameManager().addRegistry(this);
