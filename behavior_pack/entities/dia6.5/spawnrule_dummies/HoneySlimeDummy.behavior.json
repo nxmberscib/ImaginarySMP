@@ -106,7 +106,7 @@
             },
             "summon": {
                 "queue_command": {
-                    "command": ["summon cib:honey_slime", "say Weiiii"]
+                    "command": ["summon cib:honey_slime"]
                 },
                 "add": {
                     "component_groups": ["despawn"]
