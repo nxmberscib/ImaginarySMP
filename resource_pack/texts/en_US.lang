@@ -298,3 +298,6 @@ ui.swappable.enable_option=§aEnable
 ui.swappable.disable_option=§cDisable
 
 action.hint.exit.cib:vex_firework=¡You are on a rocket!
+
+entity.cib:priest.name=§gPriest
+item.spawn_egg.entity.cib:priest.name=Spawn §gPriest

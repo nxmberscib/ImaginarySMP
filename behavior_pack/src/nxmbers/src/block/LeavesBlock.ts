@@ -12,7 +12,7 @@ export default class LeavesBlock extends Runnable {
             const location = player.location;
             location.y -= 0.7;
             const block = player.dimension.getBlock(location);
-            if (block.typeId.includes("leaves")) {
+            if (block?.typeId.includes("leaves")) {
                 const { x, y, z } = block.location;
                 player.runCommand(
                     `execute positioned ${x.toFixed(0)} ${y.toFixed(

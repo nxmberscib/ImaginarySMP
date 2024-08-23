@@ -1,6 +1,7 @@
 import {
     EntityHurtAfterEvent,
     Player,
+    ProjectileHitBlockAfterEvent,
     ProjectileHitEntityAfterEvent,
     world,
 } from "@minecraft/server";
@@ -26,6 +27,7 @@ export default class DryHoglinEntity implements MobNameRegistry {
         world.afterEvents.projectileHitEntity.subscribe(
             this.onArrowHit.bind(this),
         );
+        world.afterEvents.projectileHitBlock.subscribe(this.onArrowHitBlock.bind(this))
         Imaginary.LOGGER.robust("Dry hoglin entity loaded");
     }
 
@@ -48,18 +50,30 @@ export default class DryHoglinEntity implements MobNameRegistry {
         }
     }
 
+    private async onArrowHitBlock(event: ProjectileHitBlockAfterEvent) {
+        if (!event.projectile.isValid()) {
+            return;
+        }
+        if (
+            event.projectile.hasTag("GivesDryHoglinPoison") ||
+            event.projectile.hasTag("GivesDryHoglinDamage")
+        ) {
+            event.projectile.remove();
+        }
+    }
+
     private async onArrowHit(event: ProjectileHitEntityAfterEvent) {
         if (!event.projectile.isValid()) {
             return;
         }
-        if (event.projectile.getTags().includes("GivesDryHoglinPoison")) {
+        if (event.projectile.hasTag("GivesDryHoglinPoison")) {
             return event
                 .getEntityHit()
                 .entity.addEffect("poison", TimerUtils.fromSecondsToTicks(5), {
                     amplifier: 2,
                 });
         }
-        if (event.projectile.getTags().includes("GivesDryHoglinDamage")) {
+        if (event.projectile.hasTag("GivesDryHoglinDamage")) {
             return event
                 .getEntityHit()
                 .entity.addEffect("instant_damage", 1, { amplifier: 2 });
@@ -87,6 +101,7 @@ export default class DryHoglinEntity implements MobNameRegistry {
                 amplifier: 254,
                 showParticles: false,
             });
+            
             hoglin.dimension.playSound(
                 "mob.dry_hoglin.special_attack",
                 hoglin.location,
@@ -94,7 +109,7 @@ export default class DryHoglinEntity implements MobNameRegistry {
 
             this.ATTACK_INFO.set(
                 hoglin.id,
-                Date.now() + TimerUtils.fromSecondsToMilliseconds(15),
+                Date.now() + TimerUtils.fromSecondsToMilliseconds(10),
             );
 
             await TimerUtils.sleep(TimerUtils.fromSecondsToTicks(2.5));
@@ -104,7 +119,7 @@ export default class DryHoglinEntity implements MobNameRegistry {
                 return;
             }
 
-            for (let x = 0; x <= 40; x++) {
+            for (let x = 0; x <= 160; x++) {
                 const arrow = hoglin.dimension.spawnEntity(
                     "minecraft:arrow<from_dry_hoglin>",
                     new Vector3Builder(
@@ -128,16 +143,17 @@ export default class DryHoglinEntity implements MobNameRegistry {
                       })();
 
                 const projectile = arrow.getComponent("projectile");
-
                 projectile.owner = hoglin;
+
                 const direction = new Vector3Builder(VECTOR3_UP);
                 direction.y = 0;
+
                 projectile.shoot(
                     direction.add(
                         new Vector3Builder(
-                            getRandomArbitrary(-0.65, 0.65),
+                            getRandomArbitrary(-1.65, 1.65),
                             getRandomArbitrary(0, 1),
-                            getRandomArbitrary(-0.65, 0.65),
+                            getRandomArbitrary(-1.65, 1.65),
                         ),
                     ),
                 );

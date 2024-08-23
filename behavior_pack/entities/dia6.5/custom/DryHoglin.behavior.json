@@ -171,7 +171,7 @@
                     "target": "self"
                 },
                 "minecraft:loot": {
-                    "table": "loot_tables/entities/hoglin_seco.json"
+                    "table": "loot_tables/entities/dry_hoglin.json"
                 },
                 "minecraft:behavior.melee_attack": {
                     "priority": 4,
@@ -234,8 +234,8 @@
             },
             "minecraft:nameable": {},
             "minecraft:health": {
-                "value": 120,
-                "max": 120
+                "value": 800,
+                "max": 800
             },
             "minecraft:experience_reward": {
                 "on_bred": "Math.Random(1,7)",
@@ -246,7 +246,7 @@
             },
             "minecraft:behavior.nearest_attackable_target": {
                 "priority": 4,
-                "within_radius": 16,
+                "within_radius": 32,
                 "entity_types": [
                     {
                         "filters": {
@@ -264,7 +264,7 @@
                                 }
                             ]
                         },
-                        "max_dist": 16
+                        "max_dist": 32
                     }
                 ],
                 "must_see": true

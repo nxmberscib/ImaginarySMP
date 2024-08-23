@@ -5,7 +5,7 @@
 			"entries": [
 				{
 					"type": "item",
-					"name": "cib:dry_key",
+					"name": "cib:priest_dry_key",
 					"weight": 40,
 					"functions": [
 						{

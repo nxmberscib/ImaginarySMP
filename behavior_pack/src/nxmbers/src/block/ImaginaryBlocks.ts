@@ -7,13 +7,20 @@ import LeavesBlock from "./LeavesBlock";
 import VaultBlock from "./vault/VaultBlock";
 
 export default class ImaginaryBlocks {
+    public static BREWING_STAND: BrewingStandBlock;
+    public static CHEST: ChestBlock;
+    public static ENCHANTMENT_TABLE: EnchantmentTableBlock;
+    public static GRINDSTONE: GrindstoneBlock;
+    public static LEAVES_CONTROLLER: LeavesBlock;
+    public static VAULT: VaultBlock;
+
     public static registerBlocks() {
-        new BrewingStandBlock();
-        new ChestBlock();
-        new EnchantmentTableBlock();
-        new GrindstoneBlock();
-        new LeavesBlock();
-        new VaultBlock();
+        this.BREWING_STAND = new BrewingStandBlock();
+        this.CHEST = new ChestBlock();
+        this.ENCHANTMENT_TABLE = new EnchantmentTableBlock();
+        this.GRINDSTONE = new GrindstoneBlock();
+        this.LEAVES_CONTROLLER = new LeavesBlock();
+        this.VAULT = new VaultBlock();
 
         Imaginary.LOGGER.info("Imaginary Blocks loaded");
     }

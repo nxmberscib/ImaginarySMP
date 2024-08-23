@@ -17,6 +17,7 @@ import DrownedEntity from "./DrownedEntity";
 import DeepSkeletonEntity from "./skeleton/DeepSkeletonEntity";
 import DiabloquitoEntity from "./DiabloquitoEntity";
 import DryHoglinEntity from "./DryHoglinEntity";
+import PriestEntity from "./illager/priest/PriestEntity";
 
 export default class ImaginaryEntities {
     public static OPOSSUM: OpossumEntity;
@@ -36,6 +37,7 @@ export default class ImaginaryEntities {
     public static DEEP_SPIDER: DeepSpiderEntity;
     public static DROWNED: DrownedEntity;
     public static DEEP_SKELETON: DeepSkeletonEntity;
+    static PRIEST: PriestEntity;
 
     public static registerEntities() {
         // Player
@@ -58,6 +60,7 @@ export default class ImaginaryEntities {
 
         // Illagers
         this.PREASSURE_ASSASIN = new PreassureAssasinEntity();
+        this.PRIEST = new PriestEntity()
 
         this.DIABLOQUITO = new DiabloquitoEntity();
 

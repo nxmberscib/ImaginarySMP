@@ -1,0 +1,18 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "cib:hook",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/attachable/grapple_handle"
+			},
+			"geometry": {
+				"default": "geometry.hook"
+			},
+			"render_controllers": ["controller.render.default"]
+		}
+	}
+}

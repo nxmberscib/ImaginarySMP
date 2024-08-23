@@ -1,0 +1,84 @@
+{
+    "format_version": "1.20.70",
+
+    "minecraft:entity": {
+        "description": {
+            "identifier": "cib:hook_seat",
+            "is_spawnable": true,
+            "is_summonable": true,
+            "is_experimental": false
+            // "scripts": {
+            //     "animate": ["flying"]
+            // },
+            // "animations": {
+            //     "flying": "controller.animation.dragon.flying"
+            // }
+        },
+        "component_groups": {
+            "ground_control": {
+                "minecraft:movement": {
+                    "value": 0.25
+                }
+            },
+            "air_control": {
+                "minecraft:movement": {
+                    "value": 5.5
+                }
+            }
+        },
+        "components": {
+            "minecraft:leashable": {
+                "soft_distance": 1.0,
+                "hard_distance": 1150.0,
+                "max_distance": 130.0,
+				"can_be_stolen": false
+            },
+            "minecraft:environment_sensor": {},
+            "minecraft:collision_box": {
+                "width": 0.6,
+                "height": 1.8
+            },
+            "minecraft:horse.jump_strength": {
+                "value": 0
+            },
+            "minecraft:can_power_jump": {},
+            "minecraft:movement.basic": {},
+            "minecraft:navigation.generic": {},
+
+            "minecraft:input_ground_controlled": {},
+            "minecraft:physics": {},
+            "minecraft:rideable": {
+                "controlling_seat": 0,
+                "pull_in_entities": false,
+                "rider_can_interact": false,
+                "seat_count": 1,
+                "seats": [
+                    {
+                        "max_rider_count": 1,
+                        "min_rider_count": 0,
+                        "position": [0, 0, 0],
+                        "rotate_rider_by": "query.rider_body_x_rotation"
+                    }
+                ]
+            }
+        },
+        "events": {
+            "ground_control": {
+                "add": {
+                    "component_groups": ["ground_control"]
+                },
+                "remove": {
+                    "component_groups": ["air_control"]
+                }
+            },
+            "air_control": {
+                "add": {
+                    "component_groups": ["air_control"]
+                },
+                "remove": {
+                    "component_groups": ["ground_control"]
+                }
+            }
+        }
+    }
+}
